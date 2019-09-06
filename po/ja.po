@@ -16,9 +16,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-01-28 21:46+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
+"POT-Creation-Date: 2019-02-06 20:59+0000\n"
 "PO-Revision-Date: 2018-01-19 19:14+0700\n"
 "Last-Translator: sujiniku <sujinikusityuu@gmail.com>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
@@ -71,8 +70,7 @@ msgstr "gedit テキストエディター"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:4
 msgid "Text;Editor;Plaintext;Write;"
-msgstr ""
-"Text;Editor;Plaintext;Write;テキスト;エディター;プレーンテキスト;"
+msgstr "Text;Editor;Plaintext;Write;テキスト;エディター;プレーンテキスト;"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:5
 msgid "New Window"
@@ -103,15 +101,16 @@ msgstr ""
 "るかどうかを指定します。このオプションを無効にした場合は、システムフォントで"
 "はなく \"エディターのフォント\" オプションで指定したフォントが使用されます。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:3
+#. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
+#: ../data/org.gnome.gedit.gschema.xml.in.h:4
 msgid "'Monospace 12'"
 msgstr "'Monospace 12'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:4
+#: ../data/org.gnome.gedit.gschema.xml.in.h:5
 msgid "Editor Font"
 msgstr "エディターのフォント"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:5
+#: ../data/org.gnome.gedit.gschema.xml.in.h:6
 #, fuzzy
 #| msgid ""
 #| "A custom font that will be used for the editing area. This will only take "
@@ -123,29 +122,29 @@ msgstr ""
 "編集領域で使用するカスタムフォントを指定します。これは \"デフォルトのフォント"
 "を使う\" オプションを無効にしている場合にのみ効果があります。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:6
+#: ../data/org.gnome.gedit.gschema.xml.in.h:7
 msgid "Style Scheme"
 msgstr "スタイルのスキーム"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:7
+#: ../data/org.gnome.gedit.gschema.xml.in.h:8
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr ""
 "文字列に色を付ける際に使用する GtkSourceView のスタイルを表すスキームの ID で"
 "す。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:8
+#: ../data/org.gnome.gedit.gschema.xml.in.h:9
 msgid "Create Backup Copies"
 msgstr "パックアップコピーを作成する"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:9
+#: ../data/org.gnome.gedit.gschema.xml.in.h:10
 msgid "Whether gedit should create backup copies for the files it saves."
 msgstr "ファイルを保存する時にバックアップコピーを作成するかどうか指定します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:10
+#: ../data/org.gnome.gedit.gschema.xml.in.h:11
 msgid "Autosave"
 msgstr "自動保存"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:11
+#: ../data/org.gnome.gedit.gschema.xml.in.h:12
 #, fuzzy
 #| msgid ""
 #| "Whether gedit should automatically save modified files after a time "
@@ -158,11 +157,11 @@ msgstr ""
 "指定時間後に変更されたファイルを gedit が自動的に保存するかどうかを指定しま"
 "す。\"自動保存の間隔\" オプションで時間を設定できます。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:12
+#: ../data/org.gnome.gedit.gschema.xml.in.h:13
 msgid "Autosave Interval"
 msgstr "自動保存の間隔"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:13
+#: ../data/org.gnome.gedit.gschema.xml.in.h:14
 #, fuzzy
 #| msgid ""
 #| "Number of minutes after which gedit will automatically save modified "
@@ -174,11 +173,11 @@ msgstr ""
 "変更したファイルを gedit が自動的に保存するまでの時間(分単位)です。これは "
 "\"自動保存\" オプションが有効の場合のみ効果があります。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:14
+#: ../data/org.gnome.gedit.gschema.xml.in.h:15
 msgid "Maximum Number of Undo Actions"
 msgstr "\"元に戻す\" の最大回数"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:15
+#: ../data/org.gnome.gedit.gschema.xml.in.h:16
 #, fuzzy
 #| msgid ""
 #| "Maximum number of actions that gedit will be able to undo or redo. Use "
@@ -190,11 +189,11 @@ msgstr ""
 "gedit で \"元に戻す\" または \"やり直す\" ことができる動作の回数を最大値で指"
 "定します (無制限にする場合は \"-1\")。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:16
+#: ../data/org.gnome.gedit.gschema.xml.in.h:17
 msgid "Line Wrapping Mode"
 msgstr "行折り返しモード"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:17
+#: ../data/org.gnome.gedit.gschema.xml.in.h:18
 #, fuzzy
 #| msgid ""
 #| "Specifies how to wrap long lines in the editing area. Use \"none\" for no "
@@ -212,11 +211,11 @@ msgstr ""
 "は \"char\" を指定します。値は大文字小文字を区別することに注意してください。"
 "そしてここで記述したとおりに表示されるか確認してください。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:18
+#: ../data/org.gnome.gedit.gschema.xml.in.h:19
 msgid "Last split mode choice for line wrapping mode"
 msgstr "行折り返しモードの直前の設定値"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:19
+#: ../data/org.gnome.gedit.gschema.xml.in.h:20
 #, fuzzy
 #| msgid ""
 #| "Specifies the last split mode used with line wrapping mode, so that when "
@@ -233,93 +232,93 @@ msgstr ""
 "になった場合でも分割モードを記憶しておくために使用します。単語の境界で折り返"
 "す場合は \"word\"、そして文字の境界で折り返す場合は \"char\" を指定します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:20
+#: ../data/org.gnome.gedit.gschema.xml.in.h:21
 msgid "Tab Size"
 msgstr "タブのサイズ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:21
+#: ../data/org.gnome.gedit.gschema.xml.in.h:22
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr "タブ文字の代わりに表示されるスペースの数を指定します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:22
+#: ../data/org.gnome.gedit.gschema.xml.in.h:23
 msgid "Insert spaces"
 msgstr "空白の挿入"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:23
+#: ../data/org.gnome.gedit.gschema.xml.in.h:24
 msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "タブ文字の代わりに空白文字を使うかどうかを指定します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:24
+#: ../data/org.gnome.gedit.gschema.xml.in.h:25
 msgid "Automatic indent"
 msgstr "自動インデント"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:25
+#: ../data/org.gnome.gedit.gschema.xml.in.h:26
 msgid "Whether gedit should enable automatic indentation."
 msgstr "自動的にインデントするかどうかを指定します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:26
+#: ../data/org.gnome.gedit.gschema.xml.in.h:27
 msgid "Display Line Numbers"
 msgstr "行番号の表示"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:27
+#: ../data/org.gnome.gedit.gschema.xml.in.h:28
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr "編集領域に行番号を表示するかどうかを指定します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:28
+#: ../data/org.gnome.gedit.gschema.xml.in.h:29
 msgid "Highlight Current Line"
 msgstr "現在の行の強調表示"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:29
+#: ../data/org.gnome.gedit.gschema.xml.in.h:30
 msgid "Whether gedit should highlight the current line."
 msgstr "カーソル行を強調表示するかどうかを指定します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:30
+#: ../data/org.gnome.gedit.gschema.xml.in.h:31
 msgid "Highlight Matching Brackets"
 msgstr "対応するカッコの強調表示"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:31
+#: ../data/org.gnome.gedit.gschema.xml.in.h:32
 msgid "Whether gedit should highlight matching brackets."
 msgstr "gedit で対応するカッコを強調表示するかどうかを指定します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:32
+#: ../data/org.gnome.gedit.gschema.xml.in.h:33
 msgid "Display Right Margin"
 msgstr "右マージンを表示"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:33
+#: ../data/org.gnome.gedit.gschema.xml.in.h:34
 msgid "Whether gedit should display the right margin in the editing area."
 msgstr "編集領域に右マージンを表示するかどうかを指定します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:34
+#: ../data/org.gnome.gedit.gschema.xml.in.h:35
 msgid "Right Margin Position"
 msgstr "右マージンの位置"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:35
+#: ../data/org.gnome.gedit.gschema.xml.in.h:36
 msgid "Specifies the position of the right margin."
 msgstr "右マージンの位置を指定します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:36
+#: ../data/org.gnome.gedit.gschema.xml.in.h:37
 msgid "Display Overview Map"
 msgstr "全体像を表示する"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:37
+#: ../data/org.gnome.gedit.gschema.xml.in.h:38
 msgid "Whether gedit should display the overview map for the document."
 msgstr "ドキュメントの全体像を表示するかどうかを指定します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:38
+#: ../data/org.gnome.gedit.gschema.xml.in.h:39
 msgid "Document background pattern type"
 msgstr "ドキュメントの背景パターン種別"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:39
+#: ../data/org.gnome.gedit.gschema.xml.in.h:40
 msgid "Whether the document will get a background pattern painted."
 msgstr "ドキュメントの背景に描画するパターンを指定します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:40
+#: ../data/org.gnome.gedit.gschema.xml.in.h:41
 msgid "Smart Home End"
 msgstr "スマート [Home]/[End]"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:41
+#: ../data/org.gnome.gedit.gschema.xml.in.h:42
 #, fuzzy
 #| msgid ""
 #| "Specifies how the cursor moves when the HOME and END keys are pressed. "
@@ -345,56 +344,56 @@ msgstr ""
 "する前に一旦文字列の先頭/終端にカーソルを移動し、\"always\" を指定すると行の"
 "先頭/末尾ではなく常に文字列の先頭/終端にカーソルを移動します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:42
+#: ../data/org.gnome.gedit.gschema.xml.in.h:43
 msgid "Restore Previous Cursor Position"
 msgstr "以前あったカーソル位置に戻す"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:43
+#: ../data/org.gnome.gedit.gschema.xml.in.h:44
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
 msgstr ""
 "ファイルを読み込んだ時に記憶していたカーソル位置に戻すかどうか指定します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:44
+#: ../data/org.gnome.gedit.gschema.xml.in.h:45
 msgid "Enable Syntax Highlighting"
 msgstr "構文の強調表示を有効にする"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:45
+#: ../data/org.gnome.gedit.gschema.xml.in.h:46
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "構文の強調表示を有効にするかどうかを指定します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:46
+#: ../data/org.gnome.gedit.gschema.xml.in.h:47
 msgid "Enable Search Highlighting"
 msgstr "検索時の強調表示を有効にする"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:47
+#: ../data/org.gnome.gedit.gschema.xml.in.h:48
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr "検索する時に一致した文字列をすべて強調表示するかどうかを指定します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:48
+#: ../data/org.gnome.gedit.gschema.xml.in.h:49
 msgid "Ensure Trailing Newline"
 msgstr "最後は必ず改行"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:49
+#: ../data/org.gnome.gedit.gschema.xml.in.h:50
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr "ドキュメントの最後は必ず改行になるようにするかどうか。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:50
+#: ../data/org.gnome.gedit.gschema.xml.in.h:51
 msgid "Toolbar is Visible"
 msgstr "ツールバーの表示可否"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:51
+#: ../data/org.gnome.gedit.gschema.xml.in.h:52
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "編集ウィンドウの中にツールバーを表示するかどうかを指定します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:52
+#: ../data/org.gnome.gedit.gschema.xml.in.h:53
 msgid "Notebook Show Tabs Mode"
 msgstr "ノートブックをタブモードで表示"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:53
+#: ../data/org.gnome.gedit.gschema.xml.in.h:54
 #, fuzzy
 #| msgid ""
 #| "Specifies when to show the notebook tabs. Use \"never\" to never show the "
@@ -412,29 +411,29 @@ msgstr ""
 "合は \"auto\" を使います。値は大文字小文字を区別することに注意してください。"
 "そしてここで記述したとおりに表示されるか確認してください。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:54
+#: ../data/org.gnome.gedit.gschema.xml.in.h:55
 msgid "Status Bar is Visible"
 msgstr "ステータスバーの表示"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:55
+#: ../data/org.gnome.gedit.gschema.xml.in.h:56
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "編集ウィンドウの下側にステータスバーを表示するかどうかを指定します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:56
+#: ../data/org.gnome.gedit.gschema.xml.in.h:57
 msgid "Side panel is Visible"
 msgstr "サイドパネルを表示します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:57
+#: ../data/org.gnome.gedit.gschema.xml.in.h:58
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr "編集ウィンドウの左側にサイドパネルを表示するかどうかです。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:58
+#: ../data/org.gnome.gedit.gschema.xml.in.h:59
 msgid "Maximum Recent Files"
 msgstr "\"最近使ったファイル\" に表示する最大数"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:59
+#: ../data/org.gnome.gedit.gschema.xml.in.h:60
 #, fuzzy
 #| msgid ""
 #| "Specifies the maximum number of recently opened files that will be "
@@ -445,28 +444,28 @@ msgid ""
 msgstr ""
 "\"最近使ったファイル\" のサブメニューに表示するエントリの最大数を指定します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:60
+#: ../data/org.gnome.gedit.gschema.xml.in.h:61
 msgid "Print Syntax Highlighting"
 msgstr "強調表示の印刷"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:61
+#: ../data/org.gnome.gedit.gschema.xml.in.h:62
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr ""
 "ドキュメントを印刷する際に構文の強調表示も印刷するかどうかを指定します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:62
+#: ../data/org.gnome.gedit.gschema.xml.in.h:63
 msgid "Print Header"
 msgstr "ヘッダーの印刷"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:63
+#: ../data/org.gnome.gedit.gschema.xml.in.h:64
 msgid "Whether gedit should include a document header when printing documents."
 msgstr "ドキュメントを印刷する際にヘッダーを含めるかどうかを指定します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:64
+#: ../data/org.gnome.gedit.gschema.xml.in.h:65
 msgid "Printing Line Wrapping Mode"
 msgstr "印刷時の行の折り返しモード"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:65
+#: ../data/org.gnome.gedit.gschema.xml.in.h:66
 #, fuzzy
 #| msgid ""
 #| "Specifies how to wrap long lines for printing. Use \"none\" for no "
@@ -484,11 +483,11 @@ msgstr ""
 "は \"char\" を使います。値は大文字小文字を区別することに注意してください。そ"
 "してここで記述したとおりに印刷されるか確認してください。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:66
+#: ../data/org.gnome.gedit.gschema.xml.in.h:67
 msgid "Print Line Numbers"
 msgstr "行番号の印刷"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:67
+#: ../data/org.gnome.gedit.gschema.xml.in.h:68
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -497,15 +496,16 @@ msgstr ""
 "この値が 0 の場合はドキュメントを印刷する時に行番号を挿入しません。それ以外の"
 "場合は gedit は行番号を印刷します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:68
+#. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
+#: ../data/org.gnome.gedit.gschema.xml.in.h:70
 msgid "'Monospace 9'"
 msgstr "'Monospace 9'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:69
+#: ../data/org.gnome.gedit.gschema.xml.in.h:71
 msgid "Body Font for Printing"
 msgstr "印刷時の本文に使われるフォント"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:70
+#: ../data/org.gnome.gedit.gschema.xml.in.h:72
 #, fuzzy
 #| msgid ""
 #| "Specifies the font to use for a document's body when printing documents."
@@ -513,15 +513,16 @@ msgid ""
 "Specifies the font to use for a document’s body when printing documents."
 msgstr "ドキュメントを印刷する際の本文に使用するフォントを指定します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:71
+#. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
+#: ../data/org.gnome.gedit.gschema.xml.in.h:74
 msgid "'Sans 11'"
 msgstr "'Sans 11'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:72
+#: ../data/org.gnome.gedit.gschema.xml.in.h:75
 msgid "Header Font for Printing"
 msgstr "印刷時のヘッダーに使用するフォント"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:73
+#: ../data/org.gnome.gedit.gschema.xml.in.h:76
 #, fuzzy
 #| msgid ""
 #| "Specifies the font to use for page headers when printing a document. This "
@@ -533,15 +534,16 @@ msgstr ""
 "ドキュメントを印刷する際のページヘッダーに使用するフォントを指定します。これ"
 "は \"ヘッダーの印刷\" オプションが有効の場合のみ効果があります。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:74
+#. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
+#: ../data/org.gnome.gedit.gschema.xml.in.h:78
 msgid "'Sans 8'"
 msgstr "'Sans 8'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:75
+#: ../data/org.gnome.gedit.gschema.xml.in.h:79
 msgid "Line Number Font for Printing"
 msgstr "印刷時の行番号に使用するフォント"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:76
+#: ../data/org.gnome.gedit.gschema.xml.in.h:80
 #, fuzzy
 #| msgid ""
 #| "Specifies the font to use for line numbers when printing. This will only "
@@ -553,43 +555,43 @@ msgstr ""
 "印刷する際の行番号に使用するフォントを指定します。これは \"行番号の印刷\" オ"
 "プションが 0 以外の場合のみ効果があります。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:77
+#: ../data/org.gnome.gedit.gschema.xml.in.h:81
 msgid "Margin Left"
 msgstr "左マージン"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:78
+#: ../data/org.gnome.gedit.gschema.xml.in.h:82
 msgid "The left margin, in millimeters."
 msgstr "左マージン (ミリメートル単位)"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:79
+#: ../data/org.gnome.gedit.gschema.xml.in.h:83
 msgid "Margin Top"
 msgstr "上マージン"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:80
+#: ../data/org.gnome.gedit.gschema.xml.in.h:84
 msgid "The top margin, in millimeters."
 msgstr "上マージン (ミリメートル単位)"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:81
+#: ../data/org.gnome.gedit.gschema.xml.in.h:85
 msgid "Margin Right"
 msgstr "右マージン"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:82
+#: ../data/org.gnome.gedit.gschema.xml.in.h:86
 msgid "The right margin, in millimeters."
 msgstr "右マージン (ミリメートル単位)"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:83
+#: ../data/org.gnome.gedit.gschema.xml.in.h:87
 msgid "Margin Bottom"
 msgstr "下マージン"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:84
+#: ../data/org.gnome.gedit.gschema.xml.in.h:88
 msgid "The bottom margin, in millimeters."
 msgstr "下マージン (ミリメートル単位)"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:85
+#: ../data/org.gnome.gedit.gschema.xml.in.h:89
 msgid "Candidate Encodings"
 msgstr "文字エンコーディング"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:86
+#: ../data/org.gnome.gedit.gschema.xml.in.h:90
 #, fuzzy
 #| msgid ""
 #| "List of candidate encodings shown in the Character Encoding menu in the "
@@ -609,11 +611,11 @@ msgstr ""
 "す。この場合、gedit は、国や地域、言語に応じた最適なエンコーディング一覧を選"
 "択します。"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:87
+#: ../data/org.gnome.gedit.gschema.xml.in.h:91
 msgid "Active plugins"
 msgstr "利用可能なプラグイン"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:88
+#: ../data/org.gnome.gedit.gschema.xml.in.h:92
 #, fuzzy
 #| msgid ""
 #| "List of active plugins. It contains the \"Location\" of the active "
