@@ -12,14 +12,16 @@
 # Hajime Taira <htaira@redhat.com>, 2011.
 # Jiro Matsuzawa <jmatsuzawa@gnome.org>, 2011, 2013, 2014, 2015, 2016.
 # Kenichi Ito <ken.i54k@gmail.com>, 2016.
+# sujiniku <sujinikusityuu@gmail.com>, 2018.
+# sicklylife <translation@sicklylife.jp>, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
 "POT-Creation-Date: 2019-02-06 20:59+0000\n"
-"PO-Revision-Date: 2018-01-19 19:14+0700\n"
-"Last-Translator: sujiniku <sujinikusityuu@gmail.com>\n"
+"PO-Revision-Date: 2019-09-06 20:50+0900\n"
+"Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -85,12 +87,6 @@ msgid "Use Default Font"
 msgstr "デフォルトのフォントを使う"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:2
-#, fuzzy
-#| msgid ""
-#| "Whether to use the system's default fixed width font for editing text "
-#| "instead of a font specific to gedit. If this option is turned off, then "
-#| "the font named in the \"Editor Font\" option will be used instead of the "
-#| "system font."
 msgid ""
 "Whether to use the system’s default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
@@ -99,7 +95,7 @@ msgid ""
 msgstr ""
 "gedit で指定したフォントの代わりにシステムのデフォルトフォントを編集で使用す"
 "るかどうかを指定します。このオプションを無効にした場合は、システムフォントで"
-"はなく \"エディターのフォント\" オプションで指定したフォントが使用されます。"
+"はなく“エディターのフォント”オプションで指定したフォントが使用されます。"
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
 #: ../data/org.gnome.gedit.gschema.xml.in.h:4
@@ -111,16 +107,12 @@ msgid "Editor Font"
 msgstr "エディターのフォント"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:6
-#, fuzzy
-#| msgid ""
-#| "A custom font that will be used for the editing area. This will only take "
-#| "effect if the \"Use Default Font\" option is turned off."
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the “Use Default Font” option is turned off."
 msgstr ""
-"編集領域で使用するカスタムフォントを指定します。これは \"デフォルトのフォント"
-"を使う\" オプションを無効にしている場合にのみ効果があります。"
+"編集領域で使用するカスタムフォントを指定します。これは“デフォルトのフォントを"
+"使う”オプションを無効にしている場合にのみ効果があります。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:7
 msgid "Style Scheme"
@@ -145,61 +137,42 @@ msgid "Autosave"
 msgstr "自動保存"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:12
-#, fuzzy
-#| msgid ""
-#| "Whether gedit should automatically save modified files after a time "
-#| "interval. You can set the time interval with the \"Autosave Interval\" "
-#| "option."
 msgid ""
 "Whether gedit should automatically save modified files after a time "
 "interval. You can set the time interval with the “Autosave Interval” option."
 msgstr ""
 "指定時間後に変更されたファイルを gedit が自動的に保存するかどうかを指定しま"
-"す。\"自動保存の間隔\" オプションで時間を設定できます。"
+"す。“自動保存の間隔”オプションで時間を設定できます。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:13
 msgid "Autosave Interval"
 msgstr "自動保存の間隔"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:14
-#, fuzzy
-#| msgid ""
-#| "Number of minutes after which gedit will automatically save modified "
-#| "files. This will only take effect if the \"Autosave\" option is turned on."
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the “Autosave” option is turned on."
 msgstr ""
-"変更したファイルを gedit が自動的に保存するまでの時間(分単位)です。これは "
-"\"自動保存\" オプションが有効の場合のみ効果があります。"
+"変更したファイルを gedit が自動的に保存するまでの時間 (分単位) です。これは "
+"“自動保存”オプションが有効の場合のみ効果があります。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:15
 msgid "Maximum Number of Undo Actions"
-msgstr "\"元に戻す\" の最大回数"
+msgstr "“元に戻す”の最大回数"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:16
-#, fuzzy
-#| msgid ""
-#| "Maximum number of actions that gedit will be able to undo or redo. Use "
-#| "\"-1\" for unlimited number of actions."
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use “-1” "
 "for unlimited number of actions."
 msgstr ""
-"gedit で \"元に戻す\" または \"やり直す\" ことができる動作の回数を最大値で指"
-"定します (無制限にする場合は \"-1\")。"
+"gedit で“元に戻す”または“やり直す”ことができる動作の回数を最大値で指定します "
+"(無制限にする場合は“-1”)。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:17
 msgid "Line Wrapping Mode"
 msgstr "行折り返しモード"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:18
-#, fuzzy
-#| msgid ""
-#| "Specifies how to wrap long lines in the editing area. Use \"none\" for no "
-#| "wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
-#| "wrapping at individual character boundaries. Note that the values are "
-#| "case-sensitive, so make sure they appear exactly as mentioned here."
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use “none” for no "
 "wrapping, “word” for wrapping at word boundaries, and “char” for wrapping at "
@@ -207,21 +180,15 @@ msgid ""
 "make sure they appear exactly as mentioned here."
 msgstr ""
 "編集領域内の長い行をどのように折り返すかを指定します。折り返さない場合は "
-"\"none\"、単語の境界で折り返す場合は \"word\"、そして文字の境界で折り返す場合"
-"は \"char\" を指定します。値は大文字小文字を区別することに注意してください。"
-"そしてここで記述したとおりに表示されるか確認してください。"
+"“none”、単語の境界で折り返す場合は“word”、そして文字の境界で折り返す場合"
+"は“char”を指定します。値は大文字小文字を区別することに注意してください。そし"
+"てここで記述したとおりに表示されるか確認してください。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:19
 msgid "Last split mode choice for line wrapping mode"
 msgstr "行折り返しモードの直前の設定値"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:20
-#, fuzzy
-#| msgid ""
-#| "Specifies the last split mode used with line wrapping mode, so that when "
-#| "wrapping mode is off we still remember the split mode choice. Use \"word"
-#| "\" for wrapping at word boundaries, and \"char\" for wrapping at "
-#| "individual character boundaries."
 msgid ""
 "Specifies the last split mode used with line wrapping mode, so that when "
 "wrapping mode is off we still remember the split mode choice. Use “word” for "
@@ -230,7 +197,7 @@ msgid ""
 msgstr ""
 "行折り返しモードに設定した直前の分割モードを指定します。折り返しモードが OFF "
 "になった場合でも分割モードを記憶しておくために使用します。単語の境界で折り返"
-"す場合は \"word\"、そして文字の境界で折り返す場合は \"char\" を指定します。"
+"す場合は“word”、そして文字の境界で折り返す場合は“char”を指定します。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:21
 msgid "Tab Size"
@@ -319,15 +286,6 @@ msgid "Smart Home End"
 msgstr "スマート [Home]/[End]"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:42
-#, fuzzy
-#| msgid ""
-#| "Specifies how the cursor moves when the HOME and END keys are pressed. "
-#| "Use \"disabled\" to always move at the start/end of the line, \"after\" "
-#| "to move to the start/end of the line the first time the keys are pressed "
-#| "and to the start/end of the text ignoring whitespaces the second time the "
-#| "keys are pressed, \"before\" to move to the start/end of the text before "
-#| "moving to the start/end of the line and \"always\" to always move to the "
-#| "start/end of the text instead of the start/end of the line."
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "“disabled” to always move at the start/end of the line, “after” to move to "
@@ -337,12 +295,12 @@ msgid ""
 "start/end of the line and “always” to always move to the start/end of the "
 "text instead of the start/end of the line."
 msgstr ""
-"[Home]/[End] キーを押下した時のカーソルの動きを指定します。\"disabled\" を指"
-"定すると常に行の先頭/末尾にカーソルを移動し、\"after\" を指定するとキーを初め"
-"て押下した時は行の先頭/末尾に移動し二回目に押下したらホワイトスペースを除く文"
-"字列の先頭/終端にカーソルを移動し、\"before\" を指定すると行の先頭/末尾に移動"
-"する前に一旦文字列の先頭/終端にカーソルを移動し、\"always\" を指定すると行の"
-"先頭/末尾ではなく常に文字列の先頭/終端にカーソルを移動します。"
+"[Home]/[End] キーを押下した時のカーソルの動きを指定します。“disabled”を指定す"
+"ると常に行の先頭/末尾にカーソルを移動し、“after”を指定するとキーを初めて押下"
+"した時は行の先頭/末尾に移動し二回目に押下したらホワイトスペースを除く文字列の"
+"先頭/終端にカーソルを移動し、“before”を指定すると行の先頭/末尾に移動する前に"
+"一旦文字列の先頭/終端にカーソルを移動し、“always”を指定すると行の先頭/末尾で"
+"はなく常に文字列の先頭/終端にカーソルを移動します。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:43
 msgid "Restore Previous Cursor Position"
@@ -394,22 +352,16 @@ msgid "Notebook Show Tabs Mode"
 msgstr "ノートブックをタブモードで表示"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:54
-#, fuzzy
-#| msgid ""
-#| "Specifies when to show the notebook tabs. Use \"never\" to never show the "
-#| "tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs "
-#| "only when there is more than one tab. Note that the values are case-"
-#| "sensitive, so make sure they appear exactly as mentioned here."
 msgid ""
 "Specifies when to show the notebook tabs. Use “never” to never show the "
 "tabs, “always” to always show the tabs, and “auto” to show the tabs only "
 "when there is more than one tab. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
-"タブ形式表示を制御するために指定します。タブを一切表示しない場合は \"never"
-"\"、常に表示する場合は \"always\"、2 つ以上タブが必要になるときのみ表示する場"
-"合は \"auto\" を使います。値は大文字小文字を区別することに注意してください。"
-"そしてここで記述したとおりに表示されるか確認してください。"
+"タブ形式表示を制御するために指定します。タブを一切表示しない場合は“never”、常"
+"に表示する場合は“always”、2 つ以上タブが必要になるときのみ表示する場合"
+"は“auto”を使います。値は大文字小文字を区別することに注意してください。そして"
+"ここで記述したとおりに表示されるか確認してください。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:55
 msgid "Status Bar is Visible"
@@ -431,18 +383,14 @@ msgstr "編集ウィンドウの左側にサイドパネルを表示するかど
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:59
 msgid "Maximum Recent Files"
-msgstr "\"最近使ったファイル\" に表示する最大数"
+msgstr "“最近使ったファイル”に表示する最大数"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:60
-#, fuzzy
-#| msgid ""
-#| "Specifies the maximum number of recently opened files that will be "
-#| "displayed in the \"Recent Files\" submenu."
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the “Recent Files” submenu."
 msgstr ""
-"\"最近使ったファイル\" のサブメニューに表示するエントリの最大数を指定します。"
+"“最近使ったファイル”のサブメニューに表示するエントリの最大数を指定します。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:61
 msgid "Print Syntax Highlighting"
@@ -466,12 +414,6 @@ msgid "Printing Line Wrapping Mode"
 msgstr "印刷時の行の折り返しモード"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:66
-#, fuzzy
-#| msgid ""
-#| "Specifies how to wrap long lines for printing. Use \"none\" for no "
-#| "wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
-#| "wrapping at individual character boundaries. Note that the values are "
-#| "case-sensitive, so make sure they appear exactly as mentioned here."
 msgid ""
 "Specifies how to wrap long lines for printing. Use “none” for no wrapping, "
 "“word” for wrapping at word boundaries, and “char” for wrapping at "
@@ -479,9 +421,9 @@ msgid ""
 "make sure they appear exactly as mentioned here."
 msgstr ""
 "印刷する際に長い行をどのように折り返すかを指定します。折り返さない場合は "
-"\"none\"、単語の境界で折り返す場合は \"word\"、そして文字の境界で折り返す場合"
-"は \"char\" を使います。値は大文字小文字を区別することに注意してください。そ"
-"してここで記述したとおりに印刷されるか確認してください。"
+"“none”、単語の境界で折り返す場合は“word”、そして文字の境界で折り返す場合"
+"は“char”を使います。値は大文字小文字を区別することに注意してください。そして"
+"ここで記述したとおりに印刷されるか確認してください。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:67
 msgid "Print Line Numbers"
@@ -506,9 +448,6 @@ msgid "Body Font for Printing"
 msgstr "印刷時の本文に使われるフォント"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:72
-#, fuzzy
-#| msgid ""
-#| "Specifies the font to use for a document's body when printing documents."
 msgid ""
 "Specifies the font to use for a document’s body when printing documents."
 msgstr "ドキュメントを印刷する際の本文に使用するフォントを指定します。"
@@ -523,16 +462,12 @@ msgid "Header Font for Printing"
 msgstr "印刷時のヘッダーに使用するフォント"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:76
-#, fuzzy
-#| msgid ""
-#| "Specifies the font to use for page headers when printing a document. This "
-#| "will only take effect if the \"Print Header\" option is turned on."
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the “Print Header” option is turned on."
 msgstr ""
 "ドキュメントを印刷する際のページヘッダーに使用するフォントを指定します。これ"
-"は \"ヘッダーの印刷\" オプションが有効の場合のみ効果があります。"
+"は“ヘッダーの印刷”オプションが有効の場合のみ効果があります。"
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
 #: ../data/org.gnome.gedit.gschema.xml.in.h:78
@@ -544,16 +479,12 @@ msgid "Line Number Font for Printing"
 msgstr "印刷時の行番号に使用するフォント"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:80
-#, fuzzy
-#| msgid ""
-#| "Specifies the font to use for line numbers when printing. This will only "
-#| "take effect if the \"Print Line Numbers\" option is non-zero."
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the “Print Line Numbers” option is non-zero."
 msgstr ""
-"印刷する際の行番号に使用するフォントを指定します。これは \"行番号の印刷\" オ"
-"プションが 0 以外の場合のみ効果があります。"
+"印刷する際の行番号に使用するフォントを指定します。これは“行番号の印刷”オプ"
+"ションが 0 以外の場合のみ効果があります。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:81
 msgid "Margin Left"
@@ -592,13 +523,6 @@ msgid "Candidate Encodings"
 msgstr "文字エンコーディング"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:90
-#, fuzzy
-#| msgid ""
-#| "List of candidate encodings shown in the Character Encoding menu in the "
-#| "open/save file chooser. \"CURRENT\" represents the current locale "
-#| "encoding. Only recognized encodings are used. The default value is the "
-#| "empty list, in which case gedit will choose good defaults depending on "
-#| "the country and language."
 msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
 "save file chooser. “CURRENT” represents the current locale encoding. Only "
@@ -606,31 +530,24 @@ msgid ""
 "case gedit will choose good defaults depending on the country and language."
 msgstr ""
 "開く/保存のファイル選択ダイアログの文字エンコーディングメニューに表示されるエ"
-"ンコーディング候補のリストです。\"CURRENT\" は、現在使用しているロケールを表"
-"します。認識可能なエンコーディングのみ有効です。デフォルト値は空のリストで"
-"す。この場合、gedit は、国や地域、言語に応じた最適なエンコーディング一覧を選"
-"択します。"
+"ンコーディング候補のリストです。“CURRENT”は、現在使用しているロケールを表しま"
+"す。認識可能なエンコーディングのみ有効です。デフォルト値は空のリストです。こ"
+"の場合、gedit は、国や地域、言語に応じた最適なエンコーディング一覧を選択しま"
+"す。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:91
 msgid "Active plugins"
 msgstr "利用可能なプラグイン"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:92
-#, fuzzy
-#| msgid ""
-#| "List of active plugins. It contains the \"Location\" of the active "
-#| "plugins. See the .gedit-plugin file for obtaining the \"Location\" of a "
-#| "given plugin."
 msgid ""
 "List of active plugins. It contains the “Location” of the active plugins. "
 "See the .gedit-plugin file for obtaining the “Location” of a given plugin."
 msgstr ""
-"利用可能なプラグインの一覧です。プラグインの \"場所\" が含まれます。指定した"
-"プラグインの \"場所\" を得るには .gedit-plugin ファイルを参照してください。"
+"利用可能なプラグインの一覧です。プラグインの“場所”が含まれます。指定したプラ"
+"グインの“場所”を得るには .gedit-plugin ファイルを参照してください。"
 
 #: ../gedit/gedit-app.c:110
-#, fuzzy
-#| msgid "Show the application's version"
 msgid "Show the application’s version"
 msgstr "バージョンを表示する"
 
@@ -665,10 +582,8 @@ msgid "Run gedit in standalone mode"
 msgstr "geditをスタンドアローンモードで動かす"
 
 #: ../gedit/gedit-app.c:158
-#, fuzzy
-#| msgid "[FILE...] [+LINE[:COLUMN]]"
 msgid "[FILE…] [+LINE[:COLUMN]]"
-msgstr "[FILE...] [+LINE[:COLUMN]]"
+msgstr "[FILE…] [+LINE[:COLUMN]]"
 
 #: ../gedit/gedit-app.c:273
 msgid "There was an error displaying the help."
@@ -717,13 +632,7 @@ msgid "_Save"
 msgstr "保存(_S)"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:324
-#, fuzzy, c-format
-#| msgid ""
-#| "If you don't save, changes from the last %ld second will be permanently "
-#| "lost."
-#| msgid_plural ""
-#| "If you don't save, changes from the last %ld seconds will be permanently "
-#| "lost."
+#, c-format
 msgid ""
 "If you don’t save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
@@ -732,37 +641,22 @@ msgid_plural ""
 msgstr[0] "保存しないと、%ld秒前からの変更内容が完全に失われます。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:333
-#, fuzzy
-#| msgid ""
-#| "If you don't save, changes from the last minute will be permanently lost."
 msgid ""
 "If you don’t save, changes from the last minute will be permanently lost."
 msgstr "保存しないと、1分前からの変更内容が完全に失われます。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:339
-#, fuzzy, c-format
-#| msgid ""
-#| "If you don't save, changes from the last minute and %ld second will be "
-#| "permanently lost."
-#| msgid_plural ""
-#| "If you don't save, changes from the last minute and %ld seconds will be "
-#| "permanently lost."
+#, c-format
 msgid ""
 "If you don’t save, changes from the last minute and %ld second will be "
 "permanently lost."
 msgid_plural ""
 "If you don’t save, changes from the last minute and %ld seconds will be "
 "permanently lost."
-msgstr[0] "保存しないと、1分 %ld秒前からの変更内容が完全に失われます。"
+msgstr[0] "保存しないと、1分%ld秒前からの変更内容が完全に失われます。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:349
-#, fuzzy, c-format
-#| msgid ""
-#| "If you don't save, changes from the last %ld minute will be permanently "
-#| "lost."
-#| msgid_plural ""
-#| "If you don't save, changes from the last %ld minutes will be permanently "
-#| "lost."
+#, c-format
 msgid ""
 "If you don’t save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
@@ -771,35 +665,21 @@ msgid_plural ""
 msgstr[0] "保存しないと、%ld分前からの変更内容が完全に失われます。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:364
-#, fuzzy
-#| msgid ""
-#| "If you don't save, changes from the last hour will be permanently lost."
 msgid "If you don’t save, changes from the last hour will be permanently lost."
 msgstr "保存しないと、1時間前からの変更内容が完全に失われます。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:370
-#, fuzzy, c-format
-#| msgid ""
-#| "If you don't save, changes from the last hour and %d minute will be "
-#| "permanently lost."
-#| msgid_plural ""
-#| "If you don't save, changes from the last hour and %d minutes will be "
-#| "permanently lost."
+#, c-format
 msgid ""
 "If you don’t save, changes from the last hour and %d minute will be "
 "permanently lost."
 msgid_plural ""
 "If you don’t save, changes from the last hour and %d minutes will be "
 "permanently lost."
-msgstr[0] "保存しないと、1時間 %d分前からの変更内容が完全に失われます。"
+msgstr[0] "保存しないと、1時間%d分前からの変更内容が完全に失われます。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:385
-#, fuzzy, c-format
-#| msgid ""
-#| "If you don't save, changes from the last %d hour will be permanently lost."
-#| msgid_plural ""
-#| "If you don't save, changes from the last %d hours will be permanently "
-#| "lost."
+#, c-format
 msgid ""
 "If you don’t save, changes from the last %d hour will be permanently lost."
 msgid_plural ""
@@ -845,16 +725,13 @@ msgid "S_elect the documents you want to save:"
 msgstr "保存するドキュメントを選択してください(_E):"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:562
-#, fuzzy
-#| msgid "If you don't save, all your changes will be permanently lost."
 msgid "If you don’t save, all your changes will be permanently lost."
 msgstr "保存しないと変更した内容が完全に失われます。"
 
 #: ../gedit/gedit-commands-file.c:261
-#, fuzzy, c-format
-#| msgid "Loading file '%s'…"
+#, c-format
 msgid "Loading file “%s”…"
-msgstr "ファイル '%s' を読み込んでいます…"
+msgstr "ファイル“%s”を読み込んでいます…"
 
 #: ../gedit/gedit-commands-file.c:270
 #, c-format
@@ -878,10 +755,9 @@ msgid "_Open"
 msgstr "開く(_O)"
 
 #: ../gedit/gedit-commands-file.c:558
-#, fuzzy, c-format
-#| msgid "The file \"%s\" is read-only."
+#, c-format
 msgid "The file “%s” is read-only."
-msgstr "ファイル \"%s\" は読み込み専用です。"
+msgstr "ファイル“%s”は読み込み専用です。"
 
 #: ../gedit/gedit-commands-file.c:563
 msgid "Do you want to try to replace it with the one you are saving?"
@@ -901,15 +777,12 @@ msgid "Save the file as plain text?"
 msgstr "ファイルをプレーンテキストで保存しますか?"
 
 #: ../gedit/gedit-commands-file.c:625
-#, fuzzy, c-format
-#| msgid ""
-#| "The file \"%s\" was previously saved as plain text and will now be saved "
-#| "using compression."
+#, c-format
 msgid ""
 "The file “%s” was previously saved as plain text and will now be saved using "
 "compression."
 msgstr ""
-"ファイル %s は以前プレーンテキストで保存されていましたが、今回は圧縮をかけて"
+"ファイル“%s”は以前プレーンテキストで保存されていましたが、今回は圧縮をかけて"
 "保存しました。"
 
 #: ../gedit/gedit-commands-file.c:629
@@ -917,26 +790,21 @@ msgid "_Save Using Compression"
 msgstr "圧縮をかけて保存(_S)"
 
 #: ../gedit/gedit-commands-file.c:634
-#, fuzzy, c-format
-#| msgid ""
-#| "The file \"%s\" was previously saved using compression and will now be "
-#| "saved as plain text."
+#, c-format
 msgid ""
 "The file “%s” was previously saved using compression and will now be saved "
 "as plain text."
 msgstr ""
-"ファイル \"%s\" は圧縮されていますが、プレーンテキストとして保存しなおしま"
-"す。"
+"ファイル“%s”は圧縮されていますが、プレーンテキストとして保存しなおします。"
 
 #: ../gedit/gedit-commands-file.c:637
 msgid "_Save As Plain Text"
 msgstr "プレーンテキストで保存(_S)"
 
 #: ../gedit/gedit-commands-file.c:752 ../gedit/gedit-commands-file.c:1019
-#, fuzzy, c-format
-#| msgid "Saving file '%s'…"
+#, c-format
 msgid "Saving file “%s”…"
-msgstr "ファイル \"%s\" を保存しています…"
+msgstr "ファイル“%s”を保存しています…"
 
 #. Translators: "Save As" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:847
@@ -945,16 +813,14 @@ msgid "Save As"
 msgstr "名前を付けて保存"
 
 #: ../gedit/gedit-commands-file.c:1429
-#, fuzzy, c-format
-#| msgid "Reverting the document '%s'…"
+#, c-format
 msgid "Reverting the document “%s”…"
-msgstr "ドキュメント '%s' を戻しています…"
+msgstr "ドキュメント“%s”を戻しています…"
 
 #: ../gedit/gedit-commands-file.c:1476
-#, fuzzy, c-format
-#| msgid "Revert unsaved changes to document '%s'?"
+#, c-format
 msgid "Revert unsaved changes to document “%s”?"
-msgstr "変更部分を保存しないで、元のドキュメント '%s' に戻しますか?"
+msgstr "変更部分を保存しないで、元のドキュメント“%s”に戻しますか?"
 
 #: ../gedit/gedit-commands-file.c:1485
 #, c-format
@@ -1024,16 +890,21 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "相花 毅 <takeshi.aihana@gmail.com>\n"
-"佐藤 暁 <ss@gnome.gr.jp>\n"
-"KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>\n"
-"Akira TAGOH <tagoh@gnome.gr.jp>\n"
-"Yukihiro Nakai <nakai@gnome.gr.jp>\n"
-"Yuusuke Tahara <tahara@gnome.gr.jp>\n"
-"Akira Higuchi <a-higuti@math.sci.hokudai.ac.jp>\n"
-"やまね ひでき <henrich@debian.or.jp>\n"
 "草野 貴之 <AE5T-KSN@asahi-net.or.jp>\n"
+"佐藤 暁 <ss@gnome.gr.jp>\n"
+"平 初 <htaira@redhat.com>\n"
+"日本 GNOME ユーザー会 http://www.gnome.gr.jp/\n"
 "松澤 二郎 <jmatsuzawa@gnome.org>\n"
-"日本GNOMEユーザー会 http://www.gnome.gr.jp/"
+"やまね ひでき <henrich@debian.or.jp>\n"
+"Akira Higuchi <a-higuti@math.sci.hokudai.ac.jp>\n"
+"Akira TAGOH <tagoh@gnome.gr.jp>\n"
+"KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>\n"
+"Kenichi Ito <ken.i54k@gmail.com>\n"
+"Shushi Kurose <md81bird@hitaki.net>\n"
+"sicklylife <translation@sicklylife.jp>\n"
+"sujiniku <sujinikusityuu@gmail.com>\n"
+"Yukihiro Nakai <nakai@gnome.gr.jp>\n"
+"Yuusuke Tahara <tahara@gnome.gr.jp>"
 
 #: ../gedit/gedit-commands-search.c:107
 #, c-format
@@ -1048,10 +919,9 @@ msgstr "1 ヶ所で検索と置換を行いました。"
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
 #: ../gedit/gedit-commands-search.c:142
-#, fuzzy, c-format
-#| msgid "\"%s\" not found"
+#, c-format
 msgid "“%s” not found"
-msgstr "\"%s\" は見つかりませんでした"
+msgstr "“%s”は見つかりませんでした"
 
 #: ../gedit/gedit-document.c:1103 ../gedit/gedit-document.c:1136
 #, c-format
@@ -1075,10 +945,8 @@ msgstr "自動検出"
 
 #: ../gedit/gedit-encodings-combo-box.c:328
 #: ../gedit/gedit-file-chooser-dialog-osx.c:574
-#, fuzzy
-#| msgid "Add or Remove..."
 msgid "Add or Remove…"
-msgstr "追加と削除..."
+msgstr "追加と削除…"
 
 #: ../gedit/gedit-encoding-items.c:92
 #, c-format
@@ -1091,8 +959,6 @@ msgid "%s (Current Locale)"
 msgstr "%s (現在のロケール)"
 
 #: ../gedit/gedit-encodings-dialog.c:190
-#, fuzzy
-#| msgid "Do you really want to reset the character encodings' preferences?"
 msgid "Do you really want to reset the character encodings’ preferences?"
 msgstr "文字エンコーディング設定をリセットしてもよろしいですか?"
 
@@ -1327,8 +1193,6 @@ msgstr ""
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: ../gedit/gedit-io-error-info-bar.c:769
-#, fuzzy
-#| msgid "D_on't Edit"
 msgid "D_on’t Edit"
 msgstr "編集しない(_O)"
 
@@ -1350,8 +1214,6 @@ msgstr "とにかく保存する(_A)"
 #: ../gedit/gedit-io-error-info-bar.c:852
 #: ../gedit/gedit-io-error-info-bar.c:942
 #: ../gedit/gedit-io-error-info-bar.c:1232
-#, fuzzy
-#| msgid "D_on't Save"
 msgid "D_on’t Save"
 msgstr "保存しない(_O)"
 
@@ -1509,13 +1371,10 @@ msgid "_Use the system fixed width font (%s)"
 msgstr "システムの固定幅フォント (%s) を使う(_U)"
 
 #: ../gedit/gedit-preferences-dialog.c:601
-#, fuzzy, c-format
-#| msgid ""
-#| "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
+#, c-format
 msgid "Directory “%s” could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
-"'%s' というフォルダーを生成できませんでした: g_mkdir_with_parents() に失敗: "
-"%s"
+"“%s”というフォルダーを生成できませんでした: g_mkdir_with_parents() に失敗: %s"
 
 #: ../gedit/gedit-preferences-dialog.c:798
 msgid "The selected color scheme cannot be installed."
@@ -1534,16 +1393,13 @@ msgid "Color Scheme Files"
 msgstr "色のスキーム"
 
 #: ../gedit/gedit-preferences-dialog.c:861
-#, fuzzy, c-format
-#| msgid "Could not remove color scheme \"%s\"."
+#, c-format
 msgid "Could not remove color scheme “%s”."
-msgstr "色のスキーム \"%s\" を削除できませんでした。"
+msgstr "色のスキーム“%s”を削除できませんでした。"
 
 #: ../gedit/gedit-print-job.c:227
-#, fuzzy
-#| msgid "Preparing..."
 msgid "Preparing…"
-msgstr "準備中..."
+msgstr "準備中…"
 
 #: ../gedit/gedit-print-job.c:539
 #, c-format
@@ -1558,10 +1414,9 @@ msgid "Page %N of %Q"
 msgstr "ページ %N / %Q"
 
 #: ../gedit/gedit-print-job.c:626
-#, fuzzy, c-format
-#| msgid "Rendering page %d of %d..."
+#, c-format
 msgid "Rendering page %d of %d…"
-msgstr "%d / %d ページを描画中..."
+msgstr "%d / %d ページを描画中…"
 
 #: ../gedit/gedit-print-preview.c:653
 #, c-format
@@ -1666,10 +1521,9 @@ msgid "Unable to open UI file %s. Error: %s"
 msgstr "UI ファイル %s を開けません。エラー: %s"
 
 #: ../gedit/gedit-utils.c:921
-#, fuzzy, c-format
-#| msgid "Unable to find the object '%s' inside file %s."
+#, c-format
 msgid "Unable to find the object “%s” inside file %s."
-msgstr "オブジェクトの '%s' は %s というファイルの中にありませんでした。"
+msgstr "オブジェクトの“%s”は %s というファイルの中にありませんでした。"
 
 #. Translators: '/ on <remote-share>'
 #: ../gedit/gedit-utils.c:1159
@@ -2082,10 +1936,8 @@ msgid "_Select"
 msgstr "選択(_S)"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-selector.ui.h:1
-#, fuzzy
-#| msgid "Search highlight mode..."
 msgid "Search highlight mode…"
-msgstr "ハイライトモードを検索します..."
+msgstr "ハイライトモードを検索します…"
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:1
 msgid "No results"
@@ -2190,7 +2042,7 @@ msgstr "フォント"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:24
 msgid "Editor _font: "
-msgstr "エディターのフォント(_F):"
+msgstr "エディターのフォント(_F): "
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:25
 msgid "Pick the editor font"
@@ -2433,12 +2285,9 @@ msgid "Switch to the previous document"
 msgstr "前のドキュメントに切り替える"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Switch to the first - ninth document"
 msgctxt "shortcut window"
 msgid "Switch to the first — ninth document"
-msgstr "指定位置のドキュメントに切り替える(1番目-9番目)"
+msgstr "指定位置のドキュメントに切り替える (1番目—9番目)"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
 msgctxt "shortcut window"
@@ -2764,10 +2613,8 @@ msgid "Build"
 msgstr "ビルド"
 
 #: ../plugins/externaltools/data/build.desktop.in.h:2
-#, fuzzy
-#| msgid "Run \"make\" in the document directory"
 msgid "Run “make” in the document directory"
-msgstr "ドキュメントのあるフォルダーで \"make\" を実行します"
+msgstr "ドキュメントのあるフォルダーで“make”を実行します"
 
 #: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:1
 #: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:1
@@ -2817,10 +2664,6 @@ msgid "Whether to use the system font"
 msgstr "システムフォントを使うかどうか"
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
-#, fuzzy
-#| msgid ""
-#| "If true, the external tools will use the desktop-global standard font if "
-#| "it's monospace (and the most similar font it can come up with otherwise)."
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it’s monospace (and the most similar font it can come up with otherwise)."
@@ -2830,17 +2673,12 @@ msgstr ""
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
-#, fuzzy
-#| msgid ""
-#| "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgid "A Pango font name. Examples are “Sans 12” or “Monospace Bold 14”."
-msgstr "Pango フォント名。例: \"Sans 12\"、\"Monospace Bold 14\""
+msgstr "Pango フォント名。例: “Sans 12”、“Monospace Bold 14”"
 
 #: ../plugins/externaltools/tools/appactivatable.py:133
-#, fuzzy
-#| msgid "Manage External Tools"
 msgid "Manage _External Tools…"
-msgstr "外部ツールの管理"
+msgstr "外部ツールの管理(_E)…"
 
 #: ../plugins/externaltools/tools/appactivatable.py:138
 msgid "External _Tools"
@@ -3086,20 +2924,18 @@ msgstr ""
 "今すぐファイルを削除しますか?"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:907
-#, fuzzy, c-format
-#| msgid "The file \"%s\" cannot be moved to the trash."
+#, c-format
 msgid "The file “%s” cannot be moved to the trash."
-msgstr "ファイル \"%s\" をゴミ箱へ移動できません。"
+msgstr "ファイル“%s”をゴミ箱へ移動できません。"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:912
 msgid "The selected files cannot be moved to the trash."
 msgstr "選択したファイルをゴミ箱へ移動できません。"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:943
-#, fuzzy, c-format
-#| msgid "Are you sure you want to permanently delete \"%s\"?"
+#, c-format
 msgid "Are you sure you want to permanently delete “%s”?"
-msgstr "\"%s\" を完全に抹消してもよろしいですか?"
+msgstr "“%s”を完全に削除してもよろしいですか?"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:948
 msgid "Are you sure you want to permanently delete the selected files?"
@@ -3167,10 +3003,9 @@ msgid "Could not mount volume: %s"
 msgstr "次のボリュームをマウントできませんでした: %s"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:2769
-#, fuzzy, c-format
-#| msgid "Error when loading '%s': No such directory"
+#, c-format
 msgid "Error when loading “%s”: No such directory"
-msgstr "'%s' を読み込む際にエラー: そのようなフォルダーはありません"
+msgstr "“%s”を読み込む際にエラー: そのようなフォルダーはありません"
 
 #. ex:set ts=8 noet:
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:1
@@ -3225,12 +3060,6 @@ msgid "Set Location to First Document"
 msgstr "初めて開くドキュメントの場所を設定"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
-#, fuzzy
-#| msgid ""
-#| "If TRUE the file browser plugin will view the directory of the first "
-#| "opened document given that the file browser hasn't been used yet. (Thus "
-#| "this generally applies to opening a document from the command line or "
-#| "opening it with Nautilus, etc.)"
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn’t been used yet. (Thus this "
@@ -3289,10 +3118,8 @@ msgid "New F_ile"
 msgstr "新しいファイル(_I)"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:5
-#, fuzzy
-#| msgid "_Rename..."
 msgid "_Rename…"
-msgstr "名前の変更(_R)..."
+msgstr "名前の変更(_R)…"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:6
 msgid "_Move to Trash"
@@ -3359,10 +3186,6 @@ msgid "The error color text"
 msgstr "エラーの色"
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:6
-#, fuzzy
-#| msgid ""
-#| "If true, the terminal will use the desktop-global standard font if it's "
-#| "monospace (and the most similar font it can come up with otherwise)."
 msgid ""
 "If true, the terminal will use the desktop-global standard font if it’s "
 "monospace (and the most similar font it can come up with otherwise)."
@@ -3389,10 +3212,8 @@ msgid "Interactive Python console standing in the bottom panel"
 msgstr "ボトムパネルに対話式の Python コンソールを開きます。"
 
 #: ../plugins/quickopen/quickopen/__init__.py:47
-#, fuzzy
-#| msgid "Quick Open"
 msgid "Quick Open…"
-msgstr "クイックオープン"
+msgstr "クイックオープン…"
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
@@ -3405,16 +3226,12 @@ msgid "Quickly open files"
 msgstr "素早くファイルを開きます"
 
 #: ../plugins/quickopen/quickopen/popup.py:90
-#, fuzzy
-#| msgid "Type to search..."
 msgid "Type to search…"
-msgstr "タイプして検索..."
+msgstr "検索ワードを入力…"
 
 #: ../plugins/snippets/snippets/appactivatable.py:88
-#, fuzzy
-#| msgid "Manage Snippets"
 msgid "Manage _Snippets…"
-msgstr "スニペットの管理"
+msgstr "スニペットの管理(_S)…"
 
 #. Do the fancy completion dialog
 #. ex:ts=4:et:
@@ -3426,47 +3243,40 @@ msgid "Snippets"
 msgstr "コードスニペット"
 
 #: ../plugins/snippets/snippets/exporter.py:88
-#, fuzzy, python-format
-#| msgid "The archive \"%s\" could not be created"
+#, python-format
 msgid "The archive “%s” could not be created"
-msgstr "アーカイブ \"%s\" を作成できませんでした"
+msgstr "アーカイブ“%s”を作成できませんでした"
 
 #: ../plugins/snippets/snippets/exporter.py:105
-#, fuzzy, python-format
-#| msgid "Target directory \"%s\" does not exist"
+#, python-format
 msgid "Target directory “%s” does not exist"
-msgstr "対象ディレクトリ \"%s\" が存在しません"
+msgstr "対象のディレクトリ“%s”は存在しません"
 
 #: ../plugins/snippets/snippets/exporter.py:108
-#, fuzzy, python-format
-#| msgid "Target directory \"%s\" is not a valid directory"
+#, python-format
 msgid "Target directory “%s” is not a valid directory"
-msgstr "対象ディレクトリ \"%s\" は妥当なディレクトリではありません"
+msgstr "対象のディレクトリ“%s”は有効なディレクトリではありません"
 
 #: ../plugins/snippets/snippets/importer.py:55
 #: ../plugins/snippets/snippets/importer.py:116
-#, fuzzy, python-format
-#| msgid "File \"%s\" does not exist"
+#, python-format
 msgid "File “%s” does not exist"
-msgstr "ファイル \"%s\" は存在しません"
+msgstr "ファイル“%s”は存在しません"
 
 #: ../plugins/snippets/snippets/importer.py:58
-#, fuzzy, python-format
-#| msgid "File \"%s\" is not a valid snippets file"
+#, python-format
 msgid "File “%s” is not a valid snippets file"
-msgstr "ファイル \"%s\" は妥当なスニペットファイルではありません"
+msgstr "ファイル“%s”は有効なスニペットファイルではありません"
 
 #: ../plugins/snippets/snippets/importer.py:75
-#, fuzzy, python-format
-#| msgid "Imported file \"%s\" is not a valid snippets file"
+#, python-format
 msgid "Imported file “%s” is not a valid snippets file"
-msgstr "インポートしたファイル \"%s\" は妥当なスニペットファイルではありません"
+msgstr "インポートしたファイル“%s”は有効なスニペットファイルではありません"
 
 #: ../plugins/snippets/snippets/importer.py:85
-#, fuzzy, python-format
-#| msgid "The archive \"%s\" could not be extracted"
+#, python-format
 msgid "The archive “%s” could not be extracted"
-msgstr "アーカイブ \"%s\" を解凍できませんでした"
+msgstr "アーカイブ“%s”を展開できませんでした"
 
 #: ../plugins/snippets/snippets/importer.py:103
 #, python-format
@@ -3475,10 +3285,9 @@ msgstr "次のファイルをインポートできませんでした: %s"
 
 #: ../plugins/snippets/snippets/importer.py:119
 #: ../plugins/snippets/snippets/importer.py:132
-#, fuzzy, python-format
-#| msgid "File \"%s\" is not a valid snippets archive"
+#, python-format
 msgid "File “%s” is not a valid snippets archive"
-msgstr "ファイル \"%s\" は妥当なスニペットアーカイブではありません"
+msgstr "ファイル“%s”は有効なスニペットアーカイブではありません"
 
 # snippet=断片,抜粋,...
 # とりあえず訳してはおくがあやしい。動作を見るかコードを読む必要あり。
@@ -3492,10 +3301,8 @@ msgid "Snippets archive"
 msgstr "スニペットのアーカイブ"
 
 #: ../plugins/snippets/snippets/manager.py:74
-#, fuzzy
-#| msgid "Add a new snippet..."
 msgid "Add a new snippet…"
-msgstr "新しいスニペットの追加..."
+msgstr "新しいスニペットの追加…"
 
 #: ../plugins/snippets/snippets/manager.py:124
 msgid "Global"
@@ -3672,10 +3479,8 @@ msgid "_Drop targets:"
 msgstr "挿入する対象(_D):"
 
 #: ../plugins/sort/gedit-sort-plugin.c:243
-#, fuzzy
-#| msgid "S_ort..."
 msgid "S_ort…"
-msgstr "並び替え(_O)..."
+msgstr "並び替え(_O)…"
 
 #. ex:set ts=8 noet:
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:1
@@ -3708,16 +3513,12 @@ msgid "Sorts a document or selected text."
 msgstr "ドキュメントまたは選択した文字列を並べ替えます。"
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:143
-#, fuzzy
-#| msgid "_Check Spelling..."
 msgid "_Check Spelling…"
-msgstr "スペルチェック(_C)..."
+msgstr "スペルチェック(_C)…"
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:147
-#, fuzzy
-#| msgid "Set Language"
 msgid "Set _Language…"
-msgstr "言語の設定"
+msgstr "言語の設定(_L)…"
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:151
 msgid "_Highlight Misspelled Words"
@@ -3733,10 +3534,8 @@ msgid "Checks the spelling of the current document."
 msgstr "このドキュメントのスペルをチェックします。"
 
 #: ../plugins/time/gedit-time-plugin.c:265
-#, fuzzy
-#| msgid "Insert Date and Time"
 msgid "In_sert Date and Time…"
-msgstr "日付と時間の挿入"
+msgstr "日付と時刻の挿入(_S)…"
 
 #: ../plugins/time/gedit-time-plugin.c:491
 msgid "Available formats"
@@ -3753,7 +3552,7 @@ msgid ""
 "format should be used."
 msgstr ""
 "毎回プロンプトからユーザーが書式を指定します。選択された書式か、カスタム書式"
-"で日付と時間が挿入されます。"
+"で日付と時刻が挿入されます。"
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:3
 msgid "Selected Format"
@@ -3773,7 +3572,7 @@ msgstr "日付/時刻を挿入する時のカスタム書式にします。"
 
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:1
 msgid "Insert Date and Time"
-msgstr "日付と時間の挿入"
+msgstr "日付と時刻の挿入"
 
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:2
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:5
@@ -3807,10 +3606,8 @@ msgid "Configure date/time plugin"
 msgstr "日付/時間プラグインの設定"
 
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:3
-#, fuzzy
-#| msgid "When inserting date/time..."
 msgid "When inserting date/time…"
-msgstr "日付/時刻を挿入する時..."
+msgstr "日付/時刻を挿入する時…"
 
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:4
 msgid "_Prompt for a format"
