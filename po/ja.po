@@ -1,5 +1,5 @@
 # gedit ja.po.
-# Copyright (C) 1999,2000,2002-2013 Free Software Foundation, Inc.
+# Copyright (C) 1999-2019 Free Software Foundation, Inc.
 # Akira Higuchi <a-higuti@math.sci.hokudai.ac.jp>, 1999
 # Yuusuke Tahara <tahara@gnome.gr.jp>
 # Yukihiro Nakai <nakai@gnome.gr.jp>
@@ -8,6 +8,8 @@
 # Takeshi AIHANA <takeshi.aihana@gmail.com>, 2003-2009.
 # Satoru SATOH <ss@gnome.gr.jp>, 2006.
 # Hideki Yamane (Debian-JP) <henrich@debian.or.jp>, 2009.
+# Mitsuya Shibata <mty.shibata@gmail.com>, 2009.
+# Shushi Kurose <md81bird@hitaki.net>, 2010-2011, 2014.
 # Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>, 2010-2012.
 # Hajime Taira <htaira@redhat.com>, 2011.
 # Jiro Matsuzawa <jmatsuzawa@gnome.org>, 2011, 2013, 2014, 2015, 2016.
@@ -19,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
-"POT-Creation-Date: 2019-02-06 20:59+0000\n"
-"PO-Revision-Date: 2019-09-06 20:50+0900\n"
+"POT-Creation-Date: 2019-09-06 13:57+0000\n"
+"PO-Revision-Date: 2019-09-26 21:00+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
@@ -33,7 +35,7 @@ msgstr ""
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 #: ../data/org.gnome.gedit.desktop.in.in.h:2
 msgid "Edit text files"
-msgstr "テキスト形式のファイルを編集します"
+msgstr "テキストファイルを編集します"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:2
 msgid ""
@@ -72,7 +74,8 @@ msgstr "gedit テキストエディター"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:4
 msgid "Text;Editor;Plaintext;Write;"
-msgstr "Text;Editor;Plaintext;Write;テキスト;エディター;プレーンテキスト;"
+msgstr ""
+"Text;Editor;Plaintext;Write;gedit;テキスト;エディター;プレーンテキスト;"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:5
 msgid "New Window"
@@ -345,7 +348,7 @@ msgstr "ツールバーの表示可否"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:52
 msgid "Whether the toolbar should be visible in editing windows."
-msgstr "編集ウィンドウの中にツールバーを表示するかどうかを指定します。"
+msgstr "編集ウィンドウ内にツールバーを表示するかどうかを指定します。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:53
 msgid "Notebook Show Tabs Mode"
@@ -567,11 +570,11 @@ msgstr "ENCODING"
 
 #: ../gedit/gedit-app.c:130
 msgid "Create a new top-level window in an existing instance of gedit"
-msgstr "既に実行中の gedit で新しいトップレベルウィンドウを作成する"
+msgstr "すでに実行中の gedit で新しいトップレベルウィンドウを作成する"
 
 #: ../gedit/gedit-app.c:137
 msgid "Create a new document in an existing instance of gedit"
-msgstr "既に実行中の gedit に新しいドキュメントを作成する"
+msgstr "すでに実行中の gedit に新しいドキュメントを作成する"
 
 #: ../gedit/gedit-app.c:144
 msgid "Open files and block process until files are closed"
@@ -579,7 +582,7 @@ msgstr "ファイルを開き、ファイルが閉じられるまでブロック
 
 #: ../gedit/gedit-app.c:151
 msgid "Run gedit in standalone mode"
-msgstr "geditをスタンドアローンモードで動かす"
+msgstr "gedit をスタンドアローンモードで動かす"
 
 #: ../gedit/gedit-app.c:158
 msgid "[FILE…] [+LINE[:COLUMN]]"
@@ -638,12 +641,12 @@ msgid ""
 msgid_plural ""
 "If you don’t save, changes from the last %ld seconds will be permanently "
 "lost."
-msgstr[0] "保存しないと、%ld秒前からの変更内容が完全に失われます。"
+msgstr[0] "保存しないと %ld 秒前からの変更内容が完全に失われます。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:333
 msgid ""
 "If you don’t save, changes from the last minute will be permanently lost."
-msgstr "保存しないと、1分前からの変更内容が完全に失われます。"
+msgstr "保存しないと 1 分前からの変更内容が完全に失われます。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:339
 #, c-format
@@ -653,7 +656,7 @@ msgid ""
 msgid_plural ""
 "If you don’t save, changes from the last minute and %ld seconds will be "
 "permanently lost."
-msgstr[0] "保存しないと、1分%ld秒前からの変更内容が完全に失われます。"
+msgstr[0] "保存しないと 1 分 %ld 秒前からの変更内容が完全に失われます。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:349
 #, c-format
@@ -662,11 +665,11 @@ msgid ""
 msgid_plural ""
 "If you don’t save, changes from the last %ld minutes will be permanently "
 "lost."
-msgstr[0] "保存しないと、%ld分前からの変更内容が完全に失われます。"
+msgstr[0] "保存しないと %ld 分前からの変更内容が完全に失われます。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:364
 msgid "If you don’t save, changes from the last hour will be permanently lost."
-msgstr "保存しないと、1時間前からの変更内容が完全に失われます。"
+msgstr "保存しないと 1 時間前からの変更内容が完全に失われます。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:370
 #, c-format
@@ -676,7 +679,7 @@ msgid ""
 msgid_plural ""
 "If you don’t save, changes from the last hour and %d minutes will be "
 "permanently lost."
-msgstr[0] "保存しないと、1時間%d分前からの変更内容が完全に失われます。"
+msgstr[0] "保存しないと 1 時間 %d 分前からの変更内容が完全に失われます。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:385
 #, c-format
@@ -684,7 +687,7 @@ msgid ""
 "If you don’t save, changes from the last %d hour will be permanently lost."
 msgid_plural ""
 "If you don’t save, changes from the last %d hours will be permanently lost."
-msgstr[0] "保存しないと、%d時間前からの変更内容が完全に失われます。"
+msgstr[0] "保存しないと %d 時間前からの変更内容が完全に失われます。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
@@ -705,7 +708,7 @@ msgstr "システム管理者によってファイルの保存が利用できな
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
-msgstr[0] "%d個のドキュメントへの変更が完全に失われます。"
+msgstr[0] "%d 個のドキュメントへの変更が完全に失われます。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:508
 #, c-format
@@ -713,7 +716,7 @@ msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
-"まだ保存していないドキュメントが %d個あります。閉じる前にそれらを保存します"
+"まだ保存していないドキュメントが %d 個あります。閉じる前にそれらを保存します"
 "か?"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:534
@@ -770,7 +773,7 @@ msgstr "置換(_R)"
 
 #: ../gedit/gedit-commands-file.c:608
 msgid "Save the file using compression?"
-msgstr "ファイルを保存する時に圧縮をかけますか?"
+msgstr "ファイルを保存するときに圧縮をかけますか?"
 
 #: ../gedit/gedit-commands-file.c:612
 msgid "Save the file as plain text?"
@@ -829,12 +832,12 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
-msgstr[0] "%ld秒前に編集したドキュメントへの変更が完全に失われます。"
+msgstr[0] "%ld 秒前に編集したドキュメントへの変更が完全に失われます。"
 
 #: ../gedit/gedit-commands-file.c:1494
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
-msgstr "1分前に編集したドキュメントへの変更が完全に失われます。"
+msgstr "1 分前に編集したドキュメントへの変更が完全に失われます。"
 
 #: ../gedit/gedit-commands-file.c:1500
 #, c-format
@@ -844,7 +847,7 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last minute and %ld seconds will be "
 "permanently lost."
-msgstr[0] "1分 %ld秒前に編集したドキュメントへの変更が完全に失われます。"
+msgstr[0] "1 分 %ld 秒前に編集したドキュメントへの変更が完全に失われます。"
 
 #: ../gedit/gedit-commands-file.c:1510
 #, c-format
@@ -853,11 +856,11 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
-msgstr[0] "%ld分前に編集したドキュメントへの変更が完全に失われます。"
+msgstr[0] "%ld 分前に編集したドキュメントへの変更が完全に失われます。"
 
 #: ../gedit/gedit-commands-file.c:1525
 msgid "Changes made to the document in the last hour will be permanently lost."
-msgstr "1時間前に編集したドキュメントへの変更が完全に失われます。"
+msgstr "1 時間前に編集したドキュメントへの変更が完全に失われます。"
 
 #: ../gedit/gedit-commands-file.c:1531
 #, c-format
@@ -867,7 +870,7 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last hour and %d minutes will be "
 "permanently lost."
-msgstr[0] "1時間 %d分前に編集したドキュメントへの変更が完全に失われます。"
+msgstr[0] "1 時間 %d 分前に編集したドキュメントへの変更が完全に失われます。"
 
 #: ../gedit/gedit-commands-file.c:1546
 #, c-format
@@ -875,7 +878,7 @@ msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %d hours will be permanently lost."
-msgstr[0] "%d時間前に編集したドキュメントへの変更が完全に失われます。"
+msgstr[0] "%d 時間前に編集したドキュメントへの変更が完全に失われます。"
 
 #: ../gedit/gedit-commands-file.c:1569
 msgid "_Revert"
@@ -914,7 +917,7 @@ msgstr[0] "%d ヶ所で検索と置換を行いました。"
 
 #: ../gedit/gedit-commands-search.c:116
 msgid "Found and replaced one occurrence"
-msgstr "1 ヶ所で検索と置換を行いました。"
+msgstr "1 ヶ所で検索と置換を行いました"
 
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
@@ -1133,7 +1136,7 @@ msgstr "そのファイルを開く権限がありません。"
 
 #: ../gedit/gedit-io-error-info-bar.c:597
 msgid "Unable to detect the character encoding."
-msgstr "文字のエンコーディングを検出できませんでした。"
+msgstr "文字エンコーディングを検出できませんでした。"
 
 #: ../gedit/gedit-io-error-info-bar.c:598
 #: ../gedit/gedit-io-error-info-bar.c:622
@@ -1199,7 +1202,7 @@ msgstr "編集しない(_O)"
 #: ../gedit/gedit-io-error-info-bar.c:779
 #, c-format
 msgid "This file “%s” is already open in another window."
-msgstr "このファイル“%s”は既に別の gedit ウィンドウで開いています。"
+msgstr "このファイル“%s”はすでに別の gedit ウィンドウで開いています。"
 
 #: ../gedit/gedit-io-error-info-bar.c:793
 msgid "Do you want to edit it anyway?"
@@ -1231,8 +1234,8 @@ msgstr ""
 #: ../gedit/gedit-io-error-info-bar.c:881
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
-"このファイルを保存すると外部からの変更はすべて失われます。強制的に保存します"
-"か?"
+"このファイルを保存すると、外部で変更した内容はすべて失われます。強制的に保存"
+"しますか?"
 
 #: ../gedit/gedit-io-error-info-bar.c:961
 #, c-format
@@ -1378,7 +1381,7 @@ msgstr ""
 
 #: ../gedit/gedit-preferences-dialog.c:798
 msgid "The selected color scheme cannot be installed."
-msgstr "指定した色のスキームをインストールできません。"
+msgstr "指定したカラースキームをインストールできません。"
 
 #: ../gedit/gedit-preferences-dialog.c:821
 msgid "Add Scheme"
@@ -1390,12 +1393,12 @@ msgstr "スキームの追加(_D)"
 
 #: ../gedit/gedit-preferences-dialog.c:830
 msgid "Color Scheme Files"
-msgstr "色のスキーム"
+msgstr "カラースキーム"
 
 #: ../gedit/gedit-preferences-dialog.c:861
 #, c-format
 msgid "Could not remove color scheme “%s”."
-msgstr "色のスキーム“%s”を削除できませんでした。"
+msgstr "カラースキーム“%s”を削除できませんでした。"
 
 #: ../gedit/gedit-print-job.c:227
 msgid "Preparing…"
@@ -1603,7 +1606,7 @@ msgstr "対応する括弧が %d 行目に見つかりました。"
 #: ../gedit/gedit-window.c:1043
 #, c-format
 msgid "  Ln %d, Col %d"
-msgstr " (%d行、%d列)"
+msgstr " (%d 行、%d 列)"
 
 #: ../gedit/gedit-window.c:1227
 #, c-format
@@ -2050,7 +2053,7 @@ msgstr "エディターで使用するフォントの取得"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:26
 msgid "Color Scheme"
-msgstr "色のスキーム"
+msgstr "カラースキーム"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:27
 msgid "Install scheme"
@@ -2377,7 +2380,7 @@ msgstr "テキストをクリップボードから貼り付ける"
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
 msgctxt "shortcut window"
 msgid "Undo and Redo"
-msgstr "元に戻す, やり直す"
+msgstr "元に戻す / やり直す"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
 msgctxt "shortcut window"
@@ -2628,7 +2631,7 @@ msgstr "ドキュメントのあるフォルダーで端末を開きます"
 
 #: ../plugins/externaltools/data/remove-trailing-spaces.desktop.in.h:1
 msgid "Remove trailing spaces"
-msgstr "末尾の空白を削除する"
+msgstr "末尾の空白を削除"
 
 #: ../plugins/externaltools/data/remove-trailing-spaces.desktop.in.h:2
 msgid "Remove useless trailing spaces in your file"
@@ -2636,7 +2639,7 @@ msgstr "ファイルの中にある不用な末尾の空白を取り除きます
 
 #: ../plugins/externaltools/data/run-command.desktop.in.h:1
 msgid "Run command"
-msgstr "コマンドの実行"
+msgstr "コマンドを実行"
 
 #: ../plugins/externaltools/data/run-command.desktop.in.h:2
 msgid "Execute a custom command and put its output in a new document"
@@ -2723,7 +2726,7 @@ msgstr "新しいツール"
 #: ../plugins/externaltools/tools/manager.py:683
 #, python-format
 msgid "This accelerator is already bound to %s"
-msgstr "既にこのアクセラレータは %s に割り当てられています"
+msgstr "すでにこのアクセラレータは %s に割り当てられています"
 
 #: ../plugins/externaltools/tools/manager.py:727
 msgid "Type a new accelerator, or press Backspace to clear"
@@ -2885,11 +2888,11 @@ msgstr "ファイルブラウザー"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:659
 msgid "An error occurred while creating a new directory"
-msgstr "新しいフォルダーを生成する際にエラーが発生しました"
+msgstr "新しいフォルダーを作成する際にエラーが発生しました"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:662
 msgid "An error occurred while creating a new file"
-msgstr "新しいファイルを生成する際にエラーが発生しました"
+msgstr "新しいファイルを作成する際にエラーが発生しました"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:665
 msgid "An error occurred while renaming a file or directory"
@@ -2980,8 +2983,8 @@ msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
 msgstr ""
-"新しい名前のフォルダーはフィルターの機能により表示されていません。そのフォル"
-"ダーを表示するにはフィルターの設定を調整してください。"
+"新しいフォルダーはフィルターの機能により表示されていません。そのフォルダーを"
+"表示するにはフィルターの設定を調整してください。"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:754
 msgid "Bookmarks"
@@ -3621,6 +3624,79 @@ msgstr "日付/時刻の挿入"
 msgid "Inserts current date and time at the cursor position."
 msgstr "カーソル位置に現在の日付と時刻を挿入します。"
 
+#~ msgid "gedit"
+#~ msgstr "gedit"
+
+#~ msgid "No changes need to be saved"
+#~ msgstr "保存が必要な変更はありません"
+
+#~ msgid "_About Text Editor"
+#~ msgstr "テキストエディターについて(_A)"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Unselect all text"
+#~ msgstr "すべてのテキストの選択を解除する"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Navigation"
+#~ msgstr "ナビゲーション"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Move viewport up within the file"
+#~ msgstr "上に移動する (カーソル位置は固定)"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Move viewport down within the file"
+#~ msgstr "下に移動する (カーソル位置は固定)"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Move viewport to end of file"
+#~ msgstr "末尾に移動する (カーソル位置は固定)"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Move viewport to beginning of file"
+#~ msgstr "先頭に移動する (カーソル位置は固定)"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Move to matching bracket"
+#~ msgstr "対応するカッコに移動する"
+
+#~ msgid "Quick Highlight"
+#~ msgstr "クイックハイライト"
+
+#~ msgid "Highlights every occurrences of selected text."
+#~ msgstr "選択した文字列と一致する部分を強調表示します。"
+
+#~ msgid "Highlight misspelled words"
+#~ msgstr "スペルミスを強調表示する"
+
+#~ msgid "Default setting for highlight misspelled words."
+#~ msgstr "スペルミスの強調表示をデフォルトの設定にします。"
+
+#~ msgid "Configure spell plugin"
+#~ msgstr "スペルプラグインの設定"
+
+#~ msgid "Defaults for new documents"
+#~ msgstr "新しいドキュメントのデフォルト"
+
+#~ msgid "org.gnome.gedit"
+#~ msgstr "org.gnome.gedit"
+
+#~ msgid "system-file-manager"
+#~ msgstr "system-file-manager"
+
+#~ msgid "text-x-script"
+#~ msgstr "text-x-script"
+
+#~ msgid "document-open"
+#~ msgstr "document-open"
+
+#~ msgid "view-sort-ascending"
+#~ msgstr "view-sort-ascending"
+
+#~ msgid "tools-check-spelling"
+#~ msgstr "tools-check-spelling"
+
 #~ msgid "Manage _External Tools..."
 #~ msgstr "外部ツールの管理(_E)..."
 
@@ -3650,9 +3726,6 @@ msgstr "カーソル位置に現在の日付と時刻を挿入します。"
 
 #~ msgid "GEOMETRY"
 #~ msgstr "GEOMETRY"
-
-#~ msgid "gedit"
-#~ msgstr "gedit"
 
 #~ msgid "Question"
 #~ msgstr "質問"
