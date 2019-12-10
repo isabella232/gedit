@@ -157,6 +157,11 @@ parts:
       - python-dbus-dev
       - python-gi-dev
       - yelp-tools
+    stage-packages:
+      - python3
+      - python3-dbus
+      - python3-gi
+      - python3-setuptools
 # Zeitgeist plugin isn't as useful in a Snap.
     stage:
       - -usr/lib/gedit/plugins/libzeitgeist.so
