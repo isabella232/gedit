@@ -7,7 +7,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit master\n"
+"Project-Id-Version: gedit gnome-3.36\n"
 "POT-Creation-Date: 2020-03-06 17:17+0000\n"
 "PO-Revision-Date: 2020-03-10 08:52+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
