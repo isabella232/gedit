@@ -63,7 +63,7 @@ libpeas_gtk_dep = dependency('libpeas-gtk-1.0', version: libpeas_req)
 
 libgd_dep = libgd_subproject.get_variable('libgd_dep')
 
-gspell_dep = dependency('gspell-1', version: '>= 1.0', required: true)
+gspell_dep = dependency('gspell-1', version: '>= 1.0')
 x11_dep = dependency('x11', required: false)
 
 introspection_dep = dependency('gobject-introspection-1.0')
@@ -73,7 +73,7 @@ python3 = python.find_installation('python3')
 
 build_checkupdate_plugin = host_machine.system() == 'windows'
 if build_checkupdate_plugin
-  libsoup_dep = dependency('libsoup-2.4', version: '>= 2.60', required: true)
+  libsoup_dep = dependency('libsoup-2.4', version: '>= 2.60')
 endif
 
 # Configurations
