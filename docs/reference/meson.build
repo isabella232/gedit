@@ -15,7 +15,6 @@ gedit_doc_deps = [
   gtk_dep,
   gtksourceview_dep,
   tepl_dep,
-  libpeas_dep,
   libpeas_gtk_dep,
 ]
 

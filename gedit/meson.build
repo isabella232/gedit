@@ -115,7 +115,6 @@ libgedit_deps = [
   gtksourceview_dep,
   tepl_dep,
   introspection_dep,
-  libpeas_dep,
   libpeas_gtk_dep,
   libgd_dep,
 ]

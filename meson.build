@@ -50,16 +50,15 @@ libgd_subproject = subproject(
 libgd_dep = libgd_subproject.get_variable('libgd_dep')
 
 # Dependencies
-libpeas_req = '>= 1.14.1'
-
 gio_dep = dependency('gio-2.0', version: '>= 2.52')
 gtk_dep = dependency('gtk+-3.0', version: '>= 3.22')
 gtksourceview_dep = dependency('gtksourceview-4', version: '>= 4.0.2')
 tepl_dep = dependency('tepl-4', version: '>= 4.4')
-libpeas_dep = dependency('libpeas-1.0', version: libpeas_req)
-libpeas_gtk_dep = dependency('libpeas-gtk-1.0', version: libpeas_req)
+libpeas_gtk_dep = dependency('libpeas-gtk-1.0', version: '>= 1.14.1')
 gspell_dep = dependency('gspell-1', version: '>= 1.0')
-x11_dep = dependency('x11', required: false)
+
+x11_dep_required = (host_machine.system() != 'darwin') and (host_machine.system() != 'windows')
+x11_dep = dependency('x11', required: x11_dep_required)
 
 introspection_dep = dependency('gobject-introspection-1.0')
 vapigen_dep = dependency('vapigen', version: '>= 0.25.1')
@@ -72,12 +71,6 @@ if build_checkupdate_plugin
 endif
 
 # Configurations
-if ((host_machine.system() != 'darwin') and
-    (host_machine.system() != 'windows') and
-    (not x11_dep.found()))
-  error('Native dependency \'x11\' not found.')
-endif
-
 config_h = configuration_data()
 config_h.set_quoted('PACKAGE_STRING', package_string)
 config_h.set_quoted('GETTEXT_PACKAGE', meson.project_name())
