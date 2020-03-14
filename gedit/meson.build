@@ -110,8 +110,6 @@ libgedit_c_args = []
 libgedit_link_args = []
 
 libgedit_deps = [
-  glib_dep,
-  gobject_dep,
   gio_dep,
   gtk_dep,
   gtksourceview_dep,

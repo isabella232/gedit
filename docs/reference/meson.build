@@ -1,7 +1,7 @@
-glib_prefix = glib_dep.get_pkgconfig_variable('prefix')
+glib_prefix = dependency('glib-2.0').get_pkgconfig_variable('prefix')
 glib_docpath = join_paths(glib_prefix, 'share', 'gtk-doc', 'html', 'glib')
 
-gobject_prefix = gobject_dep.get_pkgconfig_variable('prefix')
+gobject_prefix = dependency('gobject-2.0').get_pkgconfig_variable('prefix')
 gobject_docpath = join_paths(gobject_prefix, 'share', 'gtk-doc', 'html', 'gobject')
 
 gtk_prefix = gtk_dep.get_pkgconfig_variable('prefix')
@@ -11,8 +11,6 @@ tepl_prefix = tepl_dep.get_pkgconfig_variable('prefix')
 tepl_docpath = join_paths(tepl_prefix, 'share', 'gtk-doc', 'html', 'tepl-4.0')
 
 gedit_doc_deps = [
-  glib_dep,
-  gobject_dep,
   gio_dep,
   gtk_dep,
   gtksourceview_dep,
