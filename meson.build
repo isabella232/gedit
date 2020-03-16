@@ -114,6 +114,7 @@ summary = [
   '        Prefix:                @0@'.format(get_option('prefix')),
   '        API documentation:     @0@'.format(get_option('gtk_doc')),
   '        User documentation:    @0@'.format(get_option('user_documentation')),
+  '        Require all tests:     @0@'.format(get_option('require_all_tests')),
   '',
 ]
 message('\n'.join(summary))
