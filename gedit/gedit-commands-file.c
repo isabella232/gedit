@@ -31,6 +31,7 @@
 #include <gtk/gtk.h>
 #include <tepl/tepl.h>
 
+#include "gedit-app.h"
 #include "gedit-debug.h"
 #include "gedit-document.h"
 #include "gedit-document-private.h"
