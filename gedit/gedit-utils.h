@@ -67,30 +67,6 @@ GtkSourceCompressionType   gedit_utils_get_compression_type_from_content_type (c
 gchar                     *gedit_utils_set_direct_save_filename               (GdkDragContext       *context);
 const gchar               *gedit_utils_newline_type_to_string                 (GtkSourceNewlineType  newline_type);
 
-G_DEPRECATED_FOR (g_utf8_make_valid)
-gchar                     *gedit_utils_make_valid_utf8                         (const char     *name);
-
-G_DEPRECATED_FOR (tepl_utils_str_middle_truncate)
-gchar                     *gedit_utils_str_middle_truncate                    (const gchar     *string,
-                                                                               guint            truncate_length);
-G_DEPRECATED_FOR (tepl_utils_str_end_truncate)
-gchar                     *gedit_utils_str_end_truncate                       (const gchar     *string,
-                                                                               guint            truncate_length);
-G_DEPRECATED_FOR (tepl_utils_replace_home_dir_with_tilde)
-gchar                     *gedit_utils_replace_home_dir_with_tilde             (const gchar    *uri);
-
-G_DEPRECATED_FOR (gtk_menu_popup_at_widget)
-void                       gedit_utils_menu_position_under_widget             (GtkMenu         *menu,
-                                                                               gint            *x,
-                                                                               gint            *y,
-                                                                               gboolean        *push_in,
-                                                                               gpointer         user_data);
-
-G_DEPRECATED
-void                       gedit_utils_set_atk_relation                       (GtkWidget       *obj1,
-                                                                               GtkWidget       *obj2,
-                                                                               AtkRelationType  rel_type);
-
 G_END_DECLS
 
 #endif /* GEDIT_UTILS_H */
