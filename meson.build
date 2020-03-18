@@ -54,9 +54,6 @@ tepl_dep = dependency('tepl-4', version: '>= 4.4')
 libpeas_gtk_dep = dependency('libpeas-gtk-1.0', version: '>= 1.14.1')
 gspell_dep = dependency('gspell-1', version: '>= 1.0')
 
-x11_dep_required = (host_machine.system() != 'darwin') and (host_machine.system() != 'windows')
-x11_dep = dependency('x11', required: x11_dep_required)
-
 introspection_dep = dependency('gobject-introspection-1.0')
 vapigen_dep = dependency('vapigen', version: '>= 0.25.1')
 
