@@ -36,6 +36,13 @@
           <code>gedit_app_get_lockdown()</code> function has been removed.
         </para>
       </listitem>
+      <listitem>
+        <para>
+          The <code>GBOOLEAN_TO_POINTER()</code> and
+          <code>GPOINTER_TO_BOOLEAN()</code> macros have been removed from
+          <code>gedit-utils.h</code>.
+        </para>
+      </listitem>
     </itemizedlist>
   </refsect1>
 

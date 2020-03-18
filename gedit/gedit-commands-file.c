@@ -45,6 +45,10 @@
 #include "gedit-file-chooser-dialog.h"
 #include "gedit-close-confirmation-dialog.h"
 
+/* useful macro */
+#define GBOOLEAN_TO_POINTER(i) (GINT_TO_POINTER ((i) ? 2 : 1))
+#define GPOINTER_TO_BOOLEAN(i) ((gboolean) ((GPOINTER_TO_INT(i) == 2) ? TRUE : FALSE))
+
 #define GEDIT_OPEN_DIALOG_KEY "gedit-open-dialog-key"
 #define GEDIT_IS_CLOSING_ALL "gedit-is-closing-all"
 #define GEDIT_NOTEBOOK_TO_CLOSE "gedit-notebook-to-close"

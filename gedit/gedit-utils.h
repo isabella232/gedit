@@ -27,10 +27,6 @@
 
 G_BEGIN_DECLS
 
-/* useful macro */
-#define GBOOLEAN_TO_POINTER(i) (GINT_TO_POINTER ((i) ? 2 : 1))
-#define GPOINTER_TO_BOOLEAN(i) ((gboolean) ((GPOINTER_TO_INT(i) == 2) ? TRUE : FALSE))
-
 enum { GEDIT_ALL_WORKSPACES = 0xffffffff };
 
 gboolean                   gedit_utils_menu_position_under_tree_view          (GtkTreeView     *tree_view,
