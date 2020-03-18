@@ -139,9 +139,6 @@ elif host_machine.system() == 'windows'
     'gedit-app-win32.c',
   )
 else
-  libgedit_sources += files(
-    'gedit-app-x11.c',
-  )
   libgedit_deps += [
     x11_dep,
   ]
