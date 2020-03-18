@@ -27,8 +27,6 @@
 
 G_BEGIN_DECLS
 
-enum { GEDIT_ALL_WORKSPACES = 0xffffffff };
-
 gboolean                   gedit_utils_menu_position_under_tree_view          (GtkTreeView     *tree_view,
                                                                                GdkRectangle    *rect);
 
@@ -40,13 +38,8 @@ void                       gedit_warning                                       (
                                                                                 ...) G_GNUC_PRINTF(2, 3);
 
 gchar                     *gedit_utils_location_get_dirname_for_display        (GFile          *location);
-guint                      gedit_utils_get_current_workspace                   (GdkScreen      *screen);
-guint                      gedit_utils_get_window_workspace                    (GtkWindow      *gtkwindow);
-void                       gedit_utils_get_current_viewport                    (GdkScreen      *screen,
-                                                                                gint           *x,
-                                                                                gint           *y);
-gboolean                   gedit_utils_is_valid_location                       (GFile          *location);
 
+gboolean                   gedit_utils_is_valid_location                       (GFile          *location);
 
 gchar                     *gedit_utils_basename_for_display                   (GFile        *location);
 gboolean                   gedit_utils_decode_uri                             (const gchar  *uri,
