@@ -87,6 +87,14 @@ gedit_utils_set_atk_name_description (GtkWidget   *widget,
 		atk_object_set_description (aobj, description);
 }
 
+/**
+ * gedit_warning:
+ * @parent:
+ * @format:
+ * @...:
+ *
+ * Deprecated: 3.38: Use tepl_utils_show_warning_dialog() instead.
+ */
 void
 gedit_warning (GtkWindow *parent, const gchar *format, ...)
 {
