@@ -29,7 +29,7 @@
 
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
-#include <gtksourceview/gtksource.h>
+#include <tepl/tepl.h>
 #include <libpeas-gtk/peas-gtk.h>
 
 #include "gedit-utils.h"
@@ -785,8 +785,8 @@ add_scheme_chooser_response_cb (GeditFileChooserDialog *chooser,
 
 	if (scheme == NULL)
 	{
-		gedit_warning (GTK_WINDOW (dlg),
-		               _("The selected color scheme cannot be installed."));
+		tepl_utils_show_warning_dialog (GTK_WINDOW (dlg),
+						_("The selected color scheme cannot be installed."));
 
 		return;
 	}
@@ -848,9 +848,9 @@ uninstall_scheme_clicked (GtkButton              *button,
 
 	if (!uninstall_style_scheme (scheme))
 	{
-		gedit_warning (GTK_WINDOW (dlg),
-		               _("Could not remove color scheme “%s”."),
-		               gtk_source_style_scheme_get_name (scheme));
+		tepl_utils_show_warning_dialog (GTK_WINDOW (dlg),
+						_("Could not remove color scheme “%s”."),
+						gtk_source_style_scheme_get_name (scheme));
 	}
 }
 
