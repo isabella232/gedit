@@ -198,10 +198,10 @@ gedit_utils_location_get_dirname_for_display (GFile *location)
 		g_object_unref (mount);
 
 		/* obtain the "path" part of the uri */
-		gedit_utils_decode_uri (uri,
-					NULL, NULL,
-					NULL, NULL,
-					&path);
+		tepl_utils_decode_uri (uri,
+				       NULL, NULL,
+				       NULL, NULL,
+				       &path);
 
 		if (path == NULL)
 		{
@@ -402,7 +402,7 @@ gedit_utils_basename_for_display (GFile *location)
 		}
 	}
 	else if (g_file_has_parent (location, NULL) ||
-	          !gedit_utils_decode_uri (uri, NULL, NULL, &hn, NULL, NULL))
+		 !tepl_utils_decode_uri (uri, NULL, NULL, &hn, NULL, NULL))
 	{
 		/* For remote files with a parent (so not just http://foo.com)
 		   or remote file for which the decoding of the host name fails,

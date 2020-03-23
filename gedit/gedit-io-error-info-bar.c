@@ -228,7 +228,7 @@ parse_gio_error (gint          code,
 					uri = g_file_get_uri (location);
 				}
 
-				if (uri && gedit_utils_decode_uri (uri, NULL, NULL, &hn, NULL, NULL))
+				if (uri && tepl_utils_decode_uri (uri, NULL, NULL, &hn, NULL, NULL))
 				{
 					if (hn != NULL)
 					{
