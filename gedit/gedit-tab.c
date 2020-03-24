@@ -1227,7 +1227,7 @@ externally_modified_notification_info_bar_response (GtkWidget *info_bar,
 static void
 display_externally_modified_notification (GeditTab *tab)
 {
-	GtkWidget *info_bar;
+	TeplInfoBar *info_bar;
 	GeditDocument *doc;
 	GtkSourceFile *file;
 	GFile *location;
@@ -1241,9 +1241,10 @@ display_externally_modified_notification (GeditTab *tab)
 	g_return_if_fail (location != NULL);
 
 	document_modified = gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc));
-	info_bar = gedit_externally_modified_info_bar_new (location, document_modified);
+	info_bar = tepl_io_error_info_bar_externally_modified (location, document_modified);
+	tepl_info_bar_set_buttons_orientation (info_bar, GTK_ORIENTATION_HORIZONTAL);
 
-	set_info_bar (tab, info_bar, GTK_RESPONSE_OK);
+	set_info_bar (tab, GTK_WIDGET (info_bar), GTK_RESPONSE_OK);
 
 	g_signal_connect (info_bar,
 			  "response",

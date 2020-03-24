@@ -868,37 +868,6 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 }
 
 GtkWidget *
-gedit_externally_modified_info_bar_new (GFile    *location,
-					gboolean  document_modified)
-{
-	TeplInfoBar *info_bar;
-	gchar *uri;
-	gchar *primary_msg;
-	const gchar *button_text;
-
-	g_return_val_if_fail (G_IS_FILE (location), NULL);
-
-	info_bar = tepl_info_bar_new ();
-	tepl_info_bar_set_buttons_orientation (info_bar, GTK_ORIENTATION_HORIZONTAL);
-
-	uri = g_file_get_parse_name (location);
-	primary_msg = g_strdup_printf (_("The file “%s” changed on disk."), uri);
-	tepl_info_bar_add_primary_message (info_bar, primary_msg);
-	g_free (uri);
-	g_free (primary_msg);
-
-	button_text = document_modified ? _("Drop Changes and _Reload") : _("_Reload");
-	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 button_text,
-				 GTK_RESPONSE_OK);
-
-	gtk_info_bar_set_show_close_button (GTK_INFO_BAR (info_bar), TRUE);
-	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar), GTK_MESSAGE_WARNING);
-
-	return GTK_WIDGET (info_bar);
-}
-
-GtkWidget *
 gedit_invalid_character_info_bar_new (GFile *location)
 {
 	TeplInfoBar *info_bar;
