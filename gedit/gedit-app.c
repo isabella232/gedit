@@ -56,7 +56,6 @@ typedef struct
 	GtkPageSetup      *page_setup;
 	GtkPrintSettings  *print_settings;
 
-	GeditSettings     *settings;
 	GSettings         *ui_settings;
 	GSettings         *window_settings;
 
@@ -148,7 +147,6 @@ gedit_app_dispose (GObject *object)
 
 	g_clear_object (&priv->ui_settings);
 	g_clear_object (&priv->window_settings);
-	g_clear_object (&priv->settings);
 
 	g_clear_object (&priv->page_setup);
 	g_clear_object (&priv->print_settings);
@@ -672,8 +670,8 @@ gedit_app_startup (GApplication *application)
 
 	setup_theme_extensions (GEDIT_APP (application));
 
-	/* Load settings */
-	priv->settings = gedit_settings_new ();
+	/* Load/init settings */
+	_gedit_settings_get_singleton ();
 	priv->ui_settings = g_settings_new ("org.gnome.gedit.preferences.ui");
 	priv->window_settings = g_settings_new ("org.gnome.gedit.state.window");
 
@@ -1589,13 +1587,9 @@ _gedit_app_set_default_print_settings (GeditApp         *app,
 GeditSettings *
 _gedit_app_get_settings (GeditApp *app)
 {
-	GeditAppPrivate *priv;
-
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
 
-	priv = gedit_app_get_instance_private (app);
-
-	return priv->settings;
+	return _gedit_settings_get_singleton ();
 }
 
 GMenuModel *
