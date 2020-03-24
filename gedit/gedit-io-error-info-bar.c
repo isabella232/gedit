@@ -871,44 +871,35 @@ GtkWidget *
 gedit_externally_modified_info_bar_new (GFile    *location,
 					gboolean  document_modified)
 {
-	gchar *full_formatted_uri;
-	gchar *uri_for_display;
-	gchar *temp_uri_for_display;
-	gchar *primary_text;
-	GtkWidget *info_bar;
+	TeplInfoBar *info_bar;
+	gchar *uri;
+	gchar *primary_msg;
 
 	g_return_val_if_fail (G_IS_FILE (location), NULL);
 
-	full_formatted_uri = g_file_get_parse_name (location);
+	info_bar = tepl_info_bar_new ();
+	tepl_info_bar_set_buttons_orientation (info_bar, GTK_ORIENTATION_HORIZONTAL);
 
-	/* Truncate the URI so it doesn't get insanely wide. Note that even
-	 * though the dialog uses wrapped text, if the URI doesn't contain
-	 * white space then the text-wrapping code is too stupid to wrap it.
-	 */
-	temp_uri_for_display = tepl_utils_str_middle_truncate (full_formatted_uri,
-							       MAX_URI_IN_DIALOG_LENGTH);
-	g_free (full_formatted_uri);
-
-	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
-	g_free (temp_uri_for_display);
-
-	primary_text = g_strdup_printf (_("The file “%s” changed on disk."),
-					uri_for_display);
-	g_free (uri_for_display);
-
-	info_bar = gtk_info_bar_new ();
+	uri = g_file_get_parse_name (location);
+	primary_msg = g_strdup_printf (_("The file “%s” changed on disk."), uri);
+	tepl_info_bar_add_primary_message (info_bar, primary_msg);
+	g_free (uri);
+	g_free (primary_msg);
 
 	if (document_modified)
 	{
-		GtkWidget *box;
 		GtkWidget *button;
+		GtkWidget *action_area;
+
 		button = gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
 						  _("Drop Changes and _Reload"),
 						  GTK_RESPONSE_OK);
-		box = gtk_info_bar_get_action_area (GTK_INFO_BAR (info_bar));
-		gtk_button_box_set_child_non_homogeneous (GTK_BUTTON_BOX (box),
-							  button,
-							  TRUE);
+
+		action_area = gtk_info_bar_get_action_area (GTK_INFO_BAR (info_bar));
+		if (GTK_IS_BUTTON_BOX (action_area))
+		{
+			gtk_button_box_set_child_non_homogeneous (GTK_BUTTON_BOX (action_area), button, TRUE);
+		}
 	}
 	else
 	{
@@ -918,16 +909,9 @@ gedit_externally_modified_info_bar_new (GFile    *location,
 	}
 
 	gtk_info_bar_set_show_close_button (GTK_INFO_BAR (info_bar), TRUE);
-	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
-				       GTK_MESSAGE_WARNING);
+	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar), GTK_MESSAGE_WARNING);
 
-	set_info_bar_text (info_bar,
-			   primary_text,
-			   NULL);
-
-	g_free (primary_text);
-
-	return info_bar;
+	return GTK_WIDGET (info_bar);
 }
 
 GtkWidget *
