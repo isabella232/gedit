@@ -1119,9 +1119,9 @@ invalid_character_info_bar_response (GtkWidget *info_bar,
 }
 
 static void
-no_backup_error_info_bar_response (GtkWidget *info_bar,
-				   gint       response_id,
-				   GTask     *saving_task)
+cant_create_backup_error_info_bar_response (GtkWidget *info_bar,
+					    gint       response_id,
+					    GTask     *saving_task)
 {
 	if (response_id == GTK_RESPONSE_YES)
 	{
@@ -2307,12 +2307,14 @@ save_cb (GtkSourceFileSaver *saver,
 			 error->code == G_IO_ERROR_CANT_CREATE_BACKUP)
 		{
 			/* This error is recoverable */
-			info_bar = gedit_no_backup_saving_error_info_bar_new (location, error);
+			info_bar = GTK_WIDGET (tepl_io_error_info_bar_cant_create_backup (location, error));
 			g_return_if_fail (info_bar != NULL);
+
+			tepl_info_bar_set_buttons_orientation (TEPL_INFO_BAR (info_bar), GTK_ORIENTATION_HORIZONTAL);
 
 			g_signal_connect (info_bar,
 					  "response",
-					  G_CALLBACK (no_backup_error_info_bar_response),
+					  G_CALLBACK (cant_create_backup_error_info_bar_response),
 					  saving_task);
 		}
 		else if (error->domain == GTK_SOURCE_FILE_SAVER_ERROR &&

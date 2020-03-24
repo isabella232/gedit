@@ -739,54 +739,6 @@ gedit_externally_modified_saving_error_info_bar_new (GFile        *location,
 }
 
 GtkWidget *
-gedit_no_backup_saving_error_info_bar_new (GFile        *location,
-					   const GError *error)
-{
-	TeplInfoBar *info_bar;
-	gchar *uri;
-	gchar *primary_msg;
-	const gchar *secondary_msg;
-
-	g_return_val_if_fail (G_IS_FILE (location), NULL);
-	g_return_val_if_fail (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANT_CREATE_BACKUP), NULL);
-
-	info_bar = tepl_info_bar_new ();
-	tepl_info_bar_set_buttons_orientation (info_bar, GTK_ORIENTATION_HORIZONTAL);
-
-	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 _("S_ave Anyway"),
-				 GTK_RESPONSE_YES);
-
-	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 _("_Don’t Save"),
-				 GTK_RESPONSE_CANCEL);
-
-	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar), GTK_MESSAGE_WARNING);
-
-	uri = g_file_get_parse_name (location);
-	primary_msg = g_strdup_printf (_("Could not create a backup file while saving “%s”"), uri);
-	tepl_info_bar_add_primary_message (info_bar, primary_msg);
-	g_free (uri);
-	g_free (primary_msg);
-
-	secondary_msg = _("Could not back up the old copy of the file before saving the new one. "
-			  "You can ignore this warning and save the file anyway, but if an error "
-			  "occurs while saving, you could lose the old copy of the file. Save anyway?");
-	tepl_info_bar_add_secondary_message (info_bar, secondary_msg);
-
-	if (error->message != NULL)
-	{
-		gchar *error_msg;
-
-		error_msg = g_strdup_printf (_("Error message: %s"), error->message);
-		tepl_info_bar_add_secondary_message (info_bar, error_msg);
-		g_free (error_msg);
-	}
-
-	return GTK_WIDGET (info_bar);
-}
-
-GtkWidget *
 gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 					       const GError *error)
 {

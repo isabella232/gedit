@@ -42,9 +42,6 @@ const GtkSourceEncoding
 GtkWidget	*gedit_externally_modified_saving_error_info_bar_new	(GFile               *location,
 									 const GError        *error);
 
-GtkWidget	*gedit_no_backup_saving_error_info_bar_new		 (GFile               *location,
-									  const GError        *error);
-
 GtkWidget	*gedit_unrecoverable_saving_error_info_bar_new		(GFile               *location,
 									 const GError        *error);
 
