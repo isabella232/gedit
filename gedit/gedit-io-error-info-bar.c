@@ -26,7 +26,6 @@
 #include <glib/gi18n.h>
 #include <tepl/tepl.h>
 #include "gedit-encodings-combo-box.h"
-#include "gedit-settings.h"
 
 #define MAX_URI_IN_DIALOG_LENGTH 50
 
@@ -744,8 +743,6 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 					   const GError *error)
 {
 	TeplInfoBar *info_bar;
-	GSettings *editor_settings;
-	gboolean create_backup_copy;
 	gchar *uri;
 	gchar *primary_msg;
 	const gchar *secondary_msg;
@@ -767,22 +764,7 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar), GTK_MESSAGE_WARNING);
 
 	uri = g_file_get_parse_name (location);
-
-	editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");
-	create_backup_copy = g_settings_get_boolean (editor_settings,
-						     GEDIT_SETTINGS_CREATE_BACKUP_COPY);
-	g_object_unref (editor_settings);
-
-	/* FIXME: review this messages */
-	if (create_backup_copy)
-	{
-		primary_msg = g_strdup_printf (_("Could not create a backup file while saving “%s”"), uri);
-	}
-	else
-	{
-		primary_msg = g_strdup_printf (_("Could not create a temporary backup file while saving “%s”"), uri);
-	}
-
+	primary_msg = g_strdup_printf (_("Could not create a backup file while saving “%s”"), uri);
 	tepl_info_bar_add_primary_message (info_bar, primary_msg);
 	g_free (uri);
 	g_free (primary_msg);
