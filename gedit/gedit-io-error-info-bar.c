@@ -774,6 +774,15 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 			  "occurs while saving, you could lose the old copy of the file. Save anyway?");
 	tepl_info_bar_add_secondary_message (info_bar, secondary_msg);
 
+	if (error->message != NULL)
+	{
+		gchar *error_msg;
+
+		error_msg = g_strdup_printf (_("Error message: %s"), error->message);
+		tepl_info_bar_add_secondary_message (info_bar, error_msg);
+		g_free (error_msg);
+	}
+
 	return GTK_WIDGET (info_bar);
 }
 
