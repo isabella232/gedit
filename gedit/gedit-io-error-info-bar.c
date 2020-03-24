@@ -867,40 +867,4 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 	return info_bar;
 }
 
-GtkWidget *
-gedit_invalid_character_info_bar_new (GFile *location)
-{
-	TeplInfoBar *info_bar;
-	gchar *uri;
-	gchar *primary_msg;
-	const gchar *secondary_msg;
-
-	g_return_val_if_fail (G_IS_FILE (location), NULL);
-
-	info_bar = tepl_info_bar_new ();
-	tepl_info_bar_set_buttons_orientation (info_bar, GTK_ORIENTATION_HORIZONTAL);
-
-	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 _("S_ave Anyway"),
-				 GTK_RESPONSE_YES);
-
-	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 _("_Don’t Save"),
-				 GTK_RESPONSE_CANCEL);
-
-	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar), GTK_MESSAGE_WARNING);
-
-	uri = g_file_get_parse_name (location);
-	primary_msg = g_strdup_printf (_("Some invalid characters have been detected while saving “%s”."), uri);
-	tepl_info_bar_add_primary_message (info_bar, primary_msg);
-	g_free (uri);
-	g_free (primary_msg);
-
-	secondary_msg = _("If you continue saving this file you can corrupt the document. "
-			  "Save anyway?");
-	tepl_info_bar_add_secondary_message (info_bar, secondary_msg);
-
-	return GTK_WIDGET (info_bar);
-}
-
 /* ex:set ts=8 noet: */

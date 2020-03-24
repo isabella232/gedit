@@ -2324,8 +2324,10 @@ save_cb (GtkSourceFileSaver *saver,
 			/* If we have any invalid char in the document we must warn the user
 			 * as it can make the document useless if it is saved.
 			 */
-			info_bar = gedit_invalid_character_info_bar_new (location);
+			info_bar = GTK_WIDGET (tepl_io_error_info_bar_invalid_characters (location));
 			g_return_if_fail (info_bar != NULL);
+
+			tepl_info_bar_set_buttons_orientation (TEPL_INFO_BAR (info_bar), GTK_ORIENTATION_HORIZONTAL);
 
 			g_signal_connect (info_bar,
 			                  "response",

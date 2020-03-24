@@ -45,8 +45,6 @@ GtkWidget	*gedit_externally_modified_saving_error_info_bar_new	(GFile           
 GtkWidget	*gedit_unrecoverable_saving_error_info_bar_new		(GFile               *location,
 									 const GError        *error);
 
-GtkWidget	*gedit_invalid_character_info_bar_new			(GFile               *location);
-
 G_END_DECLS
 
 #endif  /* GEDIT_IO_ERROR_INFO_BAR_H  */
