@@ -22,7 +22,6 @@
 #define GEDIT_APP_PRIVATE_H
 
 #include "gedit-app.h"
-#include "gedit-settings.h"
 #include "gedit-menu-extension.h"
 
 G_BEGIN_DECLS
@@ -34,8 +33,6 @@ void			 _gedit_app_set_default_page_setup	(GeditApp         *app,
 GtkPrintSettings	*_gedit_app_get_default_print_settings	(GeditApp         *app);
 void			 _gedit_app_set_default_print_settings	(GeditApp         *app,
 								 GtkPrintSettings *settings);
-
-GeditSettings		*_gedit_app_get_settings		(GeditApp  *app);
 
 GMenuModel		*_gedit_app_get_hamburger_menu		(GeditApp  *app);
 

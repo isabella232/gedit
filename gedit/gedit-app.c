@@ -1584,14 +1584,6 @@ _gedit_app_set_default_print_settings (GeditApp         *app,
 	priv->print_settings = g_object_ref (settings);
 }
 
-GeditSettings *
-_gedit_app_get_settings (GeditApp *app)
-{
-	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
-
-	return _gedit_settings_get_singleton ();
-}
-
 GMenuModel *
 _gedit_app_get_hamburger_menu (GeditApp *app)
 {
