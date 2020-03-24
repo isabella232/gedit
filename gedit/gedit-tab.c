@@ -1749,18 +1749,19 @@ successful_load (GTask *loading_task)
 	if (!gtk_source_file_is_readonly (file) &&
 	    file_already_opened (doc, location))
 	{
-		GtkWidget *info_bar;
+		TeplInfoBar *info_bar;
 
 		set_editable (data->tab, FALSE);
 
-		info_bar = gedit_file_already_open_warning_info_bar_new (location);
+		info_bar = tepl_io_error_info_bar_file_already_open_warning_new (location);
+		tepl_info_bar_set_buttons_orientation (info_bar, GTK_ORIENTATION_HORIZONTAL);
 
 		g_signal_connect (info_bar,
 				  "response",
 				  G_CALLBACK (file_already_open_warning_info_bar_response),
 				  data->tab);
 
-		set_info_bar (data->tab, info_bar, GTK_RESPONSE_CANCEL);
+		set_info_bar (data->tab, GTK_WIDGET (info_bar), GTK_RESPONSE_CANCEL);
 	}
 
 	/* When loading from stdin, the contents may not be saved, so set the

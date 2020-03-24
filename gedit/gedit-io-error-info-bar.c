@@ -652,44 +652,6 @@ gedit_conversion_error_info_bar_get_encoding (GtkWidget *info_bar)
 }
 
 GtkWidget *
-gedit_file_already_open_warning_info_bar_new (GFile *location)
-{
-	TeplInfoBar *info_bar;
-	gchar *uri;
-	gchar *primary_msg;
-
-	g_return_val_if_fail (G_IS_FILE (location), NULL);
-
-	info_bar = tepl_info_bar_new ();
-	tepl_info_bar_set_buttons_orientation (info_bar, GTK_ORIENTATION_HORIZONTAL);
-
-	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-	/* Translators: the mnemonic chosen for this string should be different
-	   from other headerbar mnemonics (Open, Save, ...). */
-				 _("_Edit Anyway"),
-				 GTK_RESPONSE_YES);
-
-	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-	/* Translators: the mnemonic chosen for this string should be different
-	   from other headerbar mnemonics (Open, Save, ...). */
-				 _("_Don’t Edit"),
-				 GTK_RESPONSE_CANCEL);
-
-	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
-				       GTK_MESSAGE_WARNING);
-
-	uri = g_file_get_parse_name (location);
-	primary_msg = g_strdup_printf (_("This file “%s” is already open in another window."), uri);
-	tepl_info_bar_add_primary_message (info_bar, primary_msg);
-	g_free (uri);
-	g_free (primary_msg);
-
-	tepl_info_bar_add_secondary_message (info_bar, _("Do you want to edit it anyway?"));
-
-	return GTK_WIDGET (info_bar);
-}
-
-GtkWidget *
 gedit_externally_modified_saving_error_info_bar_new (GFile        *location,
 						     const GError *error)
 {
