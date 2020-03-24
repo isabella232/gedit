@@ -874,6 +874,7 @@ gedit_externally_modified_info_bar_new (GFile    *location,
 	TeplInfoBar *info_bar;
 	gchar *uri;
 	gchar *primary_msg;
+	const gchar *button_text;
 
 	g_return_val_if_fail (G_IS_FILE (location), NULL);
 
@@ -886,18 +887,10 @@ gedit_externally_modified_info_bar_new (GFile    *location,
 	g_free (uri);
 	g_free (primary_msg);
 
-	if (document_modified)
-	{
-		gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-					 _("Drop Changes and _Reload"),
-					 GTK_RESPONSE_OK);
-	}
-	else
-	{
-		gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-					 _("_Reload"),
-					 GTK_RESPONSE_OK);
-	}
+	button_text = document_modified ? _("Drop Changes and _Reload") : _("_Reload");
+	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
+				 button_text,
+				 GTK_RESPONSE_OK);
 
 	gtk_info_bar_set_show_close_button (GTK_INFO_BAR (info_bar), TRUE);
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar), GTK_MESSAGE_WARNING);
