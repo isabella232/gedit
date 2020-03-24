@@ -888,18 +888,9 @@ gedit_externally_modified_info_bar_new (GFile    *location,
 
 	if (document_modified)
 	{
-		GtkWidget *button;
-		GtkWidget *action_area;
-
-		button = gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-						  _("Drop Changes and _Reload"),
-						  GTK_RESPONSE_OK);
-
-		action_area = gtk_info_bar_get_action_area (GTK_INFO_BAR (info_bar));
-		if (GTK_IS_BUTTON_BOX (action_area))
-		{
-			gtk_button_box_set_child_non_homogeneous (GTK_BUTTON_BOX (action_area), button, TRUE);
-		}
+		gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
+					 _("Drop Changes and _Reload"),
+					 GTK_RESPONSE_OK);
 	}
 	else
 	{
