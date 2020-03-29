@@ -1,14 +1,12 @@
-glib_prefix = dependency('glib-2.0').get_pkgconfig_variable('prefix')
-glib_docpath = join_paths(glib_prefix, 'share', 'gtk-doc', 'html', 'glib')
-
-gobject_prefix = dependency('gobject-2.0').get_pkgconfig_variable('prefix')
-gobject_docpath = join_paths(gobject_prefix, 'share', 'gtk-doc', 'html', 'gobject')
-
-gtk_prefix = gtk_dep.get_pkgconfig_variable('prefix')
-gtk_docpath = join_paths(gtk_prefix, 'share', 'gtk-doc', 'html', 'gtk')
-
-tepl_prefix = tepl_dep.get_pkgconfig_variable('prefix')
-tepl_docpath = join_paths(tepl_prefix, 'share', 'gtk-doc', 'html', 'tepl-4.0')
+glib_docpath = dependency('glib-2.0').get_pkgconfig_variable('prefix') / 'share/gtk-doc/html/glib'
+gobject_docpath = dependency('gobject-2.0').get_pkgconfig_variable('prefix') / 'share/gtk-doc/html/gobject'
+gio_docpath = dependency('gio-2.0').get_pkgconfig_variable('prefix') / 'share/gtk-doc/html/gio'
+gdk_docpath = dependency('gdk-3.0').get_pkgconfig_variable('prefix') / 'share/gtk-doc/html/gdk3'
+gtk_docpath = dependency('gtk+-3.0').get_pkgconfig_variable('prefix') / 'share/gtk-doc/html/gtk3'
+gsv_docpath = dependency('gtksourceview-4').get_pkgconfig_variable('prefix') / 'share/gtk-doc/html/gtksourceview-4.0'
+amtk_docpath = dependency('amtk-5').get_pkgconfig_variable('prefix') / 'share/gtk-doc/html/amtk-5.0'
+tepl_docpath = dependency('tepl-4').get_pkgconfig_variable('prefix') / 'share/gtk-doc/html/tepl-4'
+libpeas_docpath = dependency('libpeas-1.0').get_pkgconfig_variable('prefix') / 'share/gtk-doc/html/libpeas'
 
 gedit_doc_deps = [
   gio_dep,
@@ -77,14 +75,6 @@ libgedit_reference_mkdb_args = [
 
 gtkdocdir = join_paths(get_option('prefix'), get_option('datadir'), 'gtk-doc')
 
-libgedit_reference_fixxref_args = [
-  '--html-dir=@0@'.format(join_paths(gtkdocdir, 'html', package_string)),
-  '--extra-dir=@0@'.format(glib_docpath),
-  '--extra-dir=@0@'.format(gobject_docpath),
-  '--extra-dir=@0@'.format(gtk_docpath),
-  '--extra-dir=@0@'.format(tepl_docpath),
-]
-
 gnome.gtkdoc(
   meson.project_name(),
   main_sgml: 'gedit-docs.xml',
@@ -92,7 +82,18 @@ gnome.gtkdoc(
   dependencies: gedit_doc_dep,
   scan_args: libgedit_reference_scan_args,
   mkdb_args: libgedit_reference_mkdb_args,
-  fixxref_args: libgedit_reference_fixxref_args,
+  fixxref_args: [
+    '--html-dir=@0@'.format(join_paths(gtkdocdir, 'html', package_string)),
+    '--extra-dir=@0@'.format(glib_docpath),
+    '--extra-dir=@0@'.format(gobject_docpath),
+    '--extra-dir=@0@'.format(gio_docpath),
+    '--extra-dir=@0@'.format(gdk_docpath),
+    '--extra-dir=@0@'.format(gtk_docpath),
+    '--extra-dir=@0@'.format(gsv_docpath),
+    '--extra-dir=@0@'.format(amtk_docpath),
+    '--extra-dir=@0@'.format(tepl_docpath),
+    '--extra-dir=@0@'.format(libpeas_docpath),
+  ],
   content_files : [
     'api-breaks.xml'
   ],
