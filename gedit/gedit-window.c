@@ -2619,15 +2619,19 @@ static GtkWidget *
 create_open_buttons (GeditWindow    *window,
 		     GtkMenuButton **open_recent_button)
 {
-	GtkWidget *hgrid;
+	GtkWidget *hbox;
 	GtkStyleContext *style_context;
 	GtkWidget *open_dialog_button;
 	GtkWidget *my_open_recent_button;
 	AmtkApplicationWindow *amtk_window;
 	GtkWidget *recent_menu;
 
-	hgrid = gtk_grid_new ();
-	style_context = gtk_widget_get_style_context (hgrid);
+	/* It currently needs to be a GtkBox, not a GtkGrid, because GtkGrid and
+	 * GTK_STYLE_CLASS_LINKED doesn't work as expected in a RTL locale.
+	 * Probably a GtkGrid bug.
+	 */
+	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+	style_context = gtk_widget_get_style_context (hbox);
 	gtk_style_context_add_class (style_context, GTK_STYLE_CLASS_LINKED);
 
 	open_dialog_button = gtk_button_new_with_mnemonic (_("_Open"));
@@ -2641,16 +2645,16 @@ create_open_buttons (GeditWindow    *window,
 	recent_menu = amtk_application_window_create_open_recent_menu (amtk_window);
 	gtk_menu_button_set_popup (GTK_MENU_BUTTON (my_open_recent_button), recent_menu);
 
-	gtk_container_add (GTK_CONTAINER (hgrid), open_dialog_button);
-	gtk_container_add (GTK_CONTAINER (hgrid), my_open_recent_button);
-	gtk_widget_show_all (hgrid);
+	gtk_container_add (GTK_CONTAINER (hbox), open_dialog_button);
+	gtk_container_add (GTK_CONTAINER (hbox), my_open_recent_button);
+	gtk_widget_show_all (hbox);
 
 	if (open_recent_button != NULL)
 	{
 		*open_recent_button = GTK_MENU_BUTTON (my_open_recent_button);
 	}
 
-	return hgrid;
+	return hbox;
 }
 
 static void
