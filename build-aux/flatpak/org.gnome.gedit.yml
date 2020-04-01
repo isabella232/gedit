@@ -86,8 +86,9 @@ modules:
 
   - name: tepl
     sources:
-      - type: git
-        url: https://gitlab.gnome.org/GNOME/tepl.git
+      - type: archive
+        url: https://download.gnome.org/sources/tepl/4.4/tepl-4.4.0.tar.xz
+        sha256: e6f6673a8a27e8f280725db8fbacec79b20676ae0558755239d15a9808faa256
 
   - name: gedit
     buildsystem: meson
