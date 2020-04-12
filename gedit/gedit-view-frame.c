@@ -1061,7 +1061,6 @@ update_goto_line (GeditViewFrame *frame)
 	gchar **split_text = NULL;
 	const gchar *text;
 	GtkTextIter iter;
-	GeditDocument *doc;
 
 	entry_text = gtk_entry_get_text (GTK_ENTRY (frame->search_entry));
 
@@ -1117,11 +1116,8 @@ update_goto_line (GeditViewFrame *frame)
 
 	g_strfreev (split_text);
 
-	doc = get_document (frame);
-	moved = gedit_document_goto_line (doc, line);
-	moved_offset = gedit_document_goto_line_offset (doc, line, line_offset);
-
-	tepl_view_scroll_to_cursor (TEPL_VIEW (frame->view));
+	moved = tepl_view_goto_line (TEPL_VIEW (frame->view), line);
+	moved_offset = tepl_view_goto_line_offset (TEPL_VIEW (frame->view), line, line_offset);
 
 	if (!moved || !moved_offset)
 	{
