@@ -175,7 +175,7 @@ load_file_list (GeditWindow             *window,
 						gedit_document_goto_line (doc, line_pos - 1);
 					}
 
-					gedit_view_scroll_to_cursor (gedit_tab_get_view (tab));
+					tepl_view_scroll_to_cursor (TEPL_VIEW (gedit_tab_get_view (tab)));
 				}
 			}
 

@@ -44,13 +44,13 @@ _gedit_cmd_edit_undo (GSimpleAction *action,
 	gedit_debug (DEBUG_COMMANDS);
 
 	active_view = gedit_window_get_active_view (window);
-	g_return_if_fail (active_view);
+	g_return_if_fail (active_view != NULL);
 
 	active_document = GTK_SOURCE_BUFFER (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
 
 	gtk_source_buffer_undo (active_document);
 
-	gedit_view_scroll_to_cursor (active_view);
+	tepl_view_scroll_to_cursor (TEPL_VIEW (active_view));
 
 	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
@@ -67,13 +67,13 @@ _gedit_cmd_edit_redo (GSimpleAction *action,
 	gedit_debug (DEBUG_COMMANDS);
 
 	active_view = gedit_window_get_active_view (window);
-	g_return_if_fail (active_view);
+	g_return_if_fail (active_view != NULL);
 
 	active_document = GTK_SOURCE_BUFFER (gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view)));
 
 	gtk_source_buffer_redo (active_document);
 
-	gedit_view_scroll_to_cursor (active_view);
+	tepl_view_scroll_to_cursor (TEPL_VIEW (active_view));
 
 	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }

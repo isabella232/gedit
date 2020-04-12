@@ -1035,7 +1035,7 @@ scroll_to_cursor (GeditTab *tab)
 	GeditView *view;
 
 	view = gedit_tab_get_view (tab);
-	gedit_view_scroll_to_cursor (view);
+	tepl_view_scroll_to_cursor (TEPL_VIEW (view));
 
 	tab->idle_scroll = 0;
 	return G_SOURCE_REMOVE;
