@@ -89,9 +89,9 @@ _gedit_cmd_edit_cut (GSimpleAction *action,
 	gedit_debug (DEBUG_COMMANDS);
 
 	active_view = gedit_window_get_active_view (window);
-	g_return_if_fail (active_view);
+	g_return_if_fail (active_view != NULL);
 
-	gedit_view_cut_clipboard (active_view);
+	tepl_view_cut_clipboard (TEPL_VIEW (active_view));
 
 	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
@@ -107,9 +107,9 @@ _gedit_cmd_edit_copy (GSimpleAction *action,
 	gedit_debug (DEBUG_COMMANDS);
 
 	active_view = gedit_window_get_active_view (window);
-	g_return_if_fail (active_view);
+	g_return_if_fail (active_view != NULL);
 
-	gedit_view_copy_clipboard (active_view);
+	tepl_view_copy_clipboard (TEPL_VIEW (active_view));
 
 	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
@@ -125,9 +125,9 @@ _gedit_cmd_edit_paste (GSimpleAction *action,
 	gedit_debug (DEBUG_COMMANDS);
 
 	active_view = gedit_window_get_active_view (window);
-	g_return_if_fail (active_view);
+	g_return_if_fail (active_view != NULL);
 
-	gedit_view_paste_clipboard (active_view);
+	tepl_view_paste_clipboard (TEPL_VIEW (active_view));
 
 	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
@@ -143,9 +143,9 @@ _gedit_cmd_edit_delete (GSimpleAction *action,
 	gedit_debug (DEBUG_COMMANDS);
 
 	active_view = gedit_window_get_active_view (window);
-	g_return_if_fail (active_view);
+	g_return_if_fail (active_view != NULL);
 
-	gedit_view_delete_selection (active_view);
+	tepl_view_delete_selection (TEPL_VIEW (active_view));
 
 	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
@@ -161,9 +161,9 @@ _gedit_cmd_edit_select_all (GSimpleAction *action,
 	gedit_debug (DEBUG_COMMANDS);
 
 	active_view = gedit_window_get_active_view (window);
-	g_return_if_fail (active_view);
+	g_return_if_fail (active_view != NULL);
 
-	gedit_view_select_all (active_view);
+	tepl_view_select_all (TEPL_VIEW (active_view));
 
 	gtk_widget_grab_focus (GTK_WIDGET (active_view));
 }
