@@ -23,10 +23,8 @@
 #ifndef GEDIT_VIEW_H
 #define GEDIT_VIEW_H
 
-#include <gtk/gtk.h>
-
 #include <gedit/gedit-document.h>
-#include <gtksourceview/gtksource.h>
+#include <tepl/tepl.h>
 
 G_BEGIN_DECLS
 
@@ -43,7 +41,7 @@ typedef struct _GeditViewPrivate	GeditViewPrivate;
 
 struct _GeditView
 {
-	GtkSourceView view;
+	TeplView view;
 
 	/*< private >*/
 	GeditViewPrivate *priv;
@@ -51,7 +49,7 @@ struct _GeditView
 
 struct _GeditViewClass
 {
-	GtkSourceViewClass parent_class;
+	TeplViewClass parent_class;
 
 	void	(*drop_uris)	(GeditView  *view,
 				 gchar     **uri_list);

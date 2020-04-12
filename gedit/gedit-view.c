@@ -50,7 +50,7 @@ struct _GeditViewPrivate
 	PangoFontDescription *font_desc;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditView, gedit_view, GTK_SOURCE_TYPE_VIEW)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditView, gedit_view, TEPL_TYPE_VIEW)
 
 enum
 {
