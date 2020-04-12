@@ -32,8 +32,6 @@
 #include "gedit-utils.h"
 #include "gedit-settings.h"
 
-#define GEDIT_VIEW_SCROLL_MARGIN 0.02
-
 enum
 {
 	TARGET_URI_LIST = 100,
@@ -152,7 +150,6 @@ gedit_view_init (GeditView *view)
 			  "notify::buffer",
 			  G_CALLBACK (on_notify_buffer_cb),
 			  NULL);
-
 
 	view->priv->css_provider = gtk_css_provider_new ();
 	context = gtk_widget_get_style_context (GTK_WIDGET (view));
@@ -773,79 +770,43 @@ gedit_view_new (GeditDocument *doc)
 			     NULL);
 }
 
+/**
+ * gedit_view_cut_clipboard:
+ * @view: a #GeditView.
+ *
+ * Deprecated: 3.38: Use tepl_view_cut_clipboard() instead.
+ */
 void
 gedit_view_cut_clipboard (GeditView *view)
 {
-	GtkTextBuffer *buffer;
-	GtkClipboard *clipboard;
-
-	gedit_debug (DEBUG_VIEW);
-
 	g_return_if_fail (GEDIT_IS_VIEW (view));
-
-	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
-
-	clipboard = gtk_widget_get_clipboard (GTK_WIDGET (view),
-	                                      GDK_SELECTION_CLIPBOARD);
-
-	gtk_text_buffer_cut_clipboard (buffer,
-	                               clipboard,
-				       gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
-
-	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
-	                              gtk_text_buffer_get_insert (buffer),
-	                              GEDIT_VIEW_SCROLL_MARGIN,
-	                              FALSE,
-	                              0.0,
-	                              0.0);
+	tepl_view_cut_clipboard (TEPL_VIEW (view));
 }
 
+/**
+ * gedit_view_copy_clipboard:
+ * @view: a #GeditView.
+ *
+ * Deprecated: 3.38: Use tepl_view_copy_clipboard() instead.
+ */
 void
 gedit_view_copy_clipboard (GeditView *view)
 {
-	GtkTextBuffer *buffer;
-	GtkClipboard *clipboard;
-
-	gedit_debug (DEBUG_VIEW);
-
 	g_return_if_fail (GEDIT_IS_VIEW (view));
-
-	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
-
-	clipboard = gtk_widget_get_clipboard (GTK_WIDGET (view),
-	                                      GDK_SELECTION_CLIPBOARD);
-
-	gtk_text_buffer_copy_clipboard (buffer, clipboard);
-
-	/* on copy do not scroll, we are already on screen */
+	tepl_view_copy_clipboard (TEPL_VIEW (view));
 }
 
+/**
+ * gedit_view_paste_clipboard:
+ * @view: a #GeditView.
+ *
+ * Deprecated: 3.38: Use tepl_view_paste_clipboard() instead.
+ */
 void
 gedit_view_paste_clipboard (GeditView *view)
 {
-	GtkTextBuffer *buffer;
-	GtkClipboard *clipboard;
-
-	gedit_debug (DEBUG_VIEW);
-
 	g_return_if_fail (GEDIT_IS_VIEW (view));
-
-	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
-
-	clipboard = gtk_widget_get_clipboard (GTK_WIDGET (view),
-	                                      GDK_SELECTION_CLIPBOARD);
-
-	gtk_text_buffer_paste_clipboard (buffer,
-	                                 clipboard,
-	                                 NULL,
-					 gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
-
-	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
-	                              gtk_text_buffer_get_insert (buffer),
-	                              GEDIT_VIEW_SCROLL_MARGIN,
-	                              FALSE,
-	                              0.0,
-	                              0.0);
+	tepl_view_paste_clipboard (TEPL_VIEW (view));
 }
 
 /**
@@ -854,28 +815,14 @@ gedit_view_paste_clipboard (GeditView *view)
  *
  * Deletes the text currently selected in the #GtkTextBuffer associated
  * to the view and scroll to the cursor position.
+ *
+ * Deprecated: 3.38: use tepl_view_delete_selection() instead.
  */
 void
 gedit_view_delete_selection (GeditView *view)
 {
-	GtkTextBuffer *buffer;
-
-	gedit_debug (DEBUG_VIEW);
-
 	g_return_if_fail (GEDIT_IS_VIEW (view));
-
-	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
-
-	gtk_text_buffer_delete_selection (buffer,
-	                                  TRUE,
-					  gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
-
-	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
-	                              gtk_text_buffer_get_insert (buffer),
-	                              GEDIT_VIEW_SCROLL_MARGIN,
-	                              FALSE,
-	                              0.0,
-	                              0.0);
+	tepl_view_delete_selection (TEPL_VIEW (view));
 }
 
 /**
@@ -883,22 +830,14 @@ gedit_view_delete_selection (GeditView *view)
  * @view: a #GeditView
  *
  * Selects all the text.
+ *
+ * Deprecated: 3.38: use tepl_view_select_all() instead.
  */
 void
 gedit_view_select_all (GeditView *view)
 {
-	GtkTextBuffer *buffer;
-	GtkTextIter start;
-	GtkTextIter end;
-
-	gedit_debug (DEBUG_VIEW);
-
 	g_return_if_fail (GEDIT_IS_VIEW (view));
-
-	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
-
-	gtk_text_buffer_get_bounds (buffer, &start, &end);
-	gtk_text_buffer_select_range (buffer, &start, &end);
+	tepl_view_select_all (TEPL_VIEW (view));
 }
 
 /**
@@ -906,24 +845,14 @@ gedit_view_select_all (GeditView *view)
  * @view: a #GeditView
  *
  * Scrolls the @view to the cursor position.
+ *
+ * Deprecated: 3.38: Use tepl_view_scroll_to_cursor() instead.
  */
 void
 gedit_view_scroll_to_cursor (GeditView *view)
 {
-	GtkTextBuffer *buffer;
-
-	gedit_debug (DEBUG_VIEW);
-
 	g_return_if_fail (GEDIT_IS_VIEW (view));
-
-	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
-
-	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
-	                              gtk_text_buffer_get_insert (buffer),
-	                              0.25,
-	                              FALSE,
-	                              0.0,
-	                              0.0);
+	tepl_view_scroll_to_cursor (TEPL_VIEW (view));
 }
 
 static void
