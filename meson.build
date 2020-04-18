@@ -50,7 +50,7 @@ libgd_dep = libgd_subproject.get_variable('libgd_dep')
 gio_dep = dependency('gio-2.0', version: '>= 2.52')
 gtk_dep = dependency('gtk+-3.0', version: '>= 3.22')
 gtksourceview_dep = dependency('gtksourceview-4', version: '>= 4.0.2')
-tepl_dep = dependency('tepl-4', version: '>= 4.5')
+tepl_dep = dependency('tepl-5', version: '>= 4.99')
 libpeas_gtk_dep = dependency('libpeas-gtk-1.0', version: '>= 1.14.1')
 gspell_dep = dependency('gspell-1', version: '>= 1.0')
 
