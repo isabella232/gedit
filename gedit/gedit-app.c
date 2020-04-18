@@ -637,18 +637,52 @@ show_menubar (void)
 	return result;
 }
 
-static void
-setup_metadata_manager (void)
+static GFile *
+get_metadata_manager_file (void)
 {
-	const gchar *user_data_dir;
-	gchar *metadata_path;
+	return g_file_new_build_filename (gedit_dirs_get_user_data_dir (),
+					  "gedit-metadata.xml",
+					  NULL);
+}
 
-	user_data_dir = gedit_dirs_get_user_data_dir ();
-	metadata_path = g_build_filename (user_data_dir, "gedit-metadata.xml", NULL);
+static void
+load_metadata_manager (void)
+{
+	TeplMetadataManager *manager;
+	GFile *file;
+	GError *error = NULL;
 
-	tepl_metadata_manager_init (metadata_path);
+	manager = tepl_metadata_manager_get_singleton ();
+	file = get_metadata_manager_file ();
+	tepl_metadata_manager_load_from_disk (manager, file, &error);
 
-	g_free (metadata_path);
+	if (error != NULL)
+	{
+		g_warning ("Failed to load metadata: %s", error->message);
+		g_clear_error (&error);
+	}
+
+	g_object_unref (file);
+}
+
+static void
+save_metadata_manager (void)
+{
+	TeplMetadataManager *manager;
+	GFile *file;
+	GError *error = NULL;
+
+	manager = tepl_metadata_manager_get_singleton ();
+	file = get_metadata_manager_file ();
+	tepl_metadata_manager_save_to_disk (manager, file, TRUE, &error);
+
+	if (error != NULL)
+	{
+		g_warning ("Failed to save metadata: %s", error->message);
+		g_clear_error (&error);
+	}
+
+	g_object_unref (file);
 }
 
 static void
@@ -666,7 +700,7 @@ gedit_app_startup (GApplication *application)
 	gedit_debug_init ();
 	gedit_debug_message (DEBUG_APP, "Startup");
 
-	setup_metadata_manager ();
+	load_metadata_manager ();
 
 	setup_theme_extensions (GEDIT_APP (application));
 
@@ -1129,6 +1163,7 @@ gedit_app_shutdown (GApplication *app)
 	save_accels ();
 	save_page_setup (GEDIT_APP (app));
 	save_print_settings (GEDIT_APP (app));
+	save_metadata_manager ();
 
 	G_APPLICATION_CLASS (gedit_app_parent_class)->shutdown (app);
 
