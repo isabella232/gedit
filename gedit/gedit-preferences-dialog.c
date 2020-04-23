@@ -471,65 +471,33 @@ setup_font_colors_page_font_section (GeditPreferencesDialog *dlg)
 }
 
 static void
-set_buttons_sensisitivity_according_to_scheme (GeditPreferencesDialog *dlg,
-                                               GtkSourceStyleScheme   *scheme)
+update_style_scheme_buttons_sensisitivity (GeditPreferencesDialog *dlg)
 {
+	GtkSourceStyleScheme *selected_style_scheme;
 	gboolean editable = FALSE;
 
-	if (scheme != NULL)
+	selected_style_scheme = gtk_source_style_scheme_chooser_get_style_scheme (GTK_SOURCE_STYLE_SCHEME_CHOOSER (dlg->schemes_list));
+
+	if (selected_style_scheme != NULL)
 	{
 		const gchar *filename;
 
-		filename = gtk_source_style_scheme_get_filename (scheme);
+		filename = gtk_source_style_scheme_get_filename (selected_style_scheme);
 		if (filename != NULL)
 		{
 			editable = g_str_has_prefix (filename, gedit_dirs_get_user_styles_dir ());
 		}
 	}
 
-	gtk_widget_set_sensitive (dlg->uninstall_scheme_button,
-	                          editable);
+	gtk_widget_set_sensitive (dlg->uninstall_scheme_button, editable);
 }
 
 static void
-style_scheme_changed (GtkSourceStyleSchemeChooser *chooser,
-                      GParamSpec                  *pspec,
-                      GeditPreferencesDialog      *dlg)
+style_scheme_notify_cb (GtkSourceStyleSchemeChooser *chooser,
+			GParamSpec                  *pspec,
+			GeditPreferencesDialog      *dlg)
 {
-	GtkSourceStyleScheme *scheme;
-
-	scheme = gtk_source_style_scheme_chooser_get_style_scheme (chooser);
-	if (scheme != NULL)
-	{
-		const gchar *id;
-
-		id = gtk_source_style_scheme_get_id (scheme);
-		g_settings_set_string (dlg->editor, GEDIT_SETTINGS_SCHEME, id);
-	}
-
-	set_buttons_sensisitivity_according_to_scheme (dlg, scheme);
-}
-
-static GtkSourceStyleScheme *
-get_default_color_scheme (GeditPreferencesDialog *dlg)
-{
-	GtkSourceStyleSchemeManager *manager;
-	GtkSourceStyleScheme *scheme = NULL;
-	gchar *pref_id;
-
-	manager = gtk_source_style_scheme_manager_get_default ();
-
-	pref_id = g_settings_get_string (dlg->editor, GEDIT_SETTINGS_SCHEME);
-	scheme = gtk_source_style_scheme_manager_get_scheme (manager, pref_id);
-	g_free (pref_id);
-
-	if (scheme == NULL)
-	{
-		/* Fall-back to tango style scheme */
-		scheme = gtk_source_style_scheme_manager_get_scheme (manager, "tango");
-	}
-
-	return scheme;
+	update_style_scheme_buttons_sensisitivity (dlg);
 }
 
 /*
@@ -613,7 +581,6 @@ file_copy (const gchar  *name,
 
 /*
  * install_style_scheme:
- * @manager: a #GtkSourceStyleSchemeManager
  * @fname: the file name of the style scheme to be installed
  *
  * Install a new user scheme.
@@ -709,17 +676,13 @@ install_style_scheme (const gchar *fname)
 	return NULL;
 }
 
-/**
+/*
  * uninstall_style_scheme:
- * @manager: a #GtkSourceStyleSchemeManager
  * @scheme: a #GtkSourceStyleScheme
  *
  * Uninstall a user scheme.
  *
- * If the call was succesful, it returns %TRUE
- * otherwise %FALSE.
- *
- * Return value: %TRUE on success, %FALSE otherwise.
+ * Returns: %TRUE on success, %FALSE otherwise.
  */
 static gboolean
 uninstall_style_scheme (GtkSourceStyleScheme *scheme)
@@ -789,8 +752,6 @@ add_scheme_chooser_response_cb (GeditFileChooserDialog *chooser,
 
 	g_settings_set_string (dlg->editor, GEDIT_SETTINGS_SCHEME,
 	                       gtk_source_style_scheme_get_id (scheme));
-
-	set_buttons_sensisitivity_according_to_scheme (dlg, scheme);
 }
 
 static void
@@ -839,6 +800,7 @@ uninstall_scheme_clicked (GtkButton              *button,
 			  GeditPreferencesDialog *dlg)
 {
 	GtkSourceStyleScheme *scheme;
+	GtkSourceStyleScheme *new_selected_scheme;
 
 	scheme = gtk_source_style_scheme_chooser_get_style_scheme (GTK_SOURCE_STYLE_SCHEME_CHOOSER (dlg->schemes_list));
 
@@ -852,6 +814,19 @@ uninstall_scheme_clicked (GtkButton              *button,
 		tepl_utils_show_warning_dialog (GTK_WINDOW (dlg),
 						_("Could not remove color scheme “%s”."),
 						gtk_source_style_scheme_get_name (scheme));
+		return;
+	}
+
+	new_selected_scheme = gtk_source_style_scheme_chooser_get_style_scheme (GTK_SOURCE_STYLE_SCHEME_CHOOSER (dlg->schemes_list));
+	if (new_selected_scheme == NULL)
+	{
+		GeditSettings *settings;
+		GSettings *editor_settings;
+
+		settings = _gedit_settings_get_singleton ();
+		editor_settings = _gedit_settings_peek_editor_settings (settings);
+
+		g_settings_reset (editor_settings, GEDIT_SETTINGS_SCHEME);
 	}
 }
 
@@ -859,11 +834,10 @@ static void
 setup_font_colors_page_style_scheme_section (GeditPreferencesDialog *dlg)
 {
 	GtkStyleContext *context;
-	GtkSourceStyleScheme *scheme;
+	GeditSettings *settings;
+	GSettings *editor_settings;
 
 	gedit_debug (DEBUG_PREFS);
-
-	scheme = get_default_color_scheme (dlg);
 
 	/* junction between the schemes list and the toolbar */
 	context = gtk_widget_get_style_context (dlg->schemes_list);
@@ -874,7 +848,7 @@ setup_font_colors_page_style_scheme_section (GeditPreferencesDialog *dlg)
 	/* Connect signals */
 	g_signal_connect (dlg->schemes_list,
 	                  "notify::style-scheme",
-	                  G_CALLBACK (style_scheme_changed),
+	                  G_CALLBACK (style_scheme_notify_cb),
 	                  dlg);
 	g_signal_connect (dlg->install_scheme_button,
 			  "clicked",
@@ -885,14 +859,13 @@ setup_font_colors_page_style_scheme_section (GeditPreferencesDialog *dlg)
 			  G_CALLBACK (uninstall_scheme_clicked),
 			  dlg);
 
-	if (scheme != NULL)
-	{
-		gtk_source_style_scheme_chooser_set_style_scheme (GTK_SOURCE_STYLE_SCHEME_CHOOSER (dlg->schemes_list),
-								  scheme);
-	}
+	settings = _gedit_settings_get_singleton ();
+	editor_settings = _gedit_settings_peek_editor_settings (settings);
+	g_settings_bind (editor_settings, GEDIT_SETTINGS_SCHEME,
+			 dlg->schemes_list, "tepl-style-scheme-id",
+			 G_SETTINGS_BIND_DEFAULT);
 
-	/* Set initial widget sensitivity */
-	set_buttons_sensisitivity_according_to_scheme (dlg, scheme);
+	update_style_scheme_buttons_sensisitivity (dlg);
 }
 
 static void
