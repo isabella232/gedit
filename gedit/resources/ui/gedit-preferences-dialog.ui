@@ -630,19 +630,8 @@
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <child>
-                      <object class="GtkScrolledWindow" id="schemes_scrolled_window">
+                      <object class="TeplStyleSchemeChooserWidget" id="schemes_list">
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="hexpand">True</property>
-                        <property name="vexpand">True</property>
-                        <property name="shadow_type">etched-in</property>
-                        <property name="min_content_height">200</property>
-                        <child>
-                          <object class="GtkSourceStyleSchemeChooserWidget" id="schemes_list">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </object>
-                        </child>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>

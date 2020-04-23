@@ -91,7 +91,6 @@ struct _GeditPreferencesDialog
 	GtkWidget	*schemes_list;
 	GtkWidget	*install_scheme_button;
 	GtkWidget	*uninstall_scheme_button;
-	GtkWidget	*schemes_scrolled_window;
 	GtkWidget	*schemes_toolbar;
 
 	GeditFileChooserDialog *
@@ -197,7 +196,6 @@ gedit_preferences_dialog_class_init (GeditPreferencesDialogClass *klass)
 	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, font_button);
 	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, font_grid);
 	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, schemes_list);
-	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, schemes_scrolled_window);
 	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, install_scheme_button);
 	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, uninstall_scheme_button);
 	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, schemes_toolbar);
@@ -862,8 +860,8 @@ setup_font_colors_page_style_scheme_section (GeditPreferencesDialog *dlg)
 
 	scheme = get_default_color_scheme (dlg);
 
-	/* junction between the scrolled window and the toolbar */
-	context = gtk_widget_get_style_context (dlg->schemes_scrolled_window);
+	/* junction between the schemes list and the toolbar */
+	context = gtk_widget_get_style_context (dlg->schemes_list);
 	gtk_style_context_set_junction_sides (context, GTK_JUNCTION_BOTTOM);
 	context = gtk_widget_get_style_context (dlg->schemes_toolbar);
 	gtk_style_context_set_junction_sides (context, GTK_JUNCTION_TOP);
