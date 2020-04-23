@@ -497,12 +497,16 @@ style_scheme_changed (GtkSourceStyleSchemeChooser *chooser,
                       GeditPreferencesDialog      *dlg)
 {
 	GtkSourceStyleScheme *scheme;
-	const gchar *id;
 
 	scheme = gtk_source_style_scheme_chooser_get_style_scheme (chooser);
-	id = gtk_source_style_scheme_get_id (scheme);
+	if (scheme != NULL)
+	{
+		const gchar *id;
 
-	g_settings_set_string (dlg->editor, GEDIT_SETTINGS_SCHEME, id);
+		id = gtk_source_style_scheme_get_id (scheme);
+		g_settings_set_string (dlg->editor, GEDIT_SETTINGS_SCHEME, id);
+	}
+
 	set_buttons_sensisitivity_according_to_scheme (dlg, scheme);
 }
 
@@ -515,18 +519,14 @@ get_default_color_scheme (GeditPreferencesDialog *dlg)
 
 	manager = gtk_source_style_scheme_manager_get_default ();
 
-	pref_id = g_settings_get_string (dlg->editor,
-	                                 GEDIT_SETTINGS_SCHEME);
-
-	scheme = gtk_source_style_scheme_manager_get_scheme (manager,
-	                                                     pref_id);
+	pref_id = g_settings_get_string (dlg->editor, GEDIT_SETTINGS_SCHEME);
+	scheme = gtk_source_style_scheme_manager_get_scheme (manager, pref_id);
 	g_free (pref_id);
 
 	if (scheme == NULL)
 	{
-		/* Fall-back to classic style scheme */
-		scheme = gtk_source_style_scheme_manager_get_scheme (manager,
-		                                                     "classic");
+		/* Fall-back to tango style scheme */
+		scheme = gtk_source_style_scheme_manager_get_scheme (manager, "tango");
 	}
 
 	return scheme;
@@ -842,6 +842,11 @@ uninstall_scheme_clicked (GtkButton              *button,
 
 	scheme = gtk_source_style_scheme_chooser_get_style_scheme (GTK_SOURCE_STYLE_SCHEME_CHOOSER (dlg->schemes_list));
 
+	if (scheme == NULL)
+	{
+		return;
+	}
+
 	if (!uninstall_style_scheme (scheme))
 	{
 		tepl_utils_show_warning_dialog (GTK_WINDOW (dlg),
@@ -880,8 +885,11 @@ setup_font_colors_page_style_scheme_section (GeditPreferencesDialog *dlg)
 			  G_CALLBACK (uninstall_scheme_clicked),
 			  dlg);
 
-	gtk_source_style_scheme_chooser_set_style_scheme (GTK_SOURCE_STYLE_SCHEME_CHOOSER (dlg->schemes_list),
-	                                                  scheme);
+	if (scheme != NULL)
+	{
+		gtk_source_style_scheme_chooser_set_style_scheme (GTK_SOURCE_STYLE_SCHEME_CHOOSER (dlg->schemes_list),
+								  scheme);
+	}
 
 	/* Set initial widget sensitivity */
 	set_buttons_sensisitivity_according_to_scheme (dlg, scheme);
