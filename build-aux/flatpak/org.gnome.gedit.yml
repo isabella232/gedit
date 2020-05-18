@@ -59,13 +59,6 @@ modules:
         url: https://download.gnome.org/sources/gspell/1.8/gspell-1.8.3.tar.xz
         sha256: 5ae514dd0216be069176accf6d0049d6a01cfa6a50df4bc06be85f7080b62de8
 
-  - name: uchardet
-    buildsystem: cmake-ninja
-    sources:
-      - type: archive
-        url: https://www.freedesktop.org/software/uchardet/releases/uchardet-0.0.6.tar.xz
-        sha256: 8351328cdfbcb2432e63938721dd781eb8c11ebc56e3a89d0f84576b96002c61
-
   - name: amtk
     sources:
       - type: archive
