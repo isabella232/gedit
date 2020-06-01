@@ -44,6 +44,7 @@ parts:
   amtk:
     source: https://gitlab.gnome.org/GNOME/amtk.git
     source-type: git
+    source-tag: 5.0.2
     plugin: autotools
     configflags:
       - --prefix=/usr
@@ -55,9 +56,11 @@ parts:
     after: [amtk, gtksourceview]
     source: https://gitlab.gnome.org/GNOME/tepl.git
     source-type: git
-    plugin: meson
-    meson-parameters:
-      - --prefix=/usr
+    source-branch: tepl-4-4
+    plugin: autotools
+    configflags:
+       - --prefix=/usr
+       - --enable-introspection=no
     organize:
       snap/gedit/current/usr: usr
     build-packages:
