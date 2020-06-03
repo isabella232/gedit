@@ -65,7 +65,6 @@ struct _GeditFileChooserDialogInterface
 					 gboolean                overwrite_confirmation);
 
 	void	(*show)			(GeditFileChooserDialog *dialog);
-	void	(*hide)			(GeditFileChooserDialog *dialog);
 
 	void    (*destroy)		(GeditFileChooserDialog *dialog);
 
@@ -131,7 +130,6 @@ void		 gedit_file_chooser_dialog_set_do_overwrite_confirmation (
 								 gboolean                  overwrite_confirmation);
 
 void		 gedit_file_chooser_dialog_show			(GeditFileChooserDialog   *dialog);
-void		 gedit_file_chooser_dialog_hide			(GeditFileChooserDialog   *dialog);
 
 void		 gedit_file_chooser_dialog_set_modal		(GeditFileChooserDialog   *dialog,
 								 gboolean                  is_modal);

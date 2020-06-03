@@ -760,19 +760,6 @@ chooser_show (GeditFileChooserDialog *dialog)
 }
 
 static void
-chooser_hide (GeditFileChooserDialog *dialog)
-{
-	GeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
-
-	if (!dialog_osx->is_running || dialog_osx->panel == NULL)
-	{
-		return;
-	}
-
-	[dialog_osx->panel orderOut:nil];
-}
-
-static void
 chooser_destroy (GeditFileChooserDialog *dialog)
 {
 	GeditFileChooserDialogOSX *dialog_osx = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog);
@@ -826,7 +813,6 @@ gedit_file_chooser_dialog_osx_chooser_init (gpointer g_iface,
 	iface->get_files = chooser_get_files;
 	iface->set_do_overwrite_confirmation = chooser_set_do_overwrite_confirmation;
 	iface->show = chooser_show;
-	iface->hide = chooser_hide;
 	iface->destroy = chooser_destroy;
 	iface->set_modal = chooser_set_modal;
 }
