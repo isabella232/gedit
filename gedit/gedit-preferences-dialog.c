@@ -23,22 +23,14 @@
 
 #include "gedit-preferences-dialog.h"
 
-#include <stdio.h>
-#include <string.h>
-#include <errno.h>
-
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <tepl/tepl.h>
 #include <libpeas-gtk/peas-gtk.h>
 
-#include "gedit-utils.h"
 #include "gedit-debug.h"
-#include "gedit-document.h"
 #include "gedit-dirs.h"
 #include "gedit-settings.h"
-#include "gedit-utils.h"
-#include "gedit-file-chooser-dialog.h"
 
 /*
  * gedit-preferences dialog is a singleton since we don't
@@ -92,9 +84,8 @@ struct _GeditPreferencesDialog
 	GtkWidget	*install_scheme_button;
 	GtkWidget	*uninstall_scheme_button;
 	GtkWidget	*schemes_toolbar;
-
-	GeditFileChooserDialog *
-			 install_scheme_file_schooser;
+	GtkFileChooserNative *
+			 install_scheme_file_chooser;
 
 	/* Tabs */
 	GtkWidget	*tabs_width_spinbutton;
@@ -662,7 +653,7 @@ uninstall_style_scheme (GtkSourceStyleScheme *scheme)
 }
 
 static void
-add_scheme_chooser_response_cb (GeditFileChooserDialog *chooser,
+add_scheme_chooser_response_cb (GtkFileChooserNative   *chooser,
 				gint                    response_id,
 				GeditPreferencesDialog *dialog)
 {
@@ -674,17 +665,14 @@ add_scheme_chooser_response_cb (GeditFileChooserDialog *chooser,
 
 	if (response_id != GTK_RESPONSE_ACCEPT)
 	{
-		gedit_file_chooser_dialog_hide (chooser);
 		return;
 	}
 
-	file = gedit_file_chooser_dialog_get_file (chooser);
+	file = gtk_file_chooser_get_file (GTK_FILE_CHOOSER (chooser));
 	if (file == NULL)
 	{
 		return;
 	}
-
-	gedit_file_chooser_dialog_hide (chooser);
 
 	scheme_id = install_style_scheme (file, &error);
 	g_object_unref (file);
@@ -714,43 +702,45 @@ add_scheme_chooser_response_cb (GeditFileChooserDialog *chooser,
 
 static void
 install_scheme_clicked (GtkButton              *button,
-			GeditPreferencesDialog *dlg)
+			GeditPreferencesDialog *dialog)
 {
-	GeditFileChooserDialog *chooser;
+	GtkFileChooserNative *chooser;
+	GtkFileFilter *scheme_filter;
+	GtkFileFilter *all_filter;
 
-	if (dlg->install_scheme_file_schooser != NULL)
+	if (dialog->install_scheme_file_chooser != NULL)
 	{
-		gedit_file_chooser_dialog_show (dlg->install_scheme_file_schooser);
+		gtk_native_dialog_show (GTK_NATIVE_DIALOG (dialog->install_scheme_file_chooser));
 		return;
 	}
 
-	chooser = gedit_file_chooser_dialog_create (_("Add Scheme"),
-						    GTK_WINDOW (dlg),
-						    GEDIT_FILE_CHOOSER_OPEN,
-						    NULL,
-						    _("_Cancel"), GTK_RESPONSE_CANCEL,
-						    _("A_dd Scheme"), GTK_RESPONSE_ACCEPT);
+	chooser = gtk_file_chooser_native_new (_("Add Color Scheme"),
+					       GTK_WINDOW (dialog),
+					       GTK_FILE_CHOOSER_ACTION_OPEN,
+					       _("_Add Scheme"),
+					       _("_Cancel"));
 
 	/* Filters */
-	gedit_file_chooser_dialog_add_pattern_filter (chooser,
-	                                              _("Color Scheme Files"),
-	                                              "*.xml");
+	scheme_filter = gtk_file_filter_new ();
+	gtk_file_filter_set_name (scheme_filter, _("Color Scheme Files"));
+	gtk_file_filter_add_pattern (scheme_filter, "*.xml");
+	gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), scheme_filter);
 
-	gedit_file_chooser_dialog_add_pattern_filter (chooser,
-	                                              _("All Files"),
-	                                              "*");
+	all_filter = gtk_file_filter_new ();
+	gtk_file_filter_set_name (all_filter, _("All Files"));
+	gtk_file_filter_add_pattern (all_filter, "*");
+	gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), all_filter);
+
+	gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (chooser), scheme_filter);
 
 	g_signal_connect (chooser,
 			  "response",
 			  G_CALLBACK (add_scheme_chooser_response_cb),
-			  dlg);
+			  dialog);
 
-	dlg->install_scheme_file_schooser = chooser;
+	g_set_weak_pointer (&dialog->install_scheme_file_chooser, chooser);
 
-	g_object_add_weak_pointer (G_OBJECT (chooser),
-				   (gpointer) &dlg->install_scheme_file_schooser);
-
-	gedit_file_chooser_dialog_show (chooser);
+	gtk_native_dialog_show (GTK_NATIVE_DIALOG (chooser));
 }
 
 static void
