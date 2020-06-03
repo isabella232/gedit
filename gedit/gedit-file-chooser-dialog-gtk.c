@@ -225,26 +225,6 @@ chooser_get_window (GeditFileChooserDialog *dialog)
 }
 
 static void
-chooser_add_pattern_filter (GeditFileChooserDialog *dialog,
-                            const gchar            *name,
-                            const gchar            *pattern)
-{
-	GtkFileFilter *filter;
-
-	filter = gtk_file_filter_new ();
-
-	gtk_file_filter_set_name (filter, name);
-	gtk_file_filter_add_pattern (filter, pattern);
-
-	gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
-
-	if (gtk_file_chooser_get_filter (GTK_FILE_CHOOSER (dialog)) == NULL)
-	{
-		gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (dialog), filter);
-	}
-}
-
-static void
 gedit_file_chooser_dialog_gtk_chooser_init (gpointer g_iface,
                                             gpointer iface_data)
 {
@@ -266,7 +246,6 @@ gedit_file_chooser_dialog_gtk_chooser_init (gpointer g_iface,
 	iface->destroy = chooser_destroy;
 	iface->set_modal = chooser_set_modal;
 	iface->get_window = chooser_get_window;
-	iface->add_pattern_filter = chooser_add_pattern_filter;
 }
 
 static void

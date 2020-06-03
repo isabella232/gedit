@@ -73,10 +73,6 @@ struct _GeditFileChooserDialogInterface
 
 	GtkWindow *
 		(*get_window)		(GeditFileChooserDialog *dialog);
-
-	void	(*add_pattern_filter)	(GeditFileChooserDialog *dilaog,
-					 const gchar            *name,
-					 const gchar            *pattern);
 };
 
 typedef enum
@@ -135,10 +131,6 @@ void		 gedit_file_chooser_dialog_set_modal		(GeditFileChooserDialog   *dialog,
 								 gboolean                  is_modal);
 
 GtkWindow	*gedit_file_chooser_dialog_get_window		(GeditFileChooserDialog   *dialog);
-
-void		 gedit_file_chooser_dialog_add_pattern_filter	(GeditFileChooserDialog   *dialog,
-								 const gchar              *name,
-								 const gchar              *pattern);
 
 G_END_DECLS
 
