@@ -500,180 +500,134 @@ style_scheme_notify_cb (GtkSourceStyleSchemeChooser *chooser,
 	update_style_scheme_buttons_sensisitivity (dlg);
 }
 
-/*
- * file_copy:
- * @name: a pointer to a %NULL-terminated string, that names
- * the file to be copied, in the GLib file name encoding
- * @dest_name: a pointer to a %NULL-terminated string, that is the
- * name for the destination file, in the GLib file name encoding
- * @error: return location for a #GError, or %NULL
- *
- * Copies file @name to @dest_name.
- *
- * If the call was successful, it returns %TRUE. If the call was not
- * successful, it returns %FALSE and sets @error. The error domain
- * is #G_FILE_ERROR. Possible error
- * codes are those in the #GFileError enumeration.
- *
- * Return value: %TRUE on success, %FALSE otherwise.
- */
-static gboolean
-file_copy (const gchar  *name,
-	   const gchar  *dest_name,
-	   GError      **error)
+static GFile *
+get_user_style_scheme_destination_file (GFile *src_file)
 {
-	gchar *contents;
-	gsize length;
-	gchar *dest_dir;
+	gchar *basename;
+	const gchar *styles_dir;
+	GFile *dest_file;
 
-	/* FIXME - Paolo (Aug. 13, 2007):
-	 * Since the style scheme files are relatively small, we can implement
-	 * file copy getting all the content of the source file in a buffer and
-	 * then write the content to the destination file. In this way we
-	 * can use the g_file_get_contents and g_file_set_contents and avoid to
-	 * write custom code to copy the file (with sane error management).
-	 * If needed we can improve this code later. */
+	basename = g_file_get_basename (src_file);
+	g_return_val_if_fail (basename != NULL, NULL);
 
-	g_return_val_if_fail (name != NULL, FALSE);
-	g_return_val_if_fail (dest_name != NULL, FALSE);
-	g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+	styles_dir = gedit_dirs_get_user_styles_dir ();
+	dest_file = g_file_new_build_filename (styles_dir, basename, NULL);
 
-	/* Note: we allow to copy a file to itself since this is not a problem
-	 * in our use case */
-
-	/* Ensure the destination directory exists */
-	dest_dir = g_path_get_dirname (dest_name);
-
-	errno = 0;
-	if (g_mkdir_with_parents (dest_dir, 0755) != 0)
-	{
-		gint save_errno = errno;
-		gchar *display_filename = g_filename_display_name (dest_dir);
-
-		g_set_error (error,
-			     G_FILE_ERROR,
-			     g_file_error_from_errno (save_errno),
-			     _("Directory “%s” could not be created: g_mkdir_with_parents() failed: %s"),
-			     display_filename,
-			     g_strerror (save_errno));
-
-		g_free (dest_dir);
-		g_free (display_filename);
-
-		return FALSE;
-	}
-
-	g_free (dest_dir);
-
-	if (!g_file_get_contents (name, &contents, &length, error))
-		return FALSE;
-
-	if (!g_file_set_contents (dest_name, contents, length, error))
-	{
-		g_free (contents);
-		return FALSE;
-	}
-
-	g_free (contents);
-
-	return TRUE;
+	g_free (basename);
+	return dest_file;
 }
 
-/*
- * install_style_scheme:
- * @fname: the file name of the style scheme to be installed
- *
- * Install a new user scheme.
- * This function copies @fname in #GEDIT_STYLES_DIR and ask the style manager to
- * recompute the list of available style schemes. It then checks if a style
- * scheme with the right file name exists.
- *
- * If the call was succesful, it returns the id of the installed scheme
- * otherwise %NULL.
- *
- * Return value: the id of the installed scheme, %NULL otherwise.
+/* Returns: whether @src_file has been correctly copied to @dest_file. */
+static gboolean
+copy_file (GFile   *src_file,
+	   GFile   *dest_file,
+	   GError **error)
+{
+	if (g_file_equal (src_file, dest_file))
+	{
+		return FALSE;
+	}
+
+	if (!tepl_utils_create_parent_directories (dest_file, NULL, error))
+	{
+		return FALSE;
+	}
+
+	return g_file_copy (src_file,
+			    dest_file,
+			    G_FILE_COPY_OVERWRITE | G_FILE_COPY_TARGET_DEFAULT_PERMS,
+			    NULL, /* cancellable */
+			    NULL, NULL, /* progress callback */
+			    error);
+}
+
+/* Get the style scheme ID of @user_style_scheme_file if it has been correctly
+ * installed and @user_style_scheme_file is a valid style scheme file.
  */
-static GtkSourceStyleScheme *
-install_style_scheme (const gchar *fname)
+static const gchar *
+get_style_scheme_id_after_installing_user_style_scheme (GFile *user_style_scheme_file)
 {
 	GtkSourceStyleSchemeManager *manager;
-	gchar *new_file_name = NULL;
-	gchar *dirname;
-	const gchar *styles_dir;
-	GError *error = NULL;
-	gboolean copied = FALSE;
-	const gchar * const *ids;
-
-	g_return_val_if_fail (fname != NULL, NULL);
+	const gchar * const *scheme_ids;
+	gint i;
 
 	manager = gtk_source_style_scheme_manager_get_default ();
-
-	dirname = g_path_get_dirname (fname);
-	styles_dir = gedit_dirs_get_user_styles_dir ();
-
-	if (strcmp (dirname, styles_dir) != 0)
-	{
-		gchar *basename;
-
-		basename = g_path_get_basename (fname);
-		new_file_name = g_build_filename (styles_dir, basename, NULL);
-		g_free (basename);
-
-		/* Copy the style scheme file into GEDIT_STYLES_DIR */
-		if (!file_copy (fname, new_file_name, &error))
-		{
-			g_free (new_file_name);
-			g_free (dirname);
-
-			g_message ("Cannot install style scheme:\n%s",
-				   error->message);
-
-			g_error_free (error);
-
-			return NULL;
-		}
-
-		copied = TRUE;
-	}
-	else
-	{
-		new_file_name = g_strdup (fname);
-	}
-
-	g_free (dirname);
-
-	/* Reload the available style schemes */
 	gtk_source_style_scheme_manager_force_rescan (manager);
 
-	/* Check the new style scheme has been actually installed */
-	ids = gtk_source_style_scheme_manager_get_scheme_ids (manager);
+	scheme_ids = gtk_source_style_scheme_manager_get_scheme_ids (manager);
 
-	while (*ids != NULL)
+	for (i = 0; scheme_ids != NULL && scheme_ids[i] != NULL; i++)
 	{
+		const gchar *cur_scheme_id = scheme_ids[i];
 		GtkSourceStyleScheme *scheme;
 		const gchar *filename;
+		GFile *scheme_file;
 
-		scheme = gtk_source_style_scheme_manager_get_scheme (manager, *ids);
-
+		scheme = gtk_source_style_scheme_manager_get_scheme (manager, cur_scheme_id);
 		filename = gtk_source_style_scheme_get_filename (scheme);
-
-		if (filename && (strcmp (filename, new_file_name) == 0))
+		if (filename == NULL)
 		{
-			/* The style scheme has been correctly installed */
-			g_free (new_file_name);
-
-			return scheme;
+			continue;
 		}
-		++ids;
+
+		scheme_file = g_file_new_for_path (filename);
+		if (g_file_equal (scheme_file, user_style_scheme_file))
+		{
+			g_object_unref (scheme_file);
+			return cur_scheme_id;
+		}
+
+		g_object_unref (scheme_file);
 	}
 
-	/* The style scheme has not been correctly installed */
-	if (copied)
-		g_unlink (new_file_name);
-
-	g_free (new_file_name);
-
 	return NULL;
+}
+
+/* Returns: (nullable): the installed style scheme ID, or %NULL on failure. */
+static const gchar *
+install_style_scheme (GFile   *src_file,
+		      GError **error)
+{
+	GFile *dest_file;
+	gboolean copied;
+	const gchar *installed_style_scheme_id = NULL;
+	GError *my_error = NULL;
+
+	g_return_val_if_fail (G_IS_FILE (src_file), NULL);
+	g_return_val_if_fail (error == NULL || *error == NULL, NULL);
+
+	dest_file = get_user_style_scheme_destination_file (src_file);
+	g_return_val_if_fail (dest_file != NULL, NULL);
+
+	copied = copy_file (src_file, dest_file, &my_error);
+	if (my_error != NULL)
+	{
+		g_propagate_error (error, my_error);
+		g_object_unref (dest_file);
+		return NULL;
+	}
+
+	installed_style_scheme_id = get_style_scheme_id_after_installing_user_style_scheme (dest_file);
+
+	if (installed_style_scheme_id == NULL && copied)
+	{
+		/* The style scheme has not been correctly installed. */
+		g_file_delete (dest_file, NULL, &my_error);
+		if (my_error != NULL)
+		{
+			gchar *dest_file_parse_name = g_file_get_parse_name (dest_file);
+
+			g_warning ("Failed to delete the file “%s”: %s",
+				   dest_file_parse_name,
+				   my_error->message);
+
+			g_free (dest_file_parse_name);
+			g_clear_error (&my_error);
+		}
+	}
+
+	g_object_unref (dest_file);
+	return installed_style_scheme_id;
 }
 
 /*
@@ -709,49 +663,53 @@ uninstall_style_scheme (GtkSourceStyleScheme *scheme)
 
 static void
 add_scheme_chooser_response_cb (GeditFileChooserDialog *chooser,
-				gint                    res_id,
-				GeditPreferencesDialog *dlg)
+				gint                    response_id,
+				GeditPreferencesDialog *dialog)
 {
 	GFile *file;
-	gchar *filename;
-	GtkSourceStyleScheme *scheme;
+	const gchar *scheme_id;
+	GeditSettings *settings;
+	GSettings *editor_settings;
+	GError *error = NULL;
 
-	if (res_id != GTK_RESPONSE_ACCEPT)
+	if (response_id != GTK_RESPONSE_ACCEPT)
 	{
 		gedit_file_chooser_dialog_hide (chooser);
 		return;
 	}
 
 	file = gedit_file_chooser_dialog_get_file (chooser);
-
 	if (file == NULL)
-	{
-		return;
-	}
-
-	filename = g_file_get_path (file);
-	g_object_unref (file);
-
-	if (filename == NULL)
 	{
 		return;
 	}
 
 	gedit_file_chooser_dialog_hide (chooser);
 
-	scheme = install_style_scheme (filename);
-	g_free (filename);
+	scheme_id = install_style_scheme (file, &error);
+	g_object_unref (file);
 
-	if (scheme == NULL)
+	if (scheme_id == NULL)
 	{
-		tepl_utils_show_warning_dialog (GTK_WINDOW (dlg),
-						_("The selected color scheme cannot be installed."));
+		if (error != NULL)
+		{
+			tepl_utils_show_warning_dialog (GTK_WINDOW (dialog),
+							_("The selected color scheme cannot be installed: %s"),
+							error->message);
+		}
+		else
+		{
+			tepl_utils_show_warning_dialog (GTK_WINDOW (dialog),
+							_("The selected color scheme cannot be installed."));
+		}
 
+		g_clear_error (&error);
 		return;
 	}
 
-	g_settings_set_string (dlg->editor, GEDIT_SETTINGS_SCHEME,
-	                       gtk_source_style_scheme_get_id (scheme));
+	settings = _gedit_settings_get_singleton ();
+	editor_settings = _gedit_settings_peek_editor_settings (settings);
+	g_settings_set_string (editor_settings, GEDIT_SETTINGS_SCHEME, scheme_id);
 }
 
 static void
