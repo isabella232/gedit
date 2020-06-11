@@ -238,8 +238,7 @@ gedit_file_chooser_dialog_gtk_class_init (GeditFileChooserDialogGtkClass *klass)
 }
 
 static void
-create_option_menu (GeditFileChooserDialogGtk *dialog,
-                    GeditFileChooserFlags      flags)
+create_option_menu (GeditFileChooserDialogGtk *dialog)
 {
 	GtkWidget *label;
 	GtkWidget *menu;
@@ -248,7 +247,7 @@ create_option_menu (GeditFileChooserDialogGtk *dialog,
 	label = gtk_label_new_with_mnemonic (_("C_haracter Encoding:"));
 	gtk_widget_set_halign (label, GTK_ALIGN_START);
 
-	save_mode = (flags & GEDIT_FILE_CHOOSER_FLAG_SAVE) != 0;
+	save_mode = TRUE;
 	menu = gedit_encodings_combo_box_new (save_mode);
 
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), menu);
@@ -360,18 +359,13 @@ create_newline_combo (GeditFileChooserDialogGtk *dialog)
 }
 
 static void
-create_extra_widget (GeditFileChooserDialogGtk *dialog,
-                     GeditFileChooserFlags      flags)
+create_extra_widget (GeditFileChooserDialogGtk *dialog)
 {
 	dialog->extra_widget = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
 	gtk_widget_show (dialog->extra_widget);
 
-	create_option_menu (dialog, flags);
-
-	if ((flags & GEDIT_FILE_CHOOSER_FLAG_SAVE) != 0)
-	{
-		create_newline_combo (dialog);
-	}
+	create_option_menu (dialog);
+	create_newline_combo (dialog);
 
 	gtk_file_chooser_set_extra_widget (GTK_FILE_CHOOSER (dialog), dialog->extra_widget);
 }
@@ -412,35 +406,21 @@ gedit_file_chooser_dialog_gtk_init (GeditFileChooserDialogGtk *dialog)
 }
 
 GeditFileChooserDialog *
-gedit_file_chooser_dialog_gtk_create (const gchar           *title,
-				      GtkWindow             *parent,
-				      GeditFileChooserFlags  flags,
-				      const gchar           *accept_label,
-				      const gchar           *cancel_label)
+gedit_file_chooser_dialog_gtk_create (const gchar *title,
+				      GtkWindow   *parent,
+				      const gchar *accept_label,
+				      const gchar *cancel_label)
 {
 	GeditFileChooserDialogGtk *result;
-	GtkFileChooserAction action;
-	gboolean select_multiple;
-
-	if ((flags & GEDIT_FILE_CHOOSER_FLAG_SAVE) != 0)
-	{
-		action = GTK_FILE_CHOOSER_ACTION_SAVE;
-		select_multiple = FALSE;
-	}
-	else
-	{
-		action = GTK_FILE_CHOOSER_ACTION_OPEN;
-		select_multiple = TRUE;
-	}
 
 	result = g_object_new (GEDIT_TYPE_FILE_CHOOSER_DIALOG_GTK,
 			       "title", title,
 			       "local-only", FALSE,
-			       "action", action,
-			       "select-multiple", select_multiple,
+			       "action", GTK_FILE_CHOOSER_ACTION_SAVE,
+			       "select-multiple", FALSE,
 			       NULL);
 
-	create_extra_widget (result, flags);
+	create_extra_widget (result);
 
 	g_signal_connect (result,
 			  "notify::action",

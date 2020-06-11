@@ -74,16 +74,9 @@ struct _GeditFileChooserDialogInterface
 		(*get_window)		(GeditFileChooserDialog *dialog);
 };
 
-typedef enum
-{
-	GEDIT_FILE_CHOOSER_FLAG_SAVE = 1 << 0,
-	GEDIT_FILE_CHOOSER_FLAG_OPEN = 1 << 1
-} GeditFileChooserFlags;
-
 GeditFileChooserDialog *
 		gedit_file_chooser_dialog_create		(const gchar              *title,
 								 GtkWindow                *parent,
-								 GeditFileChooserFlags     flags,
 								 const gchar              *accept_label,
 								 const gchar              *cancel_label);
 

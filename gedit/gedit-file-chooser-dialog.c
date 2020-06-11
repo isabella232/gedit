@@ -62,15 +62,13 @@ gedit_file_chooser_dialog_default_init (GeditFileChooserDialogInterface *iface)
 }
 
 GeditFileChooserDialog *
-gedit_file_chooser_dialog_create (const gchar           *title,
-				  GtkWindow             *parent,
-				  GeditFileChooserFlags  flags,
-				  const gchar           *accept_label,
-				  const gchar           *cancel_label)
+gedit_file_chooser_dialog_create (const gchar *title,
+				  GtkWindow   *parent,
+				  const gchar *accept_label,
+				  const gchar *cancel_label)
 {
 	return gedit_file_chooser_dialog_gtk_create (title,
 	                                             parent,
-	                                             flags,
 	                                             accept_label,
 	                                             cancel_label);
 }
