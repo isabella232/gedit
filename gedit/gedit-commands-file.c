@@ -27,8 +27,6 @@
 #include "gedit-commands-private.h"
 
 #include <glib/gi18n.h>
-#include <gio/gio.h>
-#include <gtk/gtk.h>
 #include <tepl/tepl.h>
 
 #include "gedit-app.h"
@@ -54,10 +52,6 @@
 #define GEDIT_NOTEBOOK_TO_CLOSE "gedit-notebook-to-close"
 #define GEDIT_IS_QUITTING "gedit-is-quitting"
 #define GEDIT_IS_QUITTING_ALL "gedit-is-quitting-all"
-
-static void tab_state_changed_while_saving (GeditTab    *tab,
-					    GParamSpec  *pspec,
-					    GeditWindow *window);
 
 void
 _gedit_cmd_file_new (GSimpleAction *action,
