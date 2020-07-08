@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
-"POT-Creation-Date: 2019-02-09 15:15+0000\n"
-"PO-Revision-Date: 2019-02-13 18:03+0100\n"
+"POT-Creation-Date: 2020-04-04 08:46+0000\n"
+"PO-Revision-Date: 2020-07-08 16:38+0200\n"
 "Last-Translator: Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>\n"
 "Language-Team: Gnome Romanian Translation Team <gnomero-list@lists."
 "sourceforge.net>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n"
 "%100<=19) ? 1 : 2);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.3.1\n"
 "X-Project-Style: gnome\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
@@ -34,7 +34,7 @@ msgid "Change the text and background colors in gedit."
 msgstr "Schimbarea textului și a culorilor de fundal în gedit."
 
 #. (itstool) path: credit/name
-#: C/gedit-change-color-scheme.page:13 C/gedit-change-default-font.page:10
+#: C/gedit-change-color-scheme.page:14 C/gedit-change-default-font.page:10
 #: C/gedit-close-file.page:11 C/gedit-create-new-file.page:12
 #: C/gedit-edit-as-root.page:10 C/gedit-files-basic.page:10
 #: C/gedit-full-screen.page:13 C/gedit-open-files-from-sidepane.page:11
@@ -55,29 +55,29 @@ msgid "Jim Campbell"
 msgstr "Jim Campbell"
 
 #. (itstool) path: credit/name
-#: C/gedit-change-color-scheme.page:17
+#: C/gedit-change-color-scheme.page:18
 msgid "Jana Svarova"
 msgstr "Jana Svarova"
 
 #. (itstool) path: credit/years
-#: C/gedit-change-color-scheme.page:19 C/gedit-change-color-scheme.page:24
+#: C/gedit-change-color-scheme.page:20 C/gedit-change-color-scheme.page:25
 #: C/gedit-shortcut-keys.page:41
 msgid "2015"
 msgstr "2015"
 
 #. (itstool) path: credit/name
-#: C/gedit-change-color-scheme.page:22 C/gedit-replace.page:26
+#: C/gedit-change-color-scheme.page:23 C/gedit-replace.page:26
 #: C/gedit-shortcut-keys.page:39
 msgid "Ekaterina Gerasimova"
 msgstr "Ekaterina Gerasimova"
 
 #. (itstool) path: page/title
-#: C/gedit-change-color-scheme.page:30
+#: C/gedit-change-color-scheme.page:31
 msgid "Change the color scheme"
 msgstr "Modificarea schemei de culori"
 
 #. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:32
+#: C/gedit-change-color-scheme.page:33
 msgid ""
 "<app>gedit</app> includes several different color schemes, allowing you to "
 "change the appearance of the main text window."
@@ -86,38 +86,38 @@ msgstr ""
 "modificați aspectul ferestrei principale."
 
 #. (itstool) path: steps/title
-#: C/gedit-change-color-scheme.page:36
+#: C/gedit-change-color-scheme.page:37
 msgid "To change the color scheme:"
 msgstr "Pentru a modifica schema de culori:"
 
 #. (itstool) path: item/p
-#: C/gedit-change-color-scheme.page:38
+#: C/gedit-change-color-scheme.page:39
 msgid ""
-"Open the <gui style=\"menu\">gedit</gui> menu from the top bar, then select "
+"Press the menu button in the top-right corner of the window and select "
 "<guiseq><gui style=\"menuitem\">Preferences</gui><gui>Font &amp; Colors</"
 "gui></guiseq>."
 msgstr ""
-"Deschideți meniul <gui style=\"menu\">gedit</gui> din bara de sus, apoi "
-"selectați <guiseq><gui style=\"menuitem\">Preferințe</gui><gui>Font și "
-"culori</gui></guiseq>."
+"Apăsați butonul meniu din bara de sus a ferestrei, apoi selectați "
+"<guiseq><gui style=\"menuitem\">Preferințe</gui><gui>Font și culori</gui></"
+"guiseq>."
 
 #. (itstool) path: item/p
-#: C/gedit-change-color-scheme.page:43
+#: C/gedit-change-color-scheme.page:44
 msgid "Choose your desired color scheme."
 msgstr "Alegeți schema de culori dorită."
 
 #. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:47
+#: C/gedit-change-color-scheme.page:48
 msgid "The new color scheme will be applied immediately."
 msgstr "Noua schemă de culori va fi aplicată imediat."
 
 #. (itstool) path: section/title
-#: C/gedit-change-color-scheme.page:50
+#: C/gedit-change-color-scheme.page:51
 msgid "Use a Custom Color Scheme"
 msgstr "Utilizarea unei scheme personalizate de culori"
 
 #. (itstool) path: section/p
-#: C/gedit-change-color-scheme.page:56
+#: C/gedit-change-color-scheme.page:57
 msgid ""
 "You can also use color schemes that have been created by others, or create "
 "and use your own color schemes."
@@ -126,7 +126,7 @@ msgstr ""
 "creați și să folosiți propria schemă de culori."
 
 #. (itstool) path: section/p
-#: C/gedit-change-color-scheme.page:59
+#: C/gedit-change-color-scheme.page:60
 msgid ""
 "Instructions on how to install custom color schemes, as well as examples of "
 "color schemes that you can download and use, are available on the <link href="
@@ -1414,11 +1414,11 @@ msgstr "Autoîncadrarea textului"
 #: C/gedit-plugins-modelines.page:59
 msgid ""
 "For more information on <app>Emacs</app> modelines, visit the <link href="
-"\"http://www.gnu.org/software/emacs/manual/emacs.html\">GNU Emacs Manual</"
+"\"https://www.gnu.org/software/emacs/manual/emacs.html\">GNU Emacs Manual</"
 "link>."
 msgstr ""
 "Pentru mai multe informații despre liniile de mod <app>Emacs</app>, "
-"consultați <link href=\"http://www.gnu.org/software/emacs/manual/emacs.html"
+"consultați <link href=\"https://www.gnu.org/software/emacs/manual/emacs.html"
 "\">Manualul GNU Emacs</link>."
 
 #. (itstool) path: section/title
@@ -1466,10 +1466,10 @@ msgstr "încadrare cuvintelor pe coloană"
 #: C/gedit-plugins-modelines.page:79
 msgid ""
 "For more information about <app>Kate</app> modelines, visit the <link href="
-"\"http://kate-editor.org/\">Kate website</link>."
+"\"https://kate-editor.org/\">Kate website</link>."
 msgstr ""
-"Pentru mai multe informații despre liniile de mod <app>Kate</app>, vizitați "
-"<link href=\"http://kate-editor.org/\">situl Kate</link>."
+"Pentru mai multe informații despre liniile de mod <app>Kate</app>, vizitați  "
+"<link href=\"https://kate-editor.org/\">situl Kate</link>."
 
 #. (itstool) path: section/title
 #: C/gedit-plugins-modelines.page:84
@@ -1516,10 +1516,10 @@ msgstr "lățime text"
 #: C/gedit-plugins-modelines.page:97
 msgid ""
 "For more information on <app>Vim</app> modelines, visit the <link href="
-"\"http://www.vim.org/\">Vim website</link>."
+"\"https://www.vim.org/\">Vim website</link>."
 msgstr ""
 "Pentru mai multe informații despre liniile de mod <app>Vim</app>, vizitați "
-"<link href=\"http://www.vim.org/\">situl Vim</link>."
+"<link href=\"https://www.vim.org/\">situl Vim</link>."
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-pyconsole.page:14
@@ -3021,17 +3021,17 @@ msgstr "Tab-uri legate de taste pentru scurtături"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:57 C/gedit-shortcut-keys.page:113
-#: C/gedit-shortcut-keys.page:167 C/gedit-shortcut-keys.page:261
-#: C/gedit-shortcut-keys.page:281 C/gedit-shortcut-keys.page:318
-#: C/gedit-shortcut-keys.page:347
+#: C/gedit-shortcut-keys.page:167 C/gedit-shortcut-keys.page:253
+#: C/gedit-shortcut-keys.page:273 C/gedit-shortcut-keys.page:325
+#: C/gedit-shortcut-keys.page:358 C/gedit-shortcut-keys.page:387
 msgid "Action"
 msgstr "Acțiune"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:58 C/gedit-shortcut-keys.page:114
-#: C/gedit-shortcut-keys.page:168 C/gedit-shortcut-keys.page:262
-#: C/gedit-shortcut-keys.page:282 C/gedit-shortcut-keys.page:319
-#: C/gedit-shortcut-keys.page:348
+#: C/gedit-shortcut-keys.page:168 C/gedit-shortcut-keys.page:254
+#: C/gedit-shortcut-keys.page:274 C/gedit-shortcut-keys.page:326
+#: C/gedit-shortcut-keys.page:359 C/gedit-shortcut-keys.page:388
 msgid "Keyboard shortcut"
 msgstr "Scurtătură de tastatură"
 
@@ -3250,351 +3250,426 @@ msgstr "Taste pentru scurtături pentru editarea fișierelor"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:173
-msgid "Move to the beginning of the current line"
-msgstr "Mută cursorul la începutul liniei curente"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:174
-msgid "<key>Home</key>"
-msgstr "<key>Home</key>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:177
-msgid "Move to the end of the current line"
-msgstr "Mută cursorul la sfârșitul liniei curente"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:178
-msgid "<key>End</key>"
-msgstr "<key>End</key>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:181
-msgid "Move to the beginning of the document"
-msgstr "Mută cursorul la începutul documentului"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:182
-msgid "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:185
-msgid "Move to the end of the document"
-msgstr "Mută cursorul la sfârșitul documentului"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:186
-msgid "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:189
 msgid "Move the selected word right one word"
 msgstr "Mută cuvântul selectat la dreapta cu un cuvânt"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:190
+#: C/gedit-shortcut-keys.page:174
 msgid "<keyseq><key>Alt</key><key>Right Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Right Arrow</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:193
+#: C/gedit-shortcut-keys.page:177
 msgid "Move the selected word left one word"
 msgstr "Mută cuvântul selectat la stânga cu un cuvânt"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:194
+#: C/gedit-shortcut-keys.page:178
 msgid "<keyseq><key>Alt</key><key>Left Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Left Arrow</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:197
+#: C/gedit-shortcut-keys.page:181
 msgid "Undo the last action"
 msgstr "Anulați ultima acțiune"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:198
+#: C/gedit-shortcut-keys.page:182
 msgid "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:201
+#: C/gedit-shortcut-keys.page:185
 msgid "Redo the last undone action"
 msgstr "Refaceți ultima acțiune anulată"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:202
+#: C/gedit-shortcut-keys.page:186
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:206
+#: C/gedit-shortcut-keys.page:190
 msgid "Cut the selected text or region and place it on the clipboard"
 msgstr "Tăiați textul sau regiunea selectată și plasați-o pe clipboard"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:208
+#: C/gedit-shortcut-keys.page:192
 msgid "<keyseq><key>Ctrl</key><key>X</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>X</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:211
+#: C/gedit-shortcut-keys.page:195
 msgid "Copy the selected text or region onto the clipboard"
 msgstr "Copiați textul sau regiunea selectată pe clipboard"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:212
+#: C/gedit-shortcut-keys.page:196
 msgid "<keyseq><key>Ctrl</key><key>C</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>C</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:215
+#: C/gedit-shortcut-keys.page:199
 msgid "Paste the contents of the clipboard"
 msgstr "Lipiți conținutul din clipboard"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:216
+#: C/gedit-shortcut-keys.page:200
 msgid "<keyseq><key>Ctrl</key><key>V</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>V</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:219
+#: C/gedit-shortcut-keys.page:203
 msgid "Select all text in the file"
 msgstr "Selectați tot textul din fișier"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:220
+#: C/gedit-shortcut-keys.page:204
 msgid "<keyseq><key>Ctrl</key><key>A</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>A</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:223
+#: C/gedit-shortcut-keys.page:207
+msgid "Unselect all text"
+msgstr "Deselectează tot textul"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:208
+msgid "<keyseq><key>Ctrl</key><key>Backslash</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Backslash</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:211
 msgid "Delete the current line"
 msgstr "Stergeți linia curentă"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:224
+#: C/gedit-shortcut-keys.page:212
 msgid "<keyseq><key>Ctrl</key><key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>D</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:227
+#: C/gedit-shortcut-keys.page:215
 msgid "Move the selected line up one line"
 msgstr "Mutați linia selectată în sus cu o linie"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:228
+#: C/gedit-shortcut-keys.page:216
 msgid "<keyseq><key>Alt</key><key>Up Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Up Arrow</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:231
+#: C/gedit-shortcut-keys.page:219
 msgid "Move the selected line down one line"
 msgstr "Mutați linia selectată în jos cu o linie"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:232
+#: C/gedit-shortcut-keys.page:220
 msgid "<keyseq><key>Alt</key><key>Down Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Down Arrow</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:235
+#: C/gedit-shortcut-keys.page:223
 msgid "Add a tab stop"
 msgstr "Adaugă un tab"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:236
+#: C/gedit-shortcut-keys.page:224
 msgid "<keyseq><key>Tab</key></keyseq>"
 msgstr "<keyseq><key>Tab</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:239
+#: C/gedit-shortcut-keys.page:227
 msgid "Remove a tab stop"
 msgstr "Elimină un tab"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:240
+#: C/gedit-shortcut-keys.page:228
 msgid "<keyseq><key>Shift</key><key>Tab</key></keyseq>"
 msgstr "<keyseq><key>Shift</key><key>Tab</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:243
+#: C/gedit-shortcut-keys.page:231
 msgid "Convert the selected text to upper case"
 msgstr "Convertește textul selectat în majuscule"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:244
+#: C/gedit-shortcut-keys.page:232
 msgid "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:247
+#: C/gedit-shortcut-keys.page:235
 msgid "Convert the selected text to lower case"
 msgstr "Convertește textul selectat în minuscule"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:248
+#: C/gedit-shortcut-keys.page:236
 msgid "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:251
+#: C/gedit-shortcut-keys.page:239
 msgid "Toggle case of the selected text"
 msgstr "Comută majuscule sau minuscule pentru textul selectat"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:252
+#: C/gedit-shortcut-keys.page:240
 msgid "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
 
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:243
+msgid "Toggle cursor visibility"
+msgstr "Comută vizibilitatea cursorului"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:244
+msgid "<keyseq><key>F7</key></keyseq>"
+msgstr "<keyseq><key>F7</key></keyseq>"
+
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:258
+#: C/gedit-shortcut-keys.page:250
 msgid "Shortcut keys for showing and hiding panes"
 msgstr "Taste pentru scurtături pentru afișarea și ascunderea panourilor"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:267
+#: C/gedit-shortcut-keys.page:259
 msgid "Show / hide the side panel"
 msgstr "Arată / ascunde panoul lateral"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:268
+#: C/gedit-shortcut-keys.page:260
 msgid "<key>F9</key>"
 msgstr "<key>F9</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:271
+#: C/gedit-shortcut-keys.page:263
 msgid "Open the file menu"
 msgstr "Deschide meniul fișier"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:272
+#: C/gedit-shortcut-keys.page:264
 msgid "<key>F10</key>"
 msgstr "<key>F10</key>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:278
-msgid "Shortcut keys for searching"
-msgstr "Taste pentru scurtături pentru căutare"
+#: C/gedit-shortcut-keys.page:270
+msgid "Shortcut keys for navigation"
+msgstr "Scurtături de tastatură pentru navigație"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:287
-msgid "Find a string"
-msgstr "Găsiți un șir"
+#: C/gedit-shortcut-keys.page:279
+msgid "Move to matching bracket"
+msgstr "Mută la paranteza potrivită"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:288
-msgid "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
+#: C/gedit-shortcut-keys.page:280
+msgid "<keyseq><key>Ctrl</key><key>%</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>%</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:291
-msgid "Find the next instance of the string"
-msgstr "Găsiți următoarea apariție a șirului"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:292
-msgid "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:295
-msgid "Find the previous instance of the string"
-msgstr "Găsiți apariția anterioară a șirului"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:296
-msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:299
-msgid "Search and Replace"
-msgstr "Căutați și înloocuiți"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:300
-msgid "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:303
-msgid "Clear highlight"
-msgstr "Stergeți evidențierea"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:304
-msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:308
+#: C/gedit-shortcut-keys.page:283
 msgid "Goto line"
 msgstr "Mergeți la linia"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:309
+#: C/gedit-shortcut-keys.page:284
 msgid "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 
-#. (itstool) path: table/title
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:287
+msgid "Move to the beginning of the current line"
+msgstr "Mută cursorul la începutul liniei curente"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:288
+msgid "<key>Home</key>"
+msgstr "<key>Home</key>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:291
+msgid "Move to the end of the current line"
+msgstr "Mută cursorul la sfârșitul liniei curente"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:292
+msgid "<key>End</key>"
+msgstr "<key>End</key>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:295
+msgid "Move to the beginning of the document"
+msgstr "Mută cursorul la începutul documentului"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:296
+msgid "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:299
+msgid "Move to the end of the document"
+msgstr "Mută cursorul la sfârșitul documentului"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:300
+msgid "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:303
+msgid "Move viewport up within the file"
+msgstr "Mută zona vizibilă mai sus în fișier"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:304
+msgid "<keyseq><key>Shift</key><key>Alt</key><key>Up</key></keyseq>"
+msgstr "<keyseq><key>Shift</key><key>Alt</key><key>N</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:307
+msgid "Move viewport down within the file"
+msgstr "Mută zona vizibilă mai jos în fișier"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:308
+msgid "<keyseq><key>Shift</key><key>Alt</key><key>Down</key></keyseq>"
+msgstr "<keyseq><key>Shift</key><key>Alt</key> <key>Jos</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:311
+msgid "Move viewport to beginning of file"
+msgstr "Mută zona vizibilă la începutul documentului"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:312
+msgid "<keyseq><key>Shift</key><key>Alt</key><key>Home</key></keyseq>"
+msgstr "<keyseq><key>Shift</key><key>Alt</key><key>Home</key></keyseq>"
+
+#. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:315
+msgid "Move viewport to end of file"
+msgstr "Mută zona vizibilă la finalul fișierului"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:316
+msgid "<keyseq><key>Shift</key><key>Alt</key><key>End</key></keyseq>"
+msgstr "<keyseq><key>Shift</key><key>Alt</key><key>End</key></keyseq>"
+
+#. (itstool) path: table/title
+#: C/gedit-shortcut-keys.page:322
+msgid "Shortcut keys for searching"
+msgstr "Taste pentru scurtături pentru căutare"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:331
+msgid "Find a string"
+msgstr "Găsiți un șir"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:332
+msgid "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:335
+msgid "Find the next instance of the string"
+msgstr "Găsiți următoarea apariție a șirului"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:336
+msgid "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:339
+msgid "Find the previous instance of the string"
+msgstr "Găsiți apariția anterioară a șirului"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:340
+msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:343
+msgid "Search and Replace"
+msgstr "Căutați și înloocuiți"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:344
+msgid "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:347
+msgid "Clear highlight"
+msgstr "Stergeți evidențierea"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:348
+msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
+
+#. (itstool) path: table/title
+#: C/gedit-shortcut-keys.page:355
 msgid "Shortcut keys for tools"
 msgstr "Taste pentru scurtățuri pentru unelte"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:324
+#: C/gedit-shortcut-keys.page:364
 msgid "Check spelling"
 msgstr "Verificați ortografia"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:325
+#: C/gedit-shortcut-keys.page:365
 msgid "<keyseq><key>Shift</key><key>F7</key></keyseq>"
 msgstr "<keyseq><key>Shift</key><key>F7</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:328
+#: C/gedit-shortcut-keys.page:368
 msgid "Remove trailing spaces (with plugin)"
 msgstr "Eliminați spațiile rămase în urmă (cu plugin)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:329
+#: C/gedit-shortcut-keys.page:369
 msgid "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:332
+#: C/gedit-shortcut-keys.page:372
 msgid "Run \"make\" in the current directory (with plugin)"
 msgstr "Rulați \"make\" în directorul curent (cu plugin)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:333
+#: C/gedit-shortcut-keys.page:373
 msgid "<key>F8</key>"
 msgstr "<key>F8</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:336
+#: C/gedit-shortcut-keys.page:376
 msgid "Directory listing (with plugin)"
 msgstr "Listare director (cu plugin)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:337
+#: C/gedit-shortcut-keys.page:377
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:344
+#: C/gedit-shortcut-keys.page:384
 msgid "Shortcut keys for user help"
 msgstr "Taste pentru scurtățuri pentru ajutorul folositorului"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:353
+#: C/gedit-shortcut-keys.page:393
 msgid "Open the gedit user guide"
 msgstr "Deschideți manualul de folositor gedit"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:354
+#: C/gedit-shortcut-keys.page:394
 msgid "<key>F1</key>"
 msgstr "<key>F1</key>"
 
@@ -3781,12 +3856,12 @@ msgstr "Dicționare"
 #. (itstool) path: section/p
 #: C/gedit-spellcheck.page:125
 msgid ""
-"<app>gedit</app> uses <link href=\"http://www.abisource.com/projects/enchant/"
-"\">Enchant</link>, a small system utility, for spell checking. Enchant can "
-"use several different dictionaries to check your spelling. Two such "
-"dictionary back-ends are <em>Hunspell</em> and <em>Aspell</em>."
+"<app>gedit</app> uses <link href=\"https://www.abisource.com/projects/"
+"enchant/\">Enchant</link>, a small system utility, for spell checking. "
+"Enchant can use several different dictionaries to check your spelling. Two "
+"such dictionary back-ends are <em>Hunspell</em> and <em>Aspell</em>."
 msgstr ""
-"<app>gedit</app> utilizează <link href=\"http://www.abisource.com/projects/"
+"<app>gedit</app> utilizează <link href=\"https://www.abisource.com/projects/"
 "enchant/\">Enchant</link>, un mic utilitar de sistem, pentru verificare "
 "ortografică. Enchant poate utiliza mai multe dicționare diferite pentru a "
 "verifica ortografia. Două asemenea dicționare sunt <em>Hunspell</em> și "
