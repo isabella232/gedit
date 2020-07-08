@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
 "POT-Creation-Date: 2020-04-04 08:46+0000\n"
-"PO-Revision-Date: 2020-07-08 16:38+0200\n"
+"PO-Revision-Date: 2020-07-08 16:49+0200\n"
 "Last-Translator: Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>\n"
 "Language-Team: Gnome Romanian Translation Team <gnomero-list@lists."
 "sourceforge.net>\n"
@@ -1809,7 +1809,7 @@ msgid ""
 "md5='1f02c599b116ed209e6fb79e3e63b9ca'"
 msgstr ""
 "external ref='figures/gedit-html-snippet.png' "
-"md5='1f02c599b116ed209e6fb79e3e63b9ca'"
+"md5='118dc916bd6f99e67b15c588bc68521c'"
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-snippets.page:69
@@ -2510,7 +2510,7 @@ msgid ""
 "md5='bf1c5551e623923504e51c4f9fd885b7'"
 msgstr ""
 "external ref='figures/gedit3-screenshot.png' "
-"md5='bf1c5551e623923504e51c4f9fd885b7'"
+"md5='75fdc1a4994f728743cbcecb78cd2d54'"
 
 #. (itstool) path: page/p
 #: C/gedit-quickstart.page:30
