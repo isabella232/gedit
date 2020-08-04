@@ -1,6 +1,6 @@
 # Translators:
 # Jaume Jorba <jaume.jorba@gmail.com>, 2019
-# Jordi Mas <jmas@softcatala.org>, 2019
+# Jordi Mas <jmas@softcatala.org>, 2019, 2020
 #
 msgid ""
 msgstr ""
@@ -22,7 +22,7 @@ msgctxt "_"
 msgid "translator-credits"
 msgstr ""
 "Jaume Jorba <jaume.jorba@gmail.com>, 2019\n"
-"Jordi Mas <jmas@softcatala.org>, 2019"
+"Jordi Mas <jmas@softcatala.org>, 2019-2020"
 
 #. (itstool) path: info/desc
 #: C/gedit-change-color-scheme.page:8
@@ -131,7 +131,7 @@ msgid ""
 msgstr ""
 "Instruccions sobre com instal·lar esquemes de color, així com exemples "
 "d'esquemes de color que us podeu descarregar i utilitzar, estan disponibles "
-"a <link href=\"https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes"
+"a la <link href=\"https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes"
 "\">Wiki del gedit</link>."
 
 #. (itstool) path: info/desc
@@ -2030,8 +2030,8 @@ msgid ""
 "<gui style=\"input\">Tab trigger:</gui>. The <gui style=\"input\">Edit:</"
 "gui> textarea contains:"
 msgstr ""
-"Considereu que heu creat un fragment amb el contingut <var>salutacions</var> "
-"a la <gui style=\"input\">Disparador de tabuladors:</gui>. L'àrea de text <gui "
+"Considereu que heu creat un fragment amb el terme <var>salutacions</var> "
+"al <gui style=\"input\">Disparador de tabuladors:</gui>. L'àrea de text <gui "
 "style=\"input\">Edita:</gui> conté:"
 
 #. (itstool) path: section/code
@@ -2936,8 +2936,8 @@ msgid ""
 "cursor to the current position in the search results."
 msgstr ""
 "Per tancar la <gui>finestra de cerca</gui>, premeu o bé <key>Esc</key> o bé "
-"<key>Retorn</key>. Si premeu <key>Esc</key> el cursor tornarà al lloc on era "
-"abans que iniciéssiu la cerca. Si premeu <key>Retorn</key> el cursor tornarà "
+"<key>Retorn</key>. Si premeu <key>Esc</key>, el cursor tornarà al lloc on era "
+"abans que iniciéssiu la cerca. Si premeu <key>Retorn</key>, el cursor tornarà "
 "a la posició actual als resultats de la cerca."
 
 #. (itstool) path: list/title
@@ -3722,7 +3722,7 @@ msgid ""
 "The Spell-check feature is provided as a plugin in <app>gedit</app> which "
 "can be enabled as required. To enable the plugin:"
 msgstr ""
-"La funcionalitat de comprovació de l'ortografia es subministra com un "
+"La funcionalitat de comprovació de l'ortografia se subministra com un "
 "connector del <app>gedit</app> que es pot activar quan es necessiti. Per "
 "activar el connector:"
 
@@ -4164,7 +4164,7 @@ msgid ""
 "The tab will be placed in the position closest to where you release the tab, "
 "immediately beside other opened tabs."
 msgstr ""
-"La pestanya es situarà a la posició més propera del lloc on deixis anar la "
+"La pestanya se situarà a la posició més propera del lloc on deixis anar la "
 "pestanya, immediatament al costat d'altres pestanyes obertes."
 
 #. (itstool) path: section/title
@@ -4366,7 +4366,7 @@ msgstr "Treball amb fitxers"
 #. (itstool) path: section/title
 #: C/index.page:45
 msgid "Configure gedit"
-msgstr "Configura el gedit"
+msgstr "Configurar el gedit"
 
 #. (itstool) path: section/title
 #: C/index.page:49
