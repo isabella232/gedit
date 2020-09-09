@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit gnome-3.36\n"
-"POT-Creation-Date: 2020-03-06 17:17+0000\n"
-"PO-Revision-Date: 2020-03-10 08:52+0100\n"
+"POT-Creation-Date: 2020-08-04 10:17+0000\n"
+"PO-Revision-Date: 2020-09-09 21:55+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -707,7 +707,7 @@ msgstr ""
 "kódování znaků."
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:41 C/gedit-plugins-quick-open.page:46
+#: C/gedit-open-on-server.page:41 C/gedit-plugins-quick-open.page:44
 msgid "Click <gui>Open</gui>."
 msgstr "Klikněte na <gui>Otevřít</gui>."
 
@@ -767,35 +767,6 @@ msgstr "<app>gedit</app> zobrazí seznam posledních pěti použitých souborů.
 #: C/gedit-open-recent.page:26
 msgid "Select the desired file, and it will open in a new tab."
 msgstr "Vyberte požadovaný soubor a ten se otevře v nové kartě."
-
-#. (itstool) path: note/p
-#: C/gedit-open-recent.page:29
-msgid ""
-"To adjust the number of recently-used files that gedit displays, you will "
-"need to use the <app>dconf-editor</app> application."
-msgstr ""
-"Jestli chcete změnit počet nedávno použitých souborů, které <app>gedit</app> "
-"zobrazuje, budete muset použít aplikaci <app>dconf-editor</app>."
-
-#. (itstool) path: item/p
-#: C/gedit-open-recent.page:33
-msgid ""
-"Launch <app>dconf-editor</app> and select <guiseq><gui>org</gui> <gui>gnome</"
-"gui><gui>gedit</gui><gui>preferences</gui><gui>ui</gui> <gui>max-recents</"
-"gui></guiseq>."
-msgstr ""
-"Spusťte <app>dconf-editor</app> a vyberte <guiseq><gui>org</gui> <gui>gnome</"
-"gui> <gui>gedit</gui> <gui>preferences</gui> <gui>ui</gui> <gui>max-recents</"
-"gui></guiseq>."
-
-#. (itstool) path: item/p
-#: C/gedit-open-recent.page:36
-msgid ""
-"Double-click on the number next to <gui>max-recents</gui> and change the "
-"number to your desired value."
-msgstr ""
-"Dvojitě klikněte na číslo vedle <gui>max-recents</gui> a změňte hodnotu na "
-"tu požadovanou."
 
 #. (itstool) path: info/desc
 #: C/gedit-plugin-guide.page:9
@@ -1151,8 +1122,8 @@ msgid ""
 "\">Plugins</gui></guiseq>."
 msgstr ""
 "Zmáčkněte tlačítko nabídky v pravém horním rohu okna a vyberte <guiseq><gui "
-"style=\"menuitem\">Předvolby</gui> <gui style=\"tab\">Zásuvné moduly</gui>"
-"</guiseq>."
+"style=\"menuitem\">Předvolby</gui> <gui style=\"tab\">Zásuvné moduly</gui></"
+"guiseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-insert-date-time.page:35
@@ -1170,8 +1141,8 @@ msgid ""
 "\"menuitem\">Insert Date and Time…</gui></guiseq>."
 msgstr ""
 "Když chcete zásuvný modul využít, zmáčkněte tlačítko nabídky v pravém horním "
-"rohu okna a vyberte <guiseq><gui style=\"menuitem\">Nástroje</gui> <gui style="
-"\"menuitem\">Vložit datum a čas…</gui></guiseq>."
+"rohu okna a vyberte <guiseq><gui style=\"menuitem\">Nástroje</gui> <gui "
+"style=\"menuitem\">Vložit datum a čas…</gui></guiseq>."
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-insert-date-time.page:43
@@ -1181,14 +1152,14 @@ msgid ""
 "you can choose your own default date and time format by pressing the menu "
 "button in the top-right corner of the window and selecting <guiseq> <gui "
 "style=\"menuitem\">Preferences</gui><gui style=\"tab\">Plugins</gui><gui> "
-"Insert Date/Time</gui><gui style=\"button\">Configure</gui></guiseq>."
+"Insert Date/Time</gui><gui style=\"button\">Preferences</gui></guiseq>."
 msgstr ""
 "Standardně se zásuvný modul <gui>Vložit datum/čas</gui> při každém použití "
 "zeptá, jaký chcete zvolit formát data/času. Můžete si ale nastavit svůj "
 "výchozí formát tak, že zmáčknete tlačítko nabídky v pravém horním rohou okna "
-"a vyberete <guiseq><gui style=\"menuitem\">Předvolby</gui> <gui style=\"tab\">"
-"Zásuvné moduly</gui> <gui>Vložit datum/čas</gui> <gui style=\"button\">"
-"Nastavit</gui></guiseq>."
+"a vyberete <guiseq><gui style=\"menuitem\">Předvolby</gui> <gui style=\"tab"
+"\">Zásuvné moduly</gui> <gui>Vložit datum/čas</gui> <gui style=\"button"
+"\">Předvolby</gui></guiseq>."
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-install.page:15
@@ -1266,9 +1237,9 @@ msgid ""
 msgstr ""
 "Až máte soubory zásuvného modulu umístěny ve správné složce, objeví se "
 "dotyčný zásuvný modul v nabídce v předvolbách. Zmáčkněte tlačítko nabídky v "
-"pravém horním rohu okna a vyberte <guiseq><gui style=\"menuitem\">Předvolby"
-"</gui> <gui style=\"tab\">Zásuvné moduly</gui> <gui>[název zásuvného modulu]"
-"</gui></guiseq>. Tím zásuvný modul povolíte."
+"pravém horním rohu okna a vyberte <guiseq><gui style=\"menuitem\">Předvolby</"
+"gui> <gui style=\"tab\">Zásuvné moduly</gui> <gui>[název zásuvného modulu]</"
+"gui></guiseq>. Tím zásuvný modul povolíte."
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-install.page:46
@@ -1585,17 +1556,8 @@ msgstr "Jak rychle otevřít soubor nebo sadu souborů."
 msgid "Quick open"
 msgstr "Rychle otevřít"
 
-#. (itstool) path: note/p
-#: C/gedit-plugins-quick-open.page:24
-msgid ""
-"This plugin currently <link href=\"https://gitlab.gnome.org/GNOME/gedit/"
-"issues/277\">does not work</link>!"
-msgstr ""
-"Tento zásuvný modul v současnosti link href=\"https://gitlab.gnome.org/GNOME/"
-"gedit/issues/277\">nefunguje</link>!"
-
 #. (itstool) path: page/p
-#: C/gedit-plugins-quick-open.page:26
+#: C/gedit-plugins-quick-open.page:24
 msgid ""
 "As the name of this plugin would imply, the <app>Quick Open</app> plugin "
 "helps you to open files more quickly than using the usual ways of opening "
@@ -1608,7 +1570,7 @@ msgstr ""
 "gui> <gui>Zásuvné moduly</gui> <gui>Rychle otevřít</gui></guiseq>."
 
 #. (itstool) path: page/p
-#: C/gedit-plugins-quick-open.page:31
+#: C/gedit-plugins-quick-open.page:29
 msgid ""
 "Once you have enabled the <app>Quick Open</app> plugin you can use it as "
 "follows:"
@@ -1617,7 +1579,7 @@ msgstr ""
 "následovně:"
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:35
+#: C/gedit-plugins-quick-open.page:33
 msgid ""
 "Open the <app>Quick Open</app> dialog box by pressing <keyseq><key>Ctrl</"
 "key><key>Alt</key><key>O</key></keyseq>, or by selecting <gui style="
@@ -1628,17 +1590,17 @@ msgstr ""
 "<gui style=\"menuitem\">Rychle otevřít…</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:38
+#: C/gedit-plugins-quick-open.page:36
 msgid "The <gui>Quick Open</gui> file dialog will appear."
 msgstr "Objeví se dialogové okno <gui>Rychlé otevření</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:39
+#: C/gedit-plugins-quick-open.page:37
 msgid "Use your mouse to select the file or files that you want to open."
 msgstr "Použijte myš k výběru souboru či souborů, které chcete otevřít."
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:41
+#: C/gedit-plugins-quick-open.page:39
 msgid ""
 "To select several individual files, hold down your <key>Ctrl</key> key while "
 "you click on the files that you want to open."
@@ -1647,7 +1609,7 @@ msgstr ""
 "zmáčknutou klávesu <key>Ctrl</key>."
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:43
+#: C/gedit-plugins-quick-open.page:41
 msgid ""
 "To select a group of files, click on the first file that you want to open, "
 "hold down the <key>Shift</key> key, and then click on the last file in the "
@@ -1658,17 +1620,17 @@ msgstr ""
 "soubor, který chcete otevřít."
 
 #. (itstool) path: page/p
-#: C/gedit-plugins-quick-open.page:49
+#: C/gedit-plugins-quick-open.page:47
 msgid "<app>Quick Open</app> will look for files in:"
 msgstr "<app>Rychlé otevření</app> bude hledat soubory v:"
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:52
+#: C/gedit-plugins-quick-open.page:50
 msgid "The directory of the currently opened document"
 msgstr "Složce aktuálního otevřeného dokumentu"
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:53
+#: C/gedit-plugins-quick-open.page:51
 msgid ""
 "The root directory of the <app xref=\"gedit-plugins-file-browser\">File "
 "Browser Pane</app> plugin"
@@ -1677,7 +1639,7 @@ msgstr ""
 "\">Panel prolížeče souborů</app>"
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:56
+#: C/gedit-plugins-quick-open.page:54
 msgid ""
 "Recent documents which are also shown in the <file>Recent</file> folder in "
 "<app>Files</app>"
@@ -1686,23 +1648,23 @@ msgstr ""
 "file> v aplikaci <app>Soubory</app>"
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:58
+#: C/gedit-plugins-quick-open.page:56
 msgid "Directories which you have bookmarked in <app>Files</app>"
 msgstr ""
 "Složkách, pro které máte v aplikaci <app>Soubory</app> vytvořeny záložky"
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:60
+#: C/gedit-plugins-quick-open.page:58
 msgid "Your <file>Desktop</file> directory"
 msgstr "Vaší složce <file>Plocha</file>"
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:61
+#: C/gedit-plugins-quick-open.page:59
 msgid "Your <file>Home</file> directory"
 msgstr "Vaší <file>Domovské</file> složce"
 
 #. (itstool) path: note/p
-#: C/gedit-plugins-quick-open.page:65
+#: C/gedit-plugins-quick-open.page:63
 msgid ""
 "<app>Quick Open</app> displays files in any of the above locations "
 "regardless of whether or not you have opened them previously."
