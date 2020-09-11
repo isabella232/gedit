@@ -1,6 +1,6 @@
 project(
   'gedit', 'c',
-  version: '3.37.92',
+  version: '3.38.0',
   meson_version: '>= 0.53'
 )
 
@@ -45,7 +45,7 @@ gio_dep = dependency('gio-2.0', version: '>= 2.64')
 libgedit_public_deps = [
   gio_dep,
   dependency('gtk+-3.0', version: '>= 3.22'),
-  dependency('tepl-5', version: '>= 4.99.2'),
+  dependency('tepl-5', version: '>= 5.0'),
   dependency('libpeas-gtk-1.0'),
 ]
 
