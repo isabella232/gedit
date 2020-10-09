@@ -1268,66 +1268,6 @@ _gedit_document_needs_saving (GeditDocument *doc)
 }
 
 /**
- * gedit_document_goto_line:
- * @doc: a #GeditDocument.
- * @line: the line number.
- *
- * Returns: if @line is bigger than the lines of the document, the cursor is moved
- * to the last line and %FALSE is returned.
- * Deprecated: 3.38: Use tepl_view_goto_line() instead.
- */
-gboolean
-gedit_document_goto_line (GeditDocument *doc,
-			  gint           line)
-{
-	GtkTextIter iter;
-
-	gedit_debug (DEBUG_DOCUMENT);
-
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
-	g_return_val_if_fail (line >= -1, FALSE);
-
-	gtk_text_buffer_get_iter_at_line (GTK_TEXT_BUFFER (doc),
-					  &iter,
-					  line);
-
-	gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
-
-	return gtk_text_iter_get_line (&iter) == line;
-}
-
-/**
- * gedit_document_goto_line_offset:
- * @doc: a #GeditDocument.
- * @line: the line.
- * @line_offset: the line offset.
- *
- * Returns: the return value.
- * Deprecated: 3.38: Use tepl_view_goto_line_offset() instead.
- */
-gboolean
-gedit_document_goto_line_offset (GeditDocument *doc,
-				 gint           line,
-				 gint           line_offset)
-{
-	GtkTextIter iter;
-
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
-	g_return_val_if_fail (line >= -1, FALSE);
-	g_return_val_if_fail (line_offset >= -1, FALSE);
-
-	gtk_text_buffer_get_iter_at_line_offset (GTK_TEXT_BUFFER (doc),
-						 &iter,
-						 line,
-						 line_offset);
-
-	gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
-
-	return (gtk_text_iter_get_line (&iter) == line &&
-		gtk_text_iter_get_line_offset (&iter) == line_offset);
-}
-
-/**
  * gedit_document_set_language:
  * @doc:
  * @lang: (allow-none):

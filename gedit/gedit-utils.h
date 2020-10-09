@@ -49,19 +49,6 @@ GtkSourceCompressionType   gedit_utils_get_compression_type_from_content_type (c
 
 const gchar               *gedit_utils_newline_type_to_string                 (GtkSourceNewlineType  newline_type);
 
-G_DEPRECATED_FOR (tepl_utils_show_warning_dialog)
-void                       gedit_warning                                      (GtkWindow      *parent,
-                                                                               const gchar    *format,
-                                                                               ...) G_GNUC_PRINTF(2, 3);
-
-G_DEPRECATED_FOR (tepl_utils_decode_uri)
-gboolean                   gedit_utils_decode_uri                             (const gchar  *uri,
-                                                                               gchar       **scheme,
-                                                                               gchar       **user,
-                                                                               gchar       **host,
-                                                                               gchar       **port,
-                                                                               gchar       **path);
-
 G_END_DECLS
 
 #endif /* GEDIT_UTILS_H */

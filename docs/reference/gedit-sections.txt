@@ -57,8 +57,6 @@ gedit_document_get_short_name_for_display
 gedit_document_get_mime_type
 gedit_document_is_untouched
 gedit_document_is_untitled
-gedit_document_goto_line
-gedit_document_goto_line_offset
 gedit_document_set_language
 gedit_document_get_content_type
 gedit_document_get_metadata
@@ -223,12 +221,6 @@ GeditViewPrivate
 <TITLE>GeditView</TITLE>
 GeditView
 gedit_view_new
-gedit_view_cut_clipboard
-gedit_view_copy_clipboard
-gedit_view_paste_clipboard
-gedit_view_delete_selection
-gedit_view_select_all
-gedit_view_scroll_to_cursor
 gedit_view_set_font
 <SUBSECTION Standard>
 GEDIT_VIEW
@@ -362,6 +354,4 @@ gedit_utils_is_valid_location
 gedit_utils_location_get_dirname_for_display
 gedit_utils_set_direct_save_filename
 gedit_utils_newline_type_to_string
-gedit_warning
-gedit_utils_decode_uri
 </SECTION>

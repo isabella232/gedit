@@ -87,55 +87,6 @@ gedit_utils_set_atk_name_description (GtkWidget   *widget,
 		atk_object_set_description (aobj, description);
 }
 
-/**
- * gedit_warning:
- * @parent:
- * @format:
- * @...:
- *
- * Deprecated: 3.38: Use tepl_utils_show_warning_dialog() instead.
- */
-void
-gedit_warning (GtkWindow *parent, const gchar *format, ...)
-{
-	va_list         args;
-	gchar          *str;
-	GtkWidget      *dialog;
-	GtkWindowGroup *wg = NULL;
-
-	g_return_if_fail (format != NULL);
-
-	if (parent != NULL)
-		wg = gtk_window_get_group (parent);
-
-	va_start (args, format);
-	str = g_strdup_vprintf (format, args);
-	va_end (args);
-
-	dialog = gtk_message_dialog_new_with_markup (
-			parent,
-			GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-		   	GTK_MESSAGE_ERROR,
-		   	GTK_BUTTONS_OK,
-			"%s", str);
-
-	g_free (str);
-
-	if (wg != NULL)
-		gtk_window_group_add_window (wg, GTK_WINDOW (dialog));
-
-	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
-
-	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
-
-	g_signal_connect (G_OBJECT (dialog),
-			  "response",
-			  G_CALLBACK (gtk_widget_destroy),
-			  NULL);
-
-	gtk_widget_show (dialog);
-}
-
 static gchar *
 uri_get_dirname (const gchar *uri)
 {
@@ -485,35 +436,6 @@ gedit_utils_drop_get_uris (GtkSelectionData *selection_data)
 
 	g_strfreev (uris);
 	return uri_list;
-}
-
-/**
- * gedit_utils_decode_uri:
- * @uri: the uri to decode
- * @scheme: (out) (allow-none): return value pointer for the uri's
- * scheme (e.g. http, sftp, ...), or %NULL
- * @user: (out) (allow-none): return value pointer for the uri user info, or %NULL
- * @port: (out) (allow-none): return value pointer for the uri port, or %NULL
- * @host: (out) (allow-none): return value pointer for the uri host, or %NULL
- * @path: (out) (allow-none): return value pointer for the uri path, or %NULL
- *
- * Parse and break an uri apart in its individual components like the uri
- * scheme, user info, port, host and path. The return value pointer can be
- * %NULL to ignore certain parts of the uri. If the function returns %TRUE, then
- * all return value pointers should be freed using g_free
- *
- * Return value: %TRUE if the uri could be properly decoded, %FALSE otherwise.
- * Deprecated: 3.38: Use tepl_utils_decode_uri() instead.
- */
-gboolean
-gedit_utils_decode_uri (const gchar  *uri,
-			gchar       **scheme,
-			gchar       **user,
-			gchar       **host,
-			gchar       **port,
-			gchar       **path)
-{
-	return tepl_utils_decode_uri (uri, scheme, user, host, port, path);
 }
 
 GtkSourceCompressionType
