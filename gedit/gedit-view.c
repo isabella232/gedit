@@ -28,7 +28,6 @@
 #include "gedit-view-activatable.h"
 #include "gedit-plugins-engine.h"
 #include "gedit-debug.h"
-#include "gedit-pango.h"
 #include "gedit-utils.h"
 #include "gedit-settings.h"
 
@@ -779,7 +778,7 @@ update_css_provider (GeditView *view)
 	g_assert (GEDIT_IS_VIEW (view));
 	g_assert (view->priv->font_desc != NULL);
 
-	str = gedit_pango_font_description_to_css (view->priv->font_desc);
+	str = tepl_pango_font_description_to_css (view->priv->font_desc);
 	css = g_strdup_printf ("textview { %s }", str ? str : "");
 	gtk_css_provider_load_from_data (view->priv->css_provider, css, -1, NULL);
 
