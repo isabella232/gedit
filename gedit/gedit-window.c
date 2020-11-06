@@ -54,7 +54,6 @@
 #include "gedit-status-menu-button.h"
 #include "gedit-settings.h"
 #include "gedit-menu-stack-switcher.h"
-#include "gedit-highlight-mode-selector.h"
 
 enum
 {
@@ -766,8 +765,8 @@ update_actions_sensitivity (GeditWindow *window)
 }
 
 static void
-language_selector_show_cb (GeditHighlightModeSelector *selector,
-			   GeditWindow                *window)
+language_chooser_show_cb (TeplLanguageChooser *language_chooser,
+			  GeditWindow         *window)
 {
 	GeditDocument *active_document;
 
@@ -777,14 +776,14 @@ language_selector_show_cb (GeditHighlightModeSelector *selector,
 		GtkSourceLanguage *language;
 
 		language = gedit_document_get_language (active_document);
-		gedit_highlight_mode_selector_select_language (selector, language);
+		tepl_language_chooser_select_language (language_chooser, language);
 	}
 }
 
 static void
-language_selected_cb (GeditHighlightModeSelector *selector,
-		      GtkSourceLanguage          *language,
-		      GeditWindow                *window)
+language_activated_cb (TeplLanguageChooser *language_chooser,
+		       GtkSourceLanguage   *language,
+		       GeditWindow         *window)
 {
 	GeditDocument *active_document;
 
@@ -794,13 +793,13 @@ language_selected_cb (GeditHighlightModeSelector *selector,
 		gedit_document_set_language (active_document, language);
 	}
 
-	gtk_widget_hide (GTK_WIDGET (window->priv->language_popover));
+	gtk_widget_hide (window->priv->language_popover);
 }
 
 static void
 setup_statusbar (GeditWindow *window)
 {
-	GeditHighlightModeSelector *selector;
+	TeplLanguageChooserWidget *language_chooser;
 
 	gedit_debug (DEBUG_WINDOW);
 
@@ -830,20 +829,20 @@ setup_statusbar (GeditWindow *window)
 	gtk_menu_button_set_popover (GTK_MENU_BUTTON (window->priv->language_button),
 	                             window->priv->language_popover);
 
-	selector = gedit_highlight_mode_selector_new ();
+	language_chooser = tepl_language_chooser_widget_new ();
 
-	g_signal_connect (selector,
+	g_signal_connect (language_chooser,
 	                  "show",
-	                  G_CALLBACK (language_selector_show_cb),
+	                  G_CALLBACK (language_chooser_show_cb),
 	                  window);
 
-	g_signal_connect (selector,
-	                  "language-selected",
-	                  G_CALLBACK (language_selected_cb),
+	g_signal_connect (language_chooser,
+	                  "language-activated",
+	                  G_CALLBACK (language_activated_cb),
 	                  window);
 
-	gtk_container_add (GTK_CONTAINER (window->priv->language_popover), GTK_WIDGET (selector));
-	gtk_widget_show (GTK_WIDGET (selector));
+	gtk_container_add (GTK_CONTAINER (window->priv->language_popover), GTK_WIDGET (language_chooser));
+	gtk_widget_show (GTK_WIDGET (language_chooser));
 }
 
 static GeditWindow *
