@@ -22,8 +22,6 @@ gedit/gedit-file-chooser-dialog-gtk.c
 gedit/gedit-file-chooser-open.c
 gedit/gedit-file-chooser-open-dialog.c
 gedit/gedit-file-chooser-open-native.c
-gedit/gedit-highlight-mode-dialog.c
-gedit/gedit-highlight-mode-selector.c
 gedit/gedit-io-error-info-bar.c
 gedit/gedit-notebook.c
 gedit/gedit-notebook-popup-menu.c
@@ -44,8 +42,6 @@ gedit/resources/gtk/menus-common.ui
 gedit/resources/gtk/menus.ui
 gedit/resources/gtk/menus-traditional.ui
 gedit/resources/ui/gedit-encodings-dialog.ui
-gedit/resources/ui/gedit-highlight-mode-dialog.ui
-gedit/resources/ui/gedit-highlight-mode-selector.ui
 gedit/resources/ui/gedit-preferences-dialog.ui
 gedit/resources/ui/gedit-print-preferences.ui
 gedit/resources/ui/gedit-print-preview.ui
