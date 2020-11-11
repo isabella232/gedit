@@ -26,6 +26,11 @@
     <itemizedlist>
       <listitem>
         <para>
+          All previously deprecated APIs have been removed.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
           The <code>GeditProgressInfoBar</code> class has been removed, you can
           use <link linkend="TeplProgressInfoBar">TeplProgressInfoBar</link>
           instead.
