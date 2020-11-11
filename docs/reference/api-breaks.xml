@@ -22,6 +22,19 @@
   </para>
 
   <refsect1>
+    <title>3.38 -> 40</title>
+    <itemizedlist>
+      <listitem>
+        <para>
+          The <code>GeditProgressInfoBar</code> class has been removed, you can
+          use <link linkend="TeplProgressInfoBar">TeplProgressInfoBar</link>
+          instead.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+
+  <refsect1>
     <title>3.36.0 -> 3.37.1</title>
     <itemizedlist>
       <listitem>
