@@ -151,26 +151,6 @@ GeditMessagePrivate
 </SECTION>
 
 <SECTION>
-<FILE>gedit-progress-info-bar</FILE>
-<TITLE>GeditProgressInfoBar</TITLE>
-GeditProgressInfoBar
-gedit_progress_info_bar_new
-gedit_progress_info_bar_set_icon_name
-gedit_progress_info_bar_set_markup
-gedit_progress_info_bar_set_text
-gedit_progress_info_bar_set_fraction
-gedit_progress_info_bar_pulse
-<SUBSECTION Standard>
-GEDIT_PROGRESS_INFO_BAR
-GEDIT_IS_PROGRESS_INFO_BAR
-GEDIT_TYPE_PROGRESS_INFO_BAR
-gedit_progress_info_bar_get_type
-GEDIT_PROGRESS_INFO_BAR_CLASS
-GEDIT_IS_PROGRESS_INFO_BAR_CLASS
-GEDIT_PROGRESS_INFO_BAR_GET_CLASS
-</SECTION>
-
-<SECTION>
 <FILE>gedit-statusbar</FILE>
 <TITLE>GeditStatusbar</TITLE>
 GeditStatusbar
