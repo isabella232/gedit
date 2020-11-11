@@ -33,7 +33,6 @@
 #include "gedit-io-error-info-bar.h"
 #include "gedit-print-job.h"
 #include "gedit-print-preview.h"
-#include "gedit-progress-info-bar.h"
 #include "gedit-debug.h"
 #include "gedit-document.h"
 #include "gedit-document-private.h"
@@ -727,7 +726,7 @@ load_cancelled (GtkWidget *bar,
 {
 	LoaderData *data = g_task_get_task_data (loading_task);
 
-	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (data->tab->info_bar));
+	g_return_if_fail (TEPL_IS_PROGRESS_INFO_BAR (data->tab->info_bar));
 
 	g_cancellable_cancel (g_task_get_cancellable (loading_task));
 	remove_tab (data->tab);
@@ -758,7 +757,7 @@ static void
 show_loading_info_bar (GTask *loading_task)
 {
 	LoaderData *data = g_task_get_task_data (loading_task);
-	GtkWidget *bar;
+	TeplProgressInfoBar *bar;
 	GeditDocument *doc;
 	gchar *name;
 	gchar *dirname = NULL;
@@ -831,7 +830,7 @@ show_loading_info_bar (GTask *loading_task)
 			msg = g_strdup_printf (_("Reverting %s"), name_markup);
 		}
 
-		bar = gedit_progress_info_bar_new ("document-revert", msg, TRUE);
+		bar = tepl_progress_info_bar_new ("document-revert", msg, TRUE);
 	}
 	else
 	{
@@ -851,7 +850,7 @@ show_loading_info_bar (GTask *loading_task)
 			msg = g_strdup_printf (_("Loading %s"), name_markup);
 		}
 
-		bar = gedit_progress_info_bar_new ("document-open", msg, TRUE);
+		bar = tepl_progress_info_bar_new ("document-open", msg, TRUE);
 	}
 
 	g_signal_connect_object (bar,
@@ -860,7 +859,7 @@ show_loading_info_bar (GTask *loading_task)
 				 loading_task,
 				 0);
 
-	set_info_bar (data->tab, bar, GTK_RESPONSE_NONE);
+	set_info_bar (data->tab, GTK_WIDGET (bar), GTK_RESPONSE_NONE);
 
 	g_free (msg);
 	g_free (name);
@@ -872,7 +871,7 @@ static void
 show_saving_info_bar (GTask *saving_task)
 {
 	GeditTab *tab = g_task_get_source_object (saving_task);
-	GtkWidget *bar;
+	TeplProgressInfoBar *bar;
 	GeditDocument *doc;
 	gchar *short_name;
 	gchar *from;
@@ -936,9 +935,9 @@ show_saving_info_bar (GTask *saving_task)
 		msg = g_strdup_printf (_("Saving %s"), from_markup);
 	}
 
-	bar = gedit_progress_info_bar_new ("document-save", msg, FALSE);
+	bar = tepl_progress_info_bar_new ("document-save", msg, FALSE);
 
-	set_info_bar (tab, bar, GTK_RESPONSE_NONE);
+	set_info_bar (tab, GTK_WIDGET (bar), GTK_RESPONSE_NONE);
 
 	g_free (msg);
 	g_free (to);
@@ -951,7 +950,7 @@ info_bar_set_progress (GeditTab *tab,
 		       goffset   size,
 		       goffset   total_size)
 {
-	GeditProgressInfoBar *progress_info_bar;
+	TeplProgressInfoBar *progress_info_bar;
 
 	if (tab->info_bar == NULL)
 	{
@@ -960,23 +959,23 @@ info_bar_set_progress (GeditTab *tab,
 
 	gedit_debug_message (DEBUG_TAB, "%" G_GOFFSET_FORMAT "/%" G_GOFFSET_FORMAT, size, total_size);
 
-	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (tab->info_bar));
+	g_return_if_fail (TEPL_IS_PROGRESS_INFO_BAR (tab->info_bar));
 
-	progress_info_bar = GEDIT_PROGRESS_INFO_BAR (tab->info_bar);
+	progress_info_bar = TEPL_PROGRESS_INFO_BAR (tab->info_bar);
 
 	if (total_size != 0)
 	{
 		gdouble frac = (gdouble)size / (gdouble)total_size;
 
-		gedit_progress_info_bar_set_fraction (progress_info_bar, frac);
+		tepl_progress_info_bar_set_fraction (progress_info_bar, frac);
 	}
 	else if (size != 0)
 	{
-		gedit_progress_info_bar_pulse (progress_info_bar);
+		tepl_progress_info_bar_pulse (progress_info_bar);
 	}
 	else
 	{
-		gedit_progress_info_bar_set_fraction (progress_info_bar, 0);
+		tepl_progress_info_bar_set_fraction (progress_info_bar, 0);
 	}
 }
 
@@ -2704,15 +2703,15 @@ printing_cb (GeditPrintJob       *job,
 	     GeditPrintJobStatus  status,
 	     GeditTab            *tab)
 {
-	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (tab->info_bar));
+	g_return_if_fail (TEPL_IS_PROGRESS_INFO_BAR (tab->info_bar));
 
 	gtk_widget_show (tab->info_bar);
 
-	gedit_progress_info_bar_set_text (GEDIT_PROGRESS_INFO_BAR (tab->info_bar),
-					  gedit_print_job_get_status_string (job));
+	tepl_progress_info_bar_set_text (TEPL_PROGRESS_INFO_BAR (tab->info_bar),
+					 gedit_print_job_get_status_string (job));
 
-	gedit_progress_info_bar_set_fraction (GEDIT_PROGRESS_INFO_BAR (tab->info_bar),
-					      gedit_print_job_get_progress (job));
+	tepl_progress_info_bar_set_fraction (TEPL_PROGRESS_INFO_BAR (tab->info_bar),
+					     gedit_print_job_get_progress (job));
 }
 
 static void
@@ -2822,21 +2821,19 @@ print_cancelled (GtkWidget *bar,
 static void
 add_printing_info_bar (GeditTab *tab)
 {
-	GtkWidget *bar;
+	TeplProgressInfoBar *bar;
 
-	bar = gedit_progress_info_bar_new ("document-print",
-					   "",
-					   TRUE);
+	bar = tepl_progress_info_bar_new ("document-print", NULL, TRUE);
 
 	g_signal_connect (bar,
 			  "response",
 			  G_CALLBACK (print_cancelled),
 			  tab);
 
-	set_info_bar (tab, bar, GTK_RESPONSE_NONE);
+	set_info_bar (tab, GTK_WIDGET (bar), GTK_RESPONSE_NONE);
 
 	/* hide until we start printing */
-	gtk_widget_hide (bar);
+	gtk_widget_hide (GTK_WIDGET (bar));
 }
 
 void
