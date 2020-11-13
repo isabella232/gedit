@@ -5,7 +5,7 @@
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
  * Copyright (C) 2002-2005 Paolo Maggi
- * Copyright (C) 2014-2015 Sébastien Wilmet
+ * Copyright (C) 2014-2020 Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,14 +22,10 @@
  */
 
 #include "config.h"
-
 #include "gedit-document.h"
 #include "gedit-document-private.h"
-
 #include <string.h>
 #include <glib/gi18n.h>
-#include <tepl/tepl.h>
-
 #include "gedit-settings.h"
 #include "gedit-debug.h"
 #include "gedit-utils.h"
@@ -102,7 +98,7 @@ static guint document_signals[LAST_SIGNAL];
 
 static GHashTable *allocated_untitled_numbers = NULL;
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditDocument, gedit_document, GTK_SOURCE_TYPE_BUFFER)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditDocument, gedit_document, TEPL_TYPE_BUFFER)
 
 static void
 load_metadata_from_metadata_manager (GeditDocument *doc)
