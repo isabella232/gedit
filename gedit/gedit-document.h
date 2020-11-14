@@ -37,7 +37,6 @@ struct _GeditDocumentClass
 	TeplBufferClass parent_class;
 
 	/* Signals */
-	void (* cursor_moved)		(GeditDocument *document);
 
 	void (* load)			(GeditDocument *document);
 

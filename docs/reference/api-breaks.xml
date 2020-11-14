@@ -36,6 +36,19 @@
           instead.
         </para>
       </listitem>
+      <listitem>
+        <para>
+          <link linkend="GeditDocument">GeditDocument</link> is now a subclass
+          of <link linkend="TeplBuffer">TeplBuffer</link>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          The <code>GeditDocument::cursor-moved</code> signal has been removed.
+          You can use the <link linkend="TeplBuffer">TeplBuffer</link> API
+          instead.
+        </para>
+      </listitem>
     </itemizedlist>
   </refsect1>
 

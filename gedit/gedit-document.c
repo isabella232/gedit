@@ -86,7 +86,6 @@ static GParamSpec *properties[LAST_PROP];
 
 enum
 {
-	CURSOR_MOVED,
 	LOAD,
 	LOADED,
 	SAVE,
@@ -330,65 +329,6 @@ gedit_document_set_property (GObject      *object,
 }
 
 static void
-gedit_document_begin_user_action (GtkTextBuffer *buffer)
-{
-	GeditDocumentPrivate *priv;
-
-	priv = gedit_document_get_instance_private (GEDIT_DOCUMENT (buffer));
-
-	++priv->user_action;
-
-	if (GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->begin_user_action != NULL)
-	{
-		GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->begin_user_action (buffer);
-	}
-}
-
-static void
-gedit_document_end_user_action (GtkTextBuffer *buffer)
-{
-	GeditDocumentPrivate *priv;
-
-	priv = gedit_document_get_instance_private (GEDIT_DOCUMENT (buffer));
-
-	--priv->user_action;
-
-	if (GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->end_user_action != NULL)
-	{
-		GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->end_user_action (buffer);
-	}
-}
-
-static void
-gedit_document_mark_set (GtkTextBuffer     *buffer,
-                         const GtkTextIter *iter,
-                         GtkTextMark       *mark)
-{
-	GeditDocument *doc = GEDIT_DOCUMENT (buffer);
-	GeditDocumentPrivate *priv;
-
-	priv = gedit_document_get_instance_private (doc);
-
-	if (GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->mark_set != NULL)
-	{
-		GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->mark_set (buffer, iter, mark);
-	}
-
-	if (mark == gtk_text_buffer_get_insert (buffer) && (priv->user_action == 0))
-	{
-		g_signal_emit (doc, document_signals[CURSOR_MOVED], 0);
-	}
-}
-
-static void
-gedit_document_changed (GtkTextBuffer *buffer)
-{
-	g_signal_emit (GEDIT_DOCUMENT (buffer), document_signals[CURSOR_MOVED], 0);
-
-	GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->changed (buffer);
-}
-
-static void
 gedit_document_constructed (GObject *object)
 {
 	GeditDocument *doc = GEDIT_DOCUMENT (object);
@@ -410,18 +350,12 @@ static void
 gedit_document_class_init (GeditDocumentClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkTextBufferClass *buf_class = GTK_TEXT_BUFFER_CLASS (klass);
 
 	object_class->dispose = gedit_document_dispose;
 	object_class->finalize = gedit_document_finalize;
 	object_class->get_property = gedit_document_get_property;
 	object_class->set_property = gedit_document_set_property;
 	object_class->constructed = gedit_document_constructed;
-
-	buf_class->begin_user_action = gedit_document_begin_user_action;
-	buf_class->end_user_action = gedit_document_end_user_action;
-	buf_class->mark_set = gedit_document_mark_set;
-	buf_class->changed = gedit_document_changed;
 
 	klass->loaded = gedit_document_loaded_real;
 	klass->saved = gedit_document_saved_real;
@@ -478,23 +412,6 @@ gedit_document_class_init (GeditDocumentClass *klass)
 		                      G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
 
 	g_object_class_install_properties (object_class, LAST_PROP, properties);
-
-	/* This signal is used to update the cursor position in the statusbar,
-	 * it's emitted either when the insert mark is moved explicitely or
-	 * when the buffer changes (insert/delete).
-	 * FIXME When the replace_all was implemented in gedit, this signal was
-	 * not emitted during the replace_all to improve performance. Now the
-	 * replace_all is implemented in GtkSourceView, so the signal is
-	 * emitted.
-	 */
-	document_signals[CURSOR_MOVED] =
-		g_signal_new ("cursor-moved",
-			      G_OBJECT_CLASS_TYPE (object_class),
-			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (GeditDocumentClass, cursor_moved),
-			      NULL, NULL, NULL,
-			      G_TYPE_NONE,
-			      0);
 
 	/**
 	 * GeditDocument::load:
