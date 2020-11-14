@@ -56,8 +56,6 @@ typedef struct
 	 */
 	GtkSourceSearchContext *search_context;
 
-	guint user_action;
-
 	guint language_set_by_user : 1;
 
 	/* The search is empty if there is no search context, or if the
