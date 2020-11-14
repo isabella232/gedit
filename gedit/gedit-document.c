@@ -719,13 +719,11 @@ static void
 gedit_document_init (GeditDocument *doc)
 {
 	GeditDocumentPrivate *priv = gedit_document_get_instance_private (doc);
+	TeplFile *tepl_file;
 	GeditSettings *settings;
 	GSettings *editor_settings;
 
 	gedit_debug (DEBUG_DOCUMENT);
-
-	settings = _gedit_settings_get_singleton ();
-	editor_settings = _gedit_settings_peek_editor_settings (settings);
 
 	priv->untitled_number = get_untitled_number ();
 	priv->content_type = get_default_content_type ();
@@ -735,6 +733,12 @@ gedit_document_init (GeditDocument *doc)
 	update_time_of_last_save_or_load (doc);
 
 	priv->file = gtk_source_file_new ();
+	tepl_file = tepl_buffer_get_file (TEPL_BUFFER (doc));
+
+	g_object_bind_property (priv->file, "location",
+				tepl_file, "location",
+				G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
+
 	priv->metadata = tepl_metadata_new ();
 
 	g_signal_connect_object (priv->file,
@@ -742,6 +746,9 @@ gedit_document_init (GeditDocument *doc)
 				 G_CALLBACK (on_location_changed),
 				 doc,
 				 0);
+
+	settings = _gedit_settings_get_singleton ();
+	editor_settings = _gedit_settings_peek_editor_settings (settings);
 
 	g_settings_bind (editor_settings, GEDIT_SETTINGS_MAX_UNDO_ACTIONS,
 	                 doc, "max-undo-levels",
