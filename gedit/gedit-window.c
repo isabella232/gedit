@@ -1885,7 +1885,7 @@ on_tab_added (GeditMultiNotebook *multi,
 			  G_CALLBACK (bracket_matched_cb),
 			  window);
 	g_signal_connect (doc,
-			  "cursor-moved",
+			  "tepl-cursor-moved",
 			  G_CALLBACK (update_cursor_position_statusbar),
 			  window);
 	g_signal_connect (doc,
