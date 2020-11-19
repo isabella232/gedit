@@ -60,10 +60,10 @@ modules:
         sha256: dcbb769dfdde8e3c0a8ed3102ce7e661abbf7ddf85df08b29915e92cd723abdd
 
   - name: amtk
+    buildsystem: meson
     sources:
-      - type: archive
-        url: https://download.gnome.org/sources/amtk/5.2/amtk-5.2.0.tar.xz
-        sha256: 820545bb4cf87ecebc2c3638d6b6e58b8dbd60a419a9b43cf020124e5dad7078
+      - type: git
+        url: https://gitlab.gnome.org/GNOME/amtk.git
 
   - name: tepl
     buildsystem: meson
