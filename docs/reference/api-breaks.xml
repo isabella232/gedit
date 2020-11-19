@@ -49,6 +49,12 @@
           instead.
         </para>
       </listitem>
+      <listitem>
+        <para>
+          The <code>gedit_document_get_uri_for_display()</code> function has
+          been removed from the public API.
+        </para>
+      </listitem>
     </itemizedlist>
   </refsect1>
 
