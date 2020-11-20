@@ -45,8 +45,6 @@ typedef struct
 
 	TeplMetadata *metadata;
 
-	gint 	     untitled_number;
-
 	gchar	    *content_type;
 
 	GDateTime   *time_of_last_save_or_load;
@@ -93,8 +91,6 @@ enum
 
 static guint document_signals[LAST_SIGNAL];
 
-static GHashTable *allocated_untitled_numbers = NULL;
-
 G_DEFINE_TYPE_WITH_PRIVATE (GeditDocument, gedit_document, TEPL_TYPE_BUFFER)
 
 static void
@@ -129,39 +125,6 @@ save_metadata_into_metadata_manager (GeditDocument *doc)
 		manager = tepl_metadata_manager_get_singleton ();
 		tepl_metadata_manager_merge_into (manager, location, priv->metadata);
 	}
-}
-
-static gint
-get_untitled_number (void)
-{
-	gint i = 1;
-
-	if (allocated_untitled_numbers == NULL)
-		allocated_untitled_numbers = g_hash_table_new (NULL, NULL);
-
-	g_return_val_if_fail (allocated_untitled_numbers != NULL, -1);
-
-	while (TRUE)
-	{
-		if (g_hash_table_lookup (allocated_untitled_numbers, GINT_TO_POINTER (i)) == NULL)
-		{
-			g_hash_table_insert (allocated_untitled_numbers,
-					     GINT_TO_POINTER (i),
-					     GINT_TO_POINTER (i));
-
-			return i;
-		}
-
-		++i;
-	}
-}
-
-static void
-release_untitled_number (gint n)
-{
-	g_return_if_fail (allocated_untitled_numbers != NULL);
-
-	g_hash_table_remove (allocated_untitled_numbers, GINT_TO_POINTER (n));
 }
 
 static void
@@ -250,16 +213,9 @@ gedit_document_dispose (GObject *object)
 static void
 gedit_document_finalize (GObject *object)
 {
-	GeditDocumentPrivate *priv;
+	GeditDocumentPrivate *priv = gedit_document_get_instance_private (GEDIT_DOCUMENT (object));
 
 	gedit_debug (DEBUG_DOCUMENT);
-
-	priv = gedit_document_get_instance_private (GEDIT_DOCUMENT (object));
-
-	if (priv->untitled_number > 0)
-	{
-		release_untitled_number (priv->untitled_number);
-	}
 
 	g_free (priv->content_type);
 
@@ -693,22 +649,9 @@ on_location_changed (GtkSourceFile *file,
 		     GParamSpec    *pspec,
 		     GeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
-	GFile *location;
-
 	gedit_debug (DEBUG_DOCUMENT);
 
-	priv = gedit_document_get_instance_private (doc);
-
 	load_metadata_from_metadata_manager (doc);
-
-	location = gtk_source_file_get_location (file);
-
-	if (location != NULL && priv->untitled_number > 0)
-	{
-		release_untitled_number (priv->untitled_number);
-		priv->untitled_number = 0;
-	}
 
 	g_object_notify_by_pspec (G_OBJECT (doc), properties[PROP_SHORTNAME]);
 }
@@ -723,7 +666,6 @@ gedit_document_init (GeditDocument *doc)
 
 	gedit_debug (DEBUG_DOCUMENT);
 
-	priv->untitled_number = get_untitled_number ();
 	priv->content_type = get_default_content_type ();
 	priv->language_set_by_user = FALSE;
 	priv->empty_search = TRUE;
