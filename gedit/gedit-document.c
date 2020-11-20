@@ -71,7 +71,6 @@ typedef struct
 enum
 {
 	PROP_0,
-	PROP_SHORTNAME,
 	PROP_CONTENT_TYPE,
 	PROP_MIME_TYPE,
 	PROP_EMPTY_SEARCH,
@@ -240,10 +239,6 @@ gedit_document_get_property (GObject    *object,
 
 	switch (prop_id)
 	{
-		case PROP_SHORTNAME:
-			g_value_take_string (value, gedit_document_get_short_name_for_display (doc));
-			break;
-
 		case PROP_CONTENT_TYPE:
 			g_value_take_string (value, gedit_document_get_content_type (doc));
 			break;
@@ -313,18 +308,6 @@ gedit_document_class_init (GeditDocumentClass *klass)
 
 	klass->loaded = gedit_document_loaded_real;
 	klass->saved = gedit_document_saved_real;
-
-	/**
-	 * GeditDocument:shortname:
-	 *
-	 * The document's short name.
-	 */
-	properties[PROP_SHORTNAME] =
-		g_param_spec_string ("shortname",
-		                     "Short Name",
-		                     "The document's short name",
-		                     NULL,
-		                     G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
 
 	/**
 	 * GeditDocument:content-type:
@@ -650,10 +633,7 @@ on_location_changed (GtkSourceFile *file,
 		     GeditDocument *doc)
 {
 	gedit_debug (DEBUG_DOCUMENT);
-
 	load_metadata_from_metadata_manager (doc);
-
-	g_object_notify_by_pspec (G_OBJECT (doc), properties[PROP_SHORTNAME]);
 }
 
 static void

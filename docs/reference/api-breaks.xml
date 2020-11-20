@@ -55,6 +55,12 @@
           been removed from the public API.
         </para>
       </listitem>
+      <listitem>
+        <para>
+          The <code>GeditDocument:shortname</code> property has been removed.
+          You can use the <link linkend="TeplFile">TeplFile</link> API instead.
+        </para>
+      </listitem>
     </itemizedlist>
   </refsect1>
 
