@@ -194,7 +194,7 @@ load_file_list (GeditWindow             *window,
 
 		doc = gedit_tab_get_document (tab);
 
-		if (gedit_document_is_untouched (doc) &&
+		if (tepl_buffer_is_untouched (TEPL_BUFFER (doc)) &&
 		    gedit_tab_get_state (tab) == GEDIT_TAB_STATE_NORMAL)
 		{
 			_gedit_tab_load (tab,
