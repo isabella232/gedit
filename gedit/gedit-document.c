@@ -1035,13 +1035,12 @@ gedit_document_saved_real (GeditDocument *doc)
 gboolean
 gedit_document_is_untitled (GeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	TeplFile *file;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
 
-	priv = gedit_document_get_instance_private (doc);
-
-	return gtk_source_file_get_location (priv->file) == NULL;
+	file = tepl_buffer_get_file (TEPL_BUFFER (doc));
+	return tepl_file_get_location (file) == NULL;
 }
 
 /*
