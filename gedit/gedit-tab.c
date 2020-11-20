@@ -574,9 +574,9 @@ document_location_notify_handler (GtkSourceFile *file,
 }
 
 static void
-document_shortname_notify_handler (GeditDocument *document,
-				   GParamSpec    *pspec,
-				   GeditTab      *tab)
+document_shortname_notify_handler (TeplFile   *file,
+				   GParamSpec *pspec,
+				   GeditTab   *tab)
 {
 	gedit_debug (DEBUG_TAB);
 
@@ -1307,6 +1307,7 @@ gedit_tab_init (GeditTab *tab)
 	GeditDocument *doc;
 	GeditView *view;
 	GtkSourceFile *file;
+	TeplFile *tepl_file;
 
 	tab->state = GEDIT_TAB_STATE_NORMAL;
 
@@ -1337,6 +1338,7 @@ gedit_tab_init (GeditTab *tab)
 	g_object_set_data (G_OBJECT (doc), GEDIT_TAB_KEY, tab);
 
 	file = gedit_document_get_file (doc);
+	tepl_file = tepl_buffer_get_file (TEPL_BUFFER (doc));
 
 	g_signal_connect_object (file,
 				 "notify::location",
@@ -1344,10 +1346,11 @@ gedit_tab_init (GeditTab *tab)
 				 tab,
 				 0);
 
-	g_signal_connect (doc,
-			  "notify::shortname",
-			  G_CALLBACK (document_shortname_notify_handler),
-			  tab);
+	g_signal_connect_object (tepl_file,
+				 "notify::short-name",
+				 G_CALLBACK (document_shortname_notify_handler),
+				 tab,
+				 0);
 
 	g_signal_connect (doc,
 			  "modified_changed",
