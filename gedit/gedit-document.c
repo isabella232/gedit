@@ -892,19 +892,17 @@ set_content_type (GeditDocument *doc,
 gchar *
 _gedit_document_get_uri_for_display (GeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
+	TeplFile *file;
 	GFile *location;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), g_strdup (""));
 
-	priv = gedit_document_get_instance_private (doc);
-
-	location = gtk_source_file_get_location (priv->file);
+	file = tepl_buffer_get_file (TEPL_BUFFER (doc));
+	location = tepl_file_get_location (file);
 
 	if (location == NULL)
 	{
-		return g_strdup_printf (_("Untitled Document %d"),
-					priv->untitled_number);
+		return tepl_file_get_short_name (file);
 	}
 	else
 	{
@@ -921,24 +919,12 @@ _gedit_document_get_uri_for_display (GeditDocument *doc)
 gchar *
 gedit_document_get_short_name_for_display (GeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
-	GFile *location;
+	TeplFile *file;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), g_strdup (""));
 
-	priv = gedit_document_get_instance_private (doc);
-
-	location = gtk_source_file_get_location (priv->file);
-
-	if (location == NULL)
-	{
-		return g_strdup_printf (_("Untitled Document %d"),
-					priv->untitled_number);
-	}
-	else
-	{
-		return gedit_utils_basename_for_display (location);
-	}
+	file = tepl_buffer_get_file (TEPL_BUFFER (doc));
+	return tepl_file_get_short_name (file);
 }
 
 gchar *
