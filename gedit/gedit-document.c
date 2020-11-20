@@ -1033,21 +1033,6 @@ gedit_document_saved_real (GeditDocument *doc)
 }
 
 gboolean
-gedit_document_is_untouched (GeditDocument *doc)
-{
-	GeditDocumentPrivate *priv;
-	GFile *location;
-
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
-
-	priv = gedit_document_get_instance_private (doc);
-
-	location = gtk_source_file_get_location (priv->file);
-
-	return location == NULL && !gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc));
-}
-
-gboolean
 gedit_document_is_untitled (GeditDocument *doc)
 {
 	GeditDocumentPrivate *priv;

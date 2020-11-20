@@ -61,6 +61,13 @@
           You can use the <link linkend="TeplFile">TeplFile</link> API instead.
         </para>
       </listitem>
+      <listitem>
+        <para>
+          The <code>gedit_document_is_untouched()</code> function has been
+          removed. You can use the <link linkend="TeplBuffer">TeplBuffer</link>
+          API instead.
+        </para>
+      </listitem>
     </itemizedlist>
   </refsect1>
 
