@@ -85,7 +85,7 @@ set_font (GeditSettings *self,
 	for (l = views; l != NULL; l = l->next)
 	{
 		/* Note: we use def=FALSE to avoid GeditView to query dconf. */
-		gedit_view_set_font (GEDIT_VIEW (l->data), FALSE, font);
+		_gedit_view_set_font (GEDIT_VIEW (l->data), FALSE, font);
 
 		/* FIXME: setting the tab width seems unrelated to set_font(). */
 		gtk_source_view_set_tab_width (GTK_SOURCE_VIEW (l->data), tabs_size);

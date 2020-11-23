@@ -192,14 +192,14 @@ gedit_view_constructed (GObject *object)
 
 	if (use_default_font)
 	{
-		gedit_view_set_font (view, TRUE, NULL);
+		_gedit_view_set_font (view, TRUE, NULL);
 	}
 	else
 	{
 		gchar *editor_font;
 
 		editor_font = g_settings_get_string (editor_settings, GEDIT_SETTINGS_EDITOR_FONT);
-		gedit_view_set_font (view, FALSE, editor_font);
+		_gedit_view_set_font (view, FALSE, editor_font);
 		g_free (editor_font);
 	}
 
@@ -781,8 +781,8 @@ update_css_provider (GeditView *view)
 	g_free (str);
 }
 
-/**
- * gedit_view_set_font:
+/*
+ * _gedit_view_set_font:
  * @view: a #GeditView
  * @default_font: whether to reset to the default font
  * @font_name: the name of the font to use
@@ -791,9 +791,9 @@ update_css_provider (GeditView *view)
  * Otherwise sets it to @font_name.
  */
 void
-gedit_view_set_font (GeditView   *view,
-		     gboolean     default_font,
-		     const gchar *font_name)
+_gedit_view_set_font (GeditView   *view,
+		      gboolean     default_font,
+		      const gchar *font_name)
 {
 	gedit_debug (DEBUG_VIEW);
 

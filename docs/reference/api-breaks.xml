@@ -68,6 +68,11 @@
           API instead.
         </para>
       </listitem>
+      <listitem>
+        <para>
+          The <code>gedit_view_set_font()</code> function has been removed.
+        </para>
+      </listitem>
     </itemizedlist>
   </refsect1>
 

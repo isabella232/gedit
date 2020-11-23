@@ -199,7 +199,6 @@ GeditViewPrivate
 <TITLE>GeditView</TITLE>
 GeditView
 gedit_view_new
-gedit_view_set_font
 <SUBSECTION Standard>
 GEDIT_VIEW
 GEDIT_IS_VIEW
