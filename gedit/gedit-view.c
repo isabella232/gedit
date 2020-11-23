@@ -41,7 +41,6 @@ struct _GeditViewPrivate
 	gchar *direct_save_uri;
 
 	GtkCssProvider *css_provider;
-	PangoFontDescription *font_desc;
 
 	TeplSignalGroup *file_signal_group;
 };
@@ -110,7 +109,7 @@ static void
 gedit_view_init (GeditView *view)
 {
 	GtkTargetList *target_list;
-	GtkStyleContext *context;
+	GtkStyleContext *style_context;
 
 	gedit_debug (DEBUG_VIEW);
 
@@ -144,13 +143,8 @@ gedit_view_init (GeditView *view)
 			  NULL);
 
 	/* CSS stuff */
-	context = gtk_widget_get_style_context (GTK_WIDGET (view));
-	gtk_style_context_add_class (context, "gedit-view");
-
-	view->priv->css_provider = gtk_css_provider_new ();
-	gtk_style_context_add_provider (context,
-					GTK_STYLE_PROVIDER (view->priv->css_provider),
-					GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+	style_context = gtk_widget_get_style_context (GTK_WIDGET (view));
+	gtk_style_context_add_class (style_context, "gedit-view");
 }
 
 static void
@@ -159,6 +153,7 @@ gedit_view_dispose (GObject *object)
 	GeditView *view = GEDIT_VIEW (object);
 
 	g_clear_object (&view->priv->extensions);
+	g_clear_object (&view->priv->css_provider);
 	tepl_signal_group_clear (&view->priv->file_signal_group);
 
 	/* Disconnect notify buffer because the destroy of the textview will set
@@ -168,9 +163,6 @@ gedit_view_dispose (GObject *object)
 	 * several times (if dispose() is called several times).
 	 */
 	g_signal_handlers_disconnect_by_func (view, buffer_notify_cb, NULL);
-
-	g_clear_object (&view->priv->css_provider);
-	g_clear_pointer (&view->priv->font_desc, pango_font_description_free);
 
 	G_OBJECT_CLASS (gedit_view_parent_class)->dispose (object);
 }
@@ -765,20 +757,42 @@ gedit_view_new (GeditDocument *doc)
 }
 
 static void
-update_css_provider (GeditView *view)
+update_css_provider (GeditView   *view,
+		     const gchar *font_name)
 {
-	gchar *str;
-	gchar *css;
+	GtkStyleContext *style_context;
+	PangoFontDescription *font_description;
+	gchar *css_declarations;
+	gchar *css_rule_set;
 
-	g_assert (GEDIT_IS_VIEW (view));
-	g_assert (view->priv->font_desc != NULL);
+	style_context = gtk_widget_get_style_context (GTK_WIDGET (view));
 
-	str = tepl_pango_font_description_to_css (view->priv->font_desc);
-	css = g_strdup_printf ("textview { %s }", str ? str : "");
-	gtk_css_provider_load_from_data (view->priv->css_provider, css, -1, NULL);
+	if (view->priv->css_provider != NULL)
+	{
+		gtk_style_context_remove_provider (style_context,
+						   GTK_STYLE_PROVIDER (view->priv->css_provider));
+		g_clear_object (&view->priv->css_provider);
+	}
 
-	g_free (css);
-	g_free (str);
+	g_return_if_fail (font_name != NULL);
+	font_description = pango_font_description_from_string (font_name);
+	g_return_if_fail (font_description != NULL);
+
+	css_declarations = tepl_pango_font_description_to_css (font_description);
+	css_rule_set = g_strdup_printf ("textview {\n"
+					"    %s\n"
+				        "}\n",
+					css_declarations);
+
+	view->priv->css_provider = gtk_css_provider_new ();
+	gtk_css_provider_load_from_data (view->priv->css_provider, css_rule_set, -1, NULL);
+	gtk_style_context_add_provider (style_context,
+					GTK_STYLE_PROVIDER (view->priv->css_provider),
+					GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+	pango_font_description_free (font_description);
+	g_free (css_declarations);
+	g_free (css_rule_set);
 }
 
 /*
@@ -799,29 +813,22 @@ _gedit_view_set_font (GeditView   *view,
 
 	g_return_if_fail (GEDIT_IS_VIEW (view));
 
-	g_clear_pointer (&view->priv->font_desc, pango_font_description_free);
-
 	if (default_font)
 	{
 		GeditSettings *settings;
-		gchar *font;
+		gchar *system_font_name;
 
 		settings = _gedit_settings_get_singleton ();
-		font = gedit_settings_get_system_font (settings);
+		system_font_name = gedit_settings_get_system_font (settings);
 
-		view->priv->font_desc = pango_font_description_from_string (font);
-		g_free (font);
+		update_css_provider (view, system_font_name);
+
+		g_free (system_font_name);
 	}
 	else
 	{
-		g_return_if_fail (font_name != NULL);
-
-		view->priv->font_desc = pango_font_description_from_string (font_name);
+		update_css_provider (view, font_name);
 	}
-
-	g_return_if_fail (view->priv->font_desc != NULL);
-
-	update_css_provider (view);
 }
 
 /* ex:set ts=8 noet: */
