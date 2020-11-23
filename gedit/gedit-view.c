@@ -37,6 +37,7 @@ enum
 struct _GeditViewPrivate
 {
 	PeasExtensionSet *extensions;
+
 	gchar *direct_save_uri;
 
 	GtkCssProvider *css_provider;
@@ -143,10 +144,10 @@ gedit_view_init (GeditView *view)
 			  NULL);
 
 	/* CSS stuff */
-	view->priv->css_provider = gtk_css_provider_new ();
 	context = gtk_widget_get_style_context (GTK_WIDGET (view));
 	gtk_style_context_add_class (context, "gedit-view");
 
+	view->priv->css_provider = gtk_css_provider_new ();
 	gtk_style_context_add_provider (context,
 					GTK_STYLE_PROVIDER (view->priv->css_provider),
 					GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
