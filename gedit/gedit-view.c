@@ -36,12 +36,13 @@ enum
 
 struct _GeditViewPrivate
 {
-	GeditDocument *current_document;
 	PeasExtensionSet *extensions;
 	gchar *direct_save_uri;
 
 	GtkCssProvider *css_provider;
 	PangoFontDescription *font_desc;
+
+	TeplSignalGroup *file_signal_group;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditView, gedit_view, TEPL_TYPE_VIEW)
@@ -76,24 +77,6 @@ file_read_only_notify_cb (GtkSourceFile *file,
 }
 
 static void
-current_document_removed (GeditView *view)
-{
-	if (view->priv->current_document != NULL)
-	{
-		GtkSourceFile *file;
-
-		file = gedit_document_get_file (view->priv->current_document);
-
-		g_signal_handlers_disconnect_by_func (file,
-						      file_read_only_notify_cb,
-						      view);
-
-		g_object_unref (view->priv->current_document);
-		view->priv->current_document = NULL;
-	}
-}
-
-static void
 on_notify_buffer_cb (GeditView  *view,
 		     GParamSpec *pspec,
 		     gpointer    userdata)
@@ -101,7 +84,8 @@ on_notify_buffer_cb (GeditView  *view,
 	GtkTextBuffer *buffer;
 	GtkSourceFile *file;
 
-	current_document_removed (view);
+	tepl_signal_group_clear (&view->priv->file_signal_group);
+
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 
 	if (!GEDIT_IS_DOCUMENT (buffer))
@@ -109,14 +93,14 @@ on_notify_buffer_cb (GeditView  *view,
 		return;
 	}
 
-	view->priv->current_document = g_object_ref (GEDIT_DOCUMENT (buffer));
+	file = gedit_document_get_file (GEDIT_DOCUMENT (buffer));
 
-	file = gedit_document_get_file (view->priv->current_document);
-	g_signal_connect_object (file,
-				 "notify::read-only",
-				 G_CALLBACK (file_read_only_notify_cb),
-				 view,
-				 0);
+	view->priv->file_signal_group = tepl_signal_group_new (G_OBJECT (file));
+	tepl_signal_group_add (view->priv->file_signal_group,
+			       g_signal_connect (file,
+						 "notify::read-only",
+						 G_CALLBACK (file_read_only_notify_cb),
+						 view));
 
 	update_editable (view);
 }
@@ -171,8 +155,7 @@ gedit_view_dispose (GObject *object)
 	GeditView *view = GEDIT_VIEW (object);
 
 	g_clear_object (&view->priv->extensions);
-
-	current_document_removed (view);
+	tepl_signal_group_clear (&view->priv->file_signal_group);
 
 	/* Disconnect notify buffer because the destroy of the textview will set
 	 * the buffer to NULL, and we call get_buffer in the notify which would
