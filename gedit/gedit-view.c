@@ -77,25 +77,17 @@ file_read_only_notify_cb (GtkSourceFile *file,
 }
 
 static void
-on_notify_buffer_cb (GeditView  *view,
-		     GParamSpec *pspec,
-		     gpointer    userdata)
+buffer_changed (GeditView *view)
 {
-	GtkTextBuffer *buffer;
+	GeditDocument *doc;
 	GtkSourceFile *file;
 
+	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	file = gedit_document_get_file (doc);
+
 	tepl_signal_group_clear (&view->priv->file_signal_group);
-
-	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
-
-	if (!GEDIT_IS_DOCUMENT (buffer))
-	{
-		return;
-	}
-
-	file = gedit_document_get_file (GEDIT_DOCUMENT (buffer));
-
 	view->priv->file_signal_group = tepl_signal_group_new (G_OBJECT (file));
+
 	tepl_signal_group_add (view->priv->file_signal_group,
 			       g_signal_connect (file,
 						 "notify::read-only",
@@ -103,6 +95,14 @@ on_notify_buffer_cb (GeditView  *view,
 						 view));
 
 	update_editable (view);
+}
+
+static void
+buffer_notify_cb (GeditView  *view,
+		  GParamSpec *pspec,
+		  gpointer    user_data)
+{
+	buffer_changed (view);
 }
 
 static void
@@ -128,18 +128,21 @@ gedit_view_init (GeditView *view)
 		gtk_target_list_add_uri_targets (target_list, TARGET_URI_LIST);
 	}
 
+	/* GeditViewActivatable */
 	view->priv->extensions =
 		peas_extension_set_new (PEAS_ENGINE (gedit_plugins_engine_get_default ()),
 		                        GEDIT_TYPE_VIEW_ACTIVATABLE,
 		                        "view", view,
 		                        NULL);
 
-	/* Act on buffer change */
+	/* Act on buffer changes */
+	buffer_changed (view);
 	g_signal_connect (view,
 			  "notify::buffer",
-			  G_CALLBACK (on_notify_buffer_cb),
+			  G_CALLBACK (buffer_notify_cb),
 			  NULL);
 
+	/* CSS stuff */
 	view->priv->css_provider = gtk_css_provider_new ();
 	context = gtk_widget_get_style_context (GTK_WIDGET (view));
 	gtk_style_context_add_class (context, "gedit-view");
@@ -163,7 +166,7 @@ gedit_view_dispose (GObject *object)
 	 * There is no problem calling g_signal_handlers_disconnect_by_func()
 	 * several times (if dispose() is called several times).
 	 */
-	g_signal_handlers_disconnect_by_func (view, on_notify_buffer_cb, NULL);
+	g_signal_handlers_disconnect_by_func (view, buffer_notify_cb, NULL);
 
 	g_clear_object (&view->priv->css_provider);
 	g_clear_pointer (&view->priv->font_desc, pango_font_description_free);
