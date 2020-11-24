@@ -28,12 +28,6 @@
 #include "gedit-utils.h"
 #include "gedit-settings.h"
 
-enum
-{
-	TARGET_URI_LIST = 100,
-	TARGET_XDNDDIRECTSAVE
-};
-
 struct _GeditViewPrivate
 {
 	PeasExtensionSet *extensions;
@@ -43,7 +37,11 @@ struct _GeditViewPrivate
 	TeplSignalGroup *file_signal_group;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditView, gedit_view, TEPL_TYPE_VIEW)
+enum
+{
+	TARGET_URI_LIST = 100,
+	TARGET_XDNDDIRECTSAVE
+};
 
 enum
 {
@@ -52,6 +50,8 @@ enum
 };
 
 static guint signals[N_SIGNALS];
+
+G_DEFINE_TYPE_WITH_PRIVATE (GeditView, gedit_view, TEPL_TYPE_VIEW)
 
 static void
 update_editable (GeditView *view)
