@@ -63,7 +63,7 @@ GtkWidget *	gedit_view_new			(GeditDocument *doc);
 G_GNUC_INTERNAL
 void		_gedit_view_set_font		(GeditView   *view,
 						 gboolean     default_font,
-						 const gchar *font_name);
+						 const gchar *font_str);
 
 G_END_DECLS
 

@@ -40,8 +40,6 @@ struct _GeditViewPrivate
 
 	gchar *direct_save_uri;
 
-	GtkCssProvider *css_provider;
-
 	TeplSignalGroup *file_signal_group;
 };
 
@@ -153,7 +151,6 @@ gedit_view_dispose (GObject *object)
 	GeditView *view = GEDIT_VIEW (object);
 
 	g_clear_object (&view->priv->extensions);
-	g_clear_object (&view->priv->css_provider);
 	tepl_signal_group_clear (&view->priv->file_signal_group);
 
 	/* Disconnect notify buffer because the destroy of the textview will set
@@ -756,58 +753,19 @@ gedit_view_new (GeditDocument *doc)
 			     NULL);
 }
 
-static void
-update_css_provider (GeditView   *view,
-		     const gchar *font_name)
-{
-	GtkStyleContext *style_context;
-	PangoFontDescription *font_description;
-	gchar *css_declarations;
-	gchar *css_rule_set;
-
-	style_context = gtk_widget_get_style_context (GTK_WIDGET (view));
-
-	if (view->priv->css_provider != NULL)
-	{
-		gtk_style_context_remove_provider (style_context,
-						   GTK_STYLE_PROVIDER (view->priv->css_provider));
-		g_clear_object (&view->priv->css_provider);
-	}
-
-	g_return_if_fail (font_name != NULL);
-	font_description = pango_font_description_from_string (font_name);
-	g_return_if_fail (font_description != NULL);
-
-	css_declarations = tepl_pango_font_description_to_css (font_description);
-	css_rule_set = g_strdup_printf ("textview {\n"
-					"    %s\n"
-				        "}\n",
-					css_declarations);
-
-	view->priv->css_provider = gtk_css_provider_new ();
-	gtk_css_provider_load_from_data (view->priv->css_provider, css_rule_set, -1, NULL);
-	gtk_style_context_add_provider (style_context,
-					GTK_STYLE_PROVIDER (view->priv->css_provider),
-					GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-
-	pango_font_description_free (font_description);
-	g_free (css_declarations);
-	g_free (css_rule_set);
-}
-
 /*
  * _gedit_view_set_font:
  * @view: a #GeditView
  * @default_font: whether to reset to the default font
- * @font_name: the name of the font to use
+ * @font_str: the name of the font to use
  *
  * If @default_font is #TRUE, resets the font of the @view to the default font.
- * Otherwise sets it to @font_name.
+ * Otherwise sets it to @font_str.
  */
 void
 _gedit_view_set_font (GeditView   *view,
 		      gboolean     default_font,
-		      const gchar *font_name)
+		      const gchar *font_str)
 {
 	gedit_debug (DEBUG_VIEW);
 
@@ -816,18 +774,18 @@ _gedit_view_set_font (GeditView   *view,
 	if (default_font)
 	{
 		GeditSettings *settings;
-		gchar *system_font_name;
+		gchar *system_font_str;
 
 		settings = _gedit_settings_get_singleton ();
-		system_font_name = gedit_settings_get_system_font (settings);
+		system_font_str = gedit_settings_get_system_font (settings);
 
-		update_css_provider (view, system_font_name);
+		tepl_utils_override_font (GTK_WIDGET (view), system_font_str);
 
-		g_free (system_font_name);
+		g_free (system_font_str);
 	}
 	else
 	{
-		update_css_provider (view, font_name);
+		tepl_utils_override_font (GTK_WIDGET (view), font_str);
 	}
 }
 
