@@ -60,11 +60,6 @@ GType		gedit_view_get_type     	(void);
 
 GtkWidget *	gedit_view_new			(GeditDocument *doc);
 
-G_GNUC_INTERNAL
-void		_gedit_view_set_font		(GeditView   *view,
-						 gboolean     default_font,
-						 const gchar *font_str);
-
 G_END_DECLS
 
 #endif /* GEDIT_VIEW_H */

@@ -165,32 +165,42 @@ gedit_view_dispose (GObject *object)
 }
 
 static void
+update_font (GeditView *view)
+{
+	GeditSettings *settings;
+	gchar *selected_font;
+
+	settings = _gedit_settings_get_singleton ();
+	selected_font = _gedit_settings_get_selected_font (settings);
+	tepl_utils_override_font (GTK_WIDGET (view), selected_font);
+	g_free (selected_font);
+}
+
+static void
+fonts_changed_cb (GeditSettings *settings,
+		  GeditView     *view)
+{
+	update_font (view);
+}
+
+static void
 gedit_view_constructed (GObject *object)
 {
 	GeditView *view = GEDIT_VIEW (object);
 	GeditSettings *settings;
 	GSettings *editor_settings;
-	gboolean use_default_font;
 
 	G_OBJECT_CLASS (gedit_view_parent_class)->constructed (object);
 
 	settings = _gedit_settings_get_singleton ();
 	editor_settings = _gedit_settings_peek_editor_settings (settings);
 
-	use_default_font = g_settings_get_boolean (editor_settings, GEDIT_SETTINGS_USE_DEFAULT_FONT);
-
-	if (use_default_font)
-	{
-		_gedit_view_set_font (view, TRUE, NULL);
-	}
-	else
-	{
-		gchar *editor_font;
-
-		editor_font = g_settings_get_string (editor_settings, GEDIT_SETTINGS_EDITOR_FONT);
-		_gedit_view_set_font (view, FALSE, editor_font);
-		g_free (editor_font);
-	}
+	update_font (view);
+	g_signal_connect_object (settings,
+				 "fonts-changed",
+				 G_CALLBACK (fonts_changed_cb),
+				 view,
+				 0);
 
 	g_settings_bind (editor_settings, GEDIT_SETTINGS_DISPLAY_LINE_NUMBERS,
 	                 view, "show-line-numbers",
@@ -751,42 +761,6 @@ gedit_view_new (GeditDocument *doc)
 	return g_object_new (GEDIT_TYPE_VIEW,
 			     "buffer", doc,
 			     NULL);
-}
-
-/*
- * _gedit_view_set_font:
- * @view: a #GeditView
- * @default_font: whether to reset to the default font
- * @font_str: the name of the font to use
- *
- * If @default_font is #TRUE, resets the font of the @view to the default font.
- * Otherwise sets it to @font_str.
- */
-void
-_gedit_view_set_font (GeditView   *view,
-		      gboolean     default_font,
-		      const gchar *font_str)
-{
-	gedit_debug (DEBUG_VIEW);
-
-	g_return_if_fail (GEDIT_IS_VIEW (view));
-
-	if (default_font)
-	{
-		GeditSettings *settings;
-		gchar *system_font_str;
-
-		settings = _gedit_settings_get_singleton ();
-		system_font_str = _gedit_settings_get_system_font (settings);
-
-		tepl_utils_override_font (GTK_WIDGET (view), system_font_str);
-
-		g_free (system_font_str);
-	}
-	else
-	{
-		tepl_utils_override_font (GTK_WIDGET (view), font_str);
-	}
 }
 
 /* ex:set ts=8 noet: */
