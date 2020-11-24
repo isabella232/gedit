@@ -80,8 +80,7 @@ gedit_settings_class_init (GeditSettingsClass *klass)
 }
 
 static void
-set_font (GeditSettings *self,
-	  const gchar   *font)
+set_font (const gchar *font)
 {
 	GList *views;
 	GList *l;
@@ -112,7 +111,7 @@ on_system_font_changed (GSettings     *settings,
 		gchar *font;
 
 		font = g_settings_get_string (settings, key);
-		set_font (self, font);
+		set_font (font);
 		g_free (font);
 	}
 }
@@ -136,7 +135,7 @@ on_use_default_font_changed (GSettings     *settings,
 		font = g_settings_get_string (self->settings_editor, GEDIT_SETTINGS_EDITOR_FONT);
 	}
 
-	set_font (self, font);
+	set_font (font);
 
 	g_free (font);
 }
@@ -155,7 +154,7 @@ on_editor_font_changed (GSettings     *settings,
 		gchar *font;
 
 		font = g_settings_get_string (settings, key);
-		set_font (self, font);
+		set_font (font);
 		g_free (font);
 	}
 }
