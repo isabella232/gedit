@@ -84,9 +84,8 @@ gedit_settings_class_init (GeditSettingsClass *klass)
 	object_class->dispose = gedit_settings_dispose;
 	object_class->finalize = gedit_settings_finalize;
 
-	/* This signal is emitted when the return value of [...] has potentially
-	 * changed.
-	 * TODO: write function to get the font.
+	/* This signal is emitted when the return value of
+	 * _gedit_settings_get_selected_font() has potentially changed.
 	 */
 	signals[SIGNAL_FONTS_CHANGED] =
 		g_signal_new ("fonts-changed",
@@ -300,6 +299,19 @@ _gedit_settings_get_system_font (GeditSettings *self)
 	g_return_val_if_fail (GEDIT_IS_SETTINGS (self), NULL);
 
 	return g_settings_get_string (self->settings_interface, GEDIT_SETTINGS_SYSTEM_FONT);
+}
+
+gchar *
+_gedit_settings_get_selected_font (GeditSettings *self)
+{
+	g_return_val_if_fail (GEDIT_IS_SETTINGS (self), NULL);
+
+	if (g_settings_get_boolean (self->settings_editor, GEDIT_SETTINGS_USE_DEFAULT_FONT))
+	{
+		return _gedit_settings_get_system_font (self);
+	}
+
+	return g_settings_get_string (self->settings_editor, GEDIT_SETTINGS_EDITOR_FONT);
 }
 
 static gboolean
