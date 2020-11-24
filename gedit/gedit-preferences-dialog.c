@@ -434,7 +434,7 @@ setup_font_colors_page_font_section (GeditPreferencesDialog *dlg)
 
 	/* Get values */
 	settings = _gedit_settings_get_singleton ();
-	system_font = gedit_settings_get_system_font (settings);
+	system_font = _gedit_settings_get_system_font (settings);
 
 	label = g_strdup_printf(_("_Use the system fixed width font (%s)"),
 				system_font);

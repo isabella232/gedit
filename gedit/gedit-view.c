@@ -777,7 +777,7 @@ _gedit_view_set_font (GeditView   *view,
 		gchar *system_font_str;
 
 		settings = _gedit_settings_get_singleton ();
-		system_font_str = gedit_settings_get_system_font (settings);
+		system_font_str = _gedit_settings_get_system_font (settings);
 
 		tepl_utils_override_font (GTK_WIDGET (view), system_font_str);
 

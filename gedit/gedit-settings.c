@@ -295,11 +295,11 @@ _gedit_settings_peek_file_chooser_state_settings (GeditSettings *self)
 }
 
 gchar *
-gedit_settings_get_system_font (GeditSettings *self)
+_gedit_settings_get_system_font (GeditSettings *self)
 {
 	g_return_val_if_fail (GEDIT_IS_SETTINGS (self), NULL);
 
-	return g_settings_get_string (self->settings_interface, "monospace-font-name");
+	return g_settings_get_string (self->settings_interface, GEDIT_SETTINGS_SYSTEM_FONT);
 }
 
 static gboolean
