@@ -24,7 +24,7 @@
 void
 gedit_recent_add_document (GeditDocument *document)
 {
-	GtkSourceFile *file;
+	TeplFile *file;
 	GFile *location;
 	GtkRecentManager *recent_manager;
 	GtkRecentData recent_data;
@@ -33,8 +33,8 @@ gedit_recent_add_document (GeditDocument *document)
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (document));
 
-	file = gedit_document_get_file (document);
-	location = gtk_source_file_get_location (file);
+	file = tepl_buffer_get_file (TEPL_BUFFER (document));
+	location = tepl_file_get_location (file);
 
 	if (location == NULL)
 	{
