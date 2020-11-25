@@ -26,6 +26,10 @@
 
 G_BEGIN_DECLS
 
+/* TODO: this code can be simplified, the struct can be made private, the dead
+ * code can be removed, etc.
+ */
+
 typedef struct
 {
 	GtkRecentManager *manager;
