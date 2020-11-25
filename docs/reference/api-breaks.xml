@@ -73,6 +73,11 @@
           The <code>gedit_view_set_font()</code> function has been removed.
         </para>
       </listitem>
+      <listitem>
+        <para>
+          <code>DEBUG_METADATA</code> has been removed.
+        </para>
+      </listitem>
     </itemizedlist>
   </refsect1>
 
