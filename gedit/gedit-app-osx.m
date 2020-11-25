@@ -31,7 +31,7 @@
 #include "gedit-debug.h"
 #include "gedit-commands.h"
 #include "gedit-commands-private.h"
-#include "gedit-recent.h"
+#include "gedit-recent-osx.h"
 #import <AppKit/AppKit.h>
 
 NSWindow *gdk_quartz_window_get_nswindow(GdkWindow *window);
